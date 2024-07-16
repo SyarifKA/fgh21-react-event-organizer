@@ -11,8 +11,8 @@ function NavbarHome() {
                 <div>Location</div>
             </div>
             <div className='flex justify-between gap-4'>
-                <button>Sign Up</button>
-                <button  className='text-white w-[169px] h-[40px] bg-[rgba(51,102,255,1)] rounded-lg shadow-md shadow-[rgba(51,102,255,0.15)]'>Login</button>
+                <button>Log In</button>
+                <button  className='text-white w-[169px] h-[40px] bg-[rgba(51,102,255,1)] rounded-lg shadow-md shadow-[rgba(51,102,255,0.15)]'>Sign Up</button>
             </div>
         </div>
     )
