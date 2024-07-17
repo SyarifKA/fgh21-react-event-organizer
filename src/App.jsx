@@ -9,6 +9,7 @@ import Profile from './pages/Profile'
 import ChangePass from './pages/ChangePass'
 import MyBooking from './pages/MyBooking'
 import MyWishlist from './pages/MyWishlist'
+import CreateEvent from './pages/CreateEvent'
 
 const arrayRouter = [
     {
@@ -46,6 +47,10 @@ const arrayRouter = [
     {
         path: '/myWishlist',
         element: <MyWishlist />
+    },
+    {
+        path: '/createEvent',
+        element: <CreateEvent />
     },
 ]
 

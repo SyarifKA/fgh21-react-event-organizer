@@ -7,10 +7,12 @@ import LogoEdit from '../assets/images/profile-edit.png'
 import LogoPass from '../assets/images/profile-change.png'
 import LogoBooking from '../assets/images/booking-logo.png'
 import LogoWishlistBlue from '../assets/images/wishlist-logo-blue.png'
+import LogoCreate from '../assets/images/create-event.png'
 import LogoSetting from '../assets/images/setting-logo.png'
 import LogoLogout from '../assets/images/exit-logo.png'
 import HeartButtonBlue from '../assets/images/heart-icon-blue.png'
 import FooterMain from "../components/Footer"
+import { Link } from "react-router-dom";
 
 function MyWishlist() {
     return (
@@ -45,6 +47,12 @@ function MyWishlist() {
                         <img src={LogoPass} alt="" />
                         <div>Change Password</div>
                     </div>
+                    <Link to='/createEvent'>
+                    <div className="flex gap-2 items-center">
+                        <img src={LogoCreate} alt="" />
+                        <div>Create Event</div>
+                    </div>
+                    </Link>
                     <div className="flex gap-2 items-center">
                         <img src={LogoBooking} alt="" />
                         <div>My Booking</div>

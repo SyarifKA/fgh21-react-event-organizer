@@ -5,16 +5,15 @@ import LogoProfile from '../assets/images/profile-logo.png'
 import LogoCard from '../assets/images/card-grey.png'
 import LogoEdit from '../assets/images/profile-edit.png'
 import LogoPass from '../assets/images/profile-change.png'
-import LogoBookingBlue from '../assets/images/booking-logo-blue.png'
+import LogoBooking from '../assets/images/booking-logo.png'
 import LogoWishlist from '../assets/images/wishlist-logo.png'
-import LogoCreate from '../assets/images/create-event.png'
+import LogoCreateBlue from '../assets/images/create-event-blue.png'
 import LogoSetting from '../assets/images/setting-logo.png'
 import LogoLogout from '../assets/images/exit-logo.png'
-import IconCalendar from '../assets/images/booking_calender.png'
 import FooterMain from "../components/Footer"
 import { Link } from "react-router-dom";
 
-function MyBooking() {
+function CreateEvent() {
     return (
         <div className="flex flex-col gap-24">
             <NavbarProfile />
@@ -39,22 +38,30 @@ function MyBooking() {
                         <img src={LogoCard} alt="" />
                         <div>Card</div>
                     </div>
+                    <Link to='/profile'>
                     <div className="flex gap-2 items-center ml-8">
                         <img src={LogoEdit} alt="" />
                         <div>Edit Profile</div>
                     </div>
+                    </Link>
+                    <Link to='/changePassword'>
                     <div className="flex gap-2 items-center ml-8">
                         <img src={LogoPass} alt="" />
                         <div>Change Password</div>
                     </div>
+                    </Link>
+                    <Link to='/createEvent'>
                     <div className="flex gap-2 items-center">
-                        <img src={LogoBookingBlue} alt="" />
-                        <div className="text-[rgba(51,102,255,1)]">My Booking</div>
+                        <img src={LogoCreateBlue} alt="" />
+                        <div className="text-[rgba(51,102,255,1)]">Create Event</div>
                     </div>
+                    </Link>
+                    <Link to='/myBooking'>
                     <div className="flex gap-2 items-center">
-                        <img src={LogoCreate} alt="" />
-                        <div>Create Event</div>
+                        <img src={LogoBooking} alt="" />
+                        <div>My Booking</div>
                     </div>
+                    </Link>
                     <Link to='/myWishlist'>
                     <div className="flex gap-2 items-center">
                         <img src={LogoWishlist} alt="" />
@@ -73,10 +80,7 @@ function MyBooking() {
                 <div className="flex flex-col gap-6 w-[70%] bg-white p-12 rounded-3xl">
                     <div className="flex justify-between">
                         <div className="text-xl font-semibold">My Booking</div>
-                        <div className="flex gap-2 bg-[rgba(234,241,255,1)] p-[13px] rounded-xl justify-center">
-                            <img src={IconCalendar} alt="" />
-                            <span className="text-[rgba(51,102,255,1)]">March</span>
-                        </div>
+                        <button className="flex bg-[rgba(234,241,255,1)] p-[13px] text-[rgba(51,102,255,1)] rounded-xl justify-center">Create</button>
                     </div>
                     <div>
                         <div className="flex gap-2 border-b py-[25px]">
@@ -135,4 +139,4 @@ function MyBooking() {
     )
 }
 
-export default MyBooking
+export default CreateEvent
