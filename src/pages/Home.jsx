@@ -22,6 +22,7 @@ import Banner3 from '../assets/images/Icon-banner3.png'
 import Banner4 from '../assets/images/Icon-banner4.png'
 import Banner5 from '../assets/images/Icon-banner5.png'
 import Banner6 from '../assets/images/Icon-banner6.png'
+import { Link } from 'react-router-dom'
 
 
 function HomePage() {
@@ -63,9 +64,9 @@ function HomePage() {
                         <div className='text-xs'>Fri</div>
                     </div>
                 </div>
-                <div className='flex overflow-hidden'>
+                <Link to="/detail">
                     <EventCard />
-                </div>
+                </Link>
                 <div className='flex gap-8'>
                     <ButtonLeft />
                     <ButtonRight />
