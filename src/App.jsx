@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import OrderTickets from './pages/OrderTickets'
 import Payment from './pages/Payment'
 import Profile from './pages/Profile'
+import ChangePass from './pages/ChangePass'
 
 const arrayRouter = [
     {
@@ -31,6 +32,10 @@ const arrayRouter = [
     {
         path: '/profile',
         element: <Profile />
+    },
+    {
+        path: '/changePassword',
+        element: <ChangePass />
     },
 ]
 

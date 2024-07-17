@@ -10,7 +10,8 @@ import LogoWishlist from '../assets/images/wishlist-logo.png'
 import LogoSetting from '../assets/images/setting-logo.png'
 import LogoLogout from '../assets/images/exit-logo.png'
 import NavDown from '../assets/images/chevron-down.png'
-import FooterMain from "../components/Footer";
+import FooterMain from "../components/Footer"
+import { Link } from "react-router-dom";
 
 function Profile() {
     return (
@@ -41,10 +42,12 @@ function Profile() {
                         <img src={LogoEdit} alt="" />
                         <div>Edit Profile</div>
                     </div>
+                    <Link to='/changePassword'>
                     <div className="flex gap-2 items-center ml-8">
                         <img src={LogoPass} alt="" />
                         <div>Change Password</div>
                     </div>
+                    </Link>
                     <div className="flex gap-2 items-center">
                         <img src={LogoBooking} alt="" />
                         <div>My Booking</div>
