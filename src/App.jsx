@@ -8,6 +8,7 @@ import Payment from './pages/Payment'
 import Profile from './pages/Profile'
 import ChangePass from './pages/ChangePass'
 import MyBooking from './pages/MyBooking'
+import MyWishlist from './pages/MyWishlist'
 
 const arrayRouter = [
     {
@@ -41,6 +42,10 @@ const arrayRouter = [
     {
         path: '/myBooking',
         element: <MyBooking />
+    },
+    {
+        path: '/myWishlist',
+        element: <MyWishlist />
     },
 ]
 
