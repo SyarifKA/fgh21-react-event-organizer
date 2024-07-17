@@ -74,13 +74,15 @@ function CreateEvent() {
                     </div>
                     <div className="flex gap-2 items-center">
                         <img src={LogoLogout} alt="" />
-                        <div className="text-[rgba(240,56,0,1)]">Settings</div>
+                        <div className="text-[rgba(240,56,0,1)]">Logout</div>
                     </div>
                 </div>
                 <div className="flex flex-col gap-6 w-[70%] bg-white p-12 rounded-3xl">
                     <div className="flex justify-between">
                         <div className="text-xl font-semibold">My Booking</div>
+                        <Link to='/createPopUp'>
                         <button className="flex bg-[rgba(234,241,255,1)] p-[13px] text-[rgba(51,102,255,1)] rounded-xl justify-center">Create</button>
+                        </Link>
                     </div>
                     <div>
                         <div className="flex gap-2 border-b py-[25px]">

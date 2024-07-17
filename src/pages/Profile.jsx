@@ -3,7 +3,7 @@ import NavbarProfile from "../components/NavbarProfile"
 import Avatar from '../assets/images/navbar-avatar.png'
 import LogoProfile from '../assets/images/profile-logo.png'
 import LogoCard from '../assets/images/card-grey.png'
-import LogoEdit from '../assets/images/profile-edit.png'
+import LogoEditBlue from '../assets/images/profile-edit-blue.png'
 import LogoPass from '../assets/images/profile-change.png'
 import LogoBooking from '../assets/images/booking-logo.png'
 import LogoWishlist from '../assets/images/wishlist-logo.png'
@@ -39,8 +39,8 @@ function Profile() {
                         <div>Card</div>
                     </div>
                     <div className="flex gap-2 items-center ml-8">
-                        <img src={LogoEdit} alt="" />
-                        <div>Edit Profile</div>
+                        <img src={LogoEditBlue} alt="" />
+                        <div className="text-[rgba(51,102,255,1)]">Edit Profile</div>
                     </div>
                     <Link to='/changePassword'>
                     <div className="flex gap-2 items-center ml-8">
@@ -62,7 +62,7 @@ function Profile() {
                     </div>
                     <div className="flex gap-2 items-center">
                         <img src={LogoLogout} alt="" />
-                        <div className="text-[rgba(240,56,0,1)]">Settings</div>
+                        <div className="text-[rgba(240,56,0,1)]">Logout</div>
                     </div>
                 </div>
                 <div className="flex flex-col w-[70%] bg-white p-12 rounded-3xl">
@@ -125,7 +125,7 @@ function Profile() {
                                 </div>
                             </div>
                             <div className='flex justify-center'>
-                                <button className=' text-white rounded-xl bg-[rgba(51,102,255,1)] w-[80%] h-[55px]'>Payment</button>
+                                <button className=' text-white rounded-xl bg-[rgba(51,102,255,1)] w-[80%] h-[55px]'>Save</button>
                             </div>
                         </form>
                         <div className="w-1/2 flex flex-col gap-4">

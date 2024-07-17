@@ -61,7 +61,7 @@ function ChangePass() {
                     </div>
                     <div className="flex gap-2 items-center">
                         <img src={LogoLogout} alt="" />
-                        <div className="text-[rgba(240,56,0,1)]">Settings</div>
+                        <div className="text-[rgba(240,56,0,1)]">Logout</div>
                     </div>
                 </div>
                 <div className="flex flex-col gap-6 w-[70%] bg-white pb-[300px] p-12 rounded-3xl">

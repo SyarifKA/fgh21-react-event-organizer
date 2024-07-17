@@ -10,6 +10,7 @@ import ChangePass from './pages/ChangePass'
 import MyBooking from './pages/MyBooking'
 import MyWishlist from './pages/MyWishlist'
 import CreateEvent from './pages/CreateEvent'
+import CreatePopUp from './components/CreatePopUp'
 
 const arrayRouter = [
     {
@@ -51,6 +52,10 @@ const arrayRouter = [
     {
         path: '/createEvent',
         element: <CreateEvent />
+    },
+    {
+        path: '/createPopUp',
+        element: <CreatePopUp />
     },
 ]
 

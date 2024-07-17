@@ -27,7 +27,7 @@ import { Link } from 'react-router-dom'
 
 function HomePage() {
     return (
-        <div className='flex flex-col gap-44'>
+        <div className='flex flex-col gap-20'>
             <NavbarHome />
             <div className='flex w-full justify-end items-end bg-[rgba(51,102,255,1)] relative'>
                 <img src={Bubble} alt="" className='relative'/>
@@ -64,10 +64,12 @@ function HomePage() {
                         <div className='text-xs'>Fri</div>
                     </div>
                 </div>
+            </div>
+            <div className='flex flex-col gap-4'>
                 <Link to="/detail">
                     <EventCard />
                 </Link>
-                <div className='flex gap-8'>
+                <div className='flex justify-center gap-8'>
                     <ButtonLeft />
                     <ButtonRight />
                 </div>

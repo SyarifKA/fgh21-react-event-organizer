@@ -39,35 +39,43 @@ function MyWishlist() {
                         <img src={LogoCard} alt="" />
                         <div>Card</div>
                     </div>
+                    <Link to='/profile'>
                     <div className="flex gap-2 items-center ml-8">
                         <img src={LogoEdit} alt="" />
                         <div>Edit Profile</div>
                     </div>
+                    </Link>
+                    <Link to='/changePassword'>
                     <div className="flex gap-2 items-center ml-8">
                         <img src={LogoPass} alt="" />
                         <div>Change Password</div>
                     </div>
+                    </Link>
                     <Link to='/createEvent'>
                     <div className="flex gap-2 items-center">
                         <img src={LogoCreate} alt="" />
                         <div>Create Event</div>
                     </div>
                     </Link>
+                    <Link to='/myBooking'>
                     <div className="flex gap-2 items-center">
                         <img src={LogoBooking} alt="" />
                         <div>My Booking</div>
                     </div>
+                    </Link>
+                    <Link to='/myWishlist'>
                     <div className="flex gap-2 items-center">
                         <img src={LogoWishlistBlue} alt="" />
                         <div className="text-[rgba(51,102,255,1)]">My Wishlist</div>
                     </div>
+                    </Link>
                     <div className="flex gap-2 items-center">
                         <img src={LogoSetting} alt="" />
                         <div>Settings</div>
                     </div>
                     <div className="flex gap-2 items-center">
                         <img src={LogoLogout} alt="" />
-                        <div className="text-[rgba(240,56,0,1)]">Settings</div>
+                        <div className="text-[rgba(240,56,0,1)]">Logout</div>
                     </div>
                 </div>
                 <div className="flex flex-col gap-6 w-[70%] bg-white p-12 rounded-3xl">
