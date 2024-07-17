@@ -7,6 +7,7 @@ import OrderTickets from './pages/OrderTickets'
 import Payment from './pages/Payment'
 import Profile from './pages/Profile'
 import ChangePass from './pages/ChangePass'
+import MyBooking from './pages/MyBooking'
 
 const arrayRouter = [
     {
@@ -36,6 +37,10 @@ const arrayRouter = [
     {
         path: '/changePassword',
         element: <ChangePass />
+    },
+    {
+        path: '/myBooking',
+        element: <MyBooking />
     },
 ]
 

@@ -4,13 +4,13 @@ import Avatar from '../assets/images/navbar-avatar.png'
 import LogoProfile from '../assets/images/profile-logo.png'
 import LogoCard from '../assets/images/card-grey.png'
 import LogoEdit from '../assets/images/profile-edit.png'
-import LogoPass from '../assets/images/profile-change.png'
+import LogoPassBlue from '../assets/images/profile-change-blue.png'
 import LogoBooking from '../assets/images/booking-logo.png'
 import LogoWishlist from '../assets/images/wishlist-logo.png'
 import LogoSetting from '../assets/images/setting-logo.png'
 import LogoLogout from '../assets/images/exit-logo.png'
-import NavDown from '../assets/images/chevron-down.png'
 import FooterMain from "../components/Footer";
+import { Link } from "react-router-dom"
 
 function ChangePass() {
     return (
@@ -42,13 +42,15 @@ function ChangePass() {
                         <div>Edit Profile</div>
                     </div>
                     <div className="flex gap-2 items-center ml-8">
-                        <img src={LogoPass} alt="" />
-                        <div>Change Password</div>
+                        <img src={LogoPassBlue} alt="" />
+                        <div className="text-[rgba(51,102,255,1)]">Change Password</div>
                     </div>
+                    <Link to='/myBooking'>
                     <div className="flex gap-2 items-center">
                         <img src={LogoBooking} alt="" />
                         <div>My Booking</div>
                     </div>
+                    </Link>
                     <div className="flex gap-2 items-center">
                         <img src={LogoWishlist} alt="" />
                         <div>My Wishlist</div>
