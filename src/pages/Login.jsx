@@ -19,7 +19,7 @@ function LoginPage() {
             window.alert('Data yang Anda masukkan salah')
         }
     }
-    let [reveal, setReveal] = React.useState('password')
+    const [reveal, setReveal] = React.useState('password')
     function revealPassword() {
         if (reveal === 'password') {
             setReveal('text')
@@ -45,7 +45,7 @@ function LoginPage() {
                     <input type="email" name='email' placeholder='Email' className='border-solid border-2 border-[rgba(193,197,208,1)] rounded-lg pl-3 h-[50px]' />
                     <div className='flex items-center relative'>        
                             <input type={reveal} name='password' placeholder='Password' className='w-full border-solid border-2 border-[rgba(193,197,208,1)] rounded-lg pl-3 h-[50px]' />
-                            <button type='button' className='absolute right-6' onClick={revealPassword}> <IoEyeOutline /></button>
+                            <button type='button' className='absolute right-6 text-2xl' onClick={revealPassword}> <IoEyeOutline /></button>
                     </div>
                     </div>
                     <div className='font-semibold text-[rgba(51,102,255,1)] text-right'>Forgot Password?</div>
