@@ -4,6 +4,7 @@ import LogoWetick from '../components/LogoWetick'
 import { FaFacebook } from "react-icons/fa"
 import { FcGoogle } from "react-icons/fc"
 import { useNavigate } from 'react-router-dom'
+import { IoEyeOutline } from "react-icons/io5";
 
 function LoginPage() {
     const navigate = useNavigate()
@@ -18,6 +19,15 @@ function LoginPage() {
             window.alert('Data yang Anda masukkan salah')
         }
     }
+    let [reveal, setReveal] = React.useState('password')
+    function revealPassword() {
+        if (reveal === 'password') {
+            setReveal('text')
+        } else {
+            setReveal('password')
+        }
+        }
+
     return (
         <div className='flex h-screen'>
             <div className='flex justify-center items-center bg-[#045CFE] w-3/5'>
@@ -32,8 +42,11 @@ function LoginPage() {
                 <form onSubmit={processLogin}>
                     <div className='flex flex-col gap-4'>
                     <input type="text" name='username' placeholder='Username' className='border-solid border-2 border-[rgba(193,197,208,1)] rounded-lg pl-3 h-[50px]'/>
-                    <input type="email" name='email' placeholder='Email' className='border-solid border-2 border-[rgba(193,197,208,1)] rounded-lg pl-3 h-[50px]'/>
-                    <input type="password" name='password' placeholder='Password' className='border-solid border-2 border-[rgba(193,197,208,1)] rounded-lg pl-3 h-[50px]'/>
+                    <input type="email" name='email' placeholder='Email' className='border-solid border-2 border-[rgba(193,197,208,1)] rounded-lg pl-3 h-[50px]' />
+                    <div className='flex items-center relative'>        
+                            <input type={reveal} name='password' placeholder='Password' className='w-full border-solid border-2 border-[rgba(193,197,208,1)] rounded-lg pl-3 h-[50px]' />
+                            <button type='button' className='absolute right-6' onClick={revealPassword}> <IoEyeOutline /></button>
+                    </div>
                     </div>
                     <div className='font-semibold text-[rgba(51,102,255,1)] text-right'>Forgot Password?</div>
                     <div className='flex mt-4'>
