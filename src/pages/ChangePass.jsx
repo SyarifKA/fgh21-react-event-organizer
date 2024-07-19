@@ -17,7 +17,7 @@ function ChangePass() {
         <div className="flex flex-col gap-24">
             <NavbarProfile />
             <div className="flex mt-36 mx-[70px]">
-                <div className="flex flex-col w-[30%] gap-6 text-sm">
+                <div className="md:flex flex-col hidden md:w-[30%] gap-6 text-sm">
                     <div className="flex gap-2 items-center">
                         <div>
                             <button className='h-[55px] w-[55px] flex justify-center items-center rounded-full overflow-hidden border border-2'>
@@ -64,24 +64,24 @@ function ChangePass() {
                         <div className="text-[rgba(240,56,0,1)]">Logout</div>
                     </div>
                 </div>
-                <div className="flex flex-col gap-6 w-[70%] bg-white pb-[300px] p-12 rounded-3xl">
+                <div className="flex flex-col gap-6 w-full md:w-[70%] bg-white pb-[300px] p-12 rounded-3xl">
                     <div className="text-xl font-semibold">Change Password</div>
                     <div className="flex w-full gap-6 flex-col text-sm">
                         <div className="flex w-full justify-between items-center">
-                            <label htmlFor="oldPass">Old Password</label>
-                            <input type="text" name="name" id="name" placeholder="Input Old Password ..." className="w-[70%] rounded-xl pl-2 border h-[50px]"/>
+                            <label htmlFor="oldPass" className="w-1/3">Old Password</label>
+                            <input type="text" name="name" id="name" placeholder="Input Old Password ..." className="w-2/3 rounded-xl pl-2 border h-[50px]"/>
                         </div>
                         <div className="flex w-full justify-between items-center">
-                            <label htmlFor="oldPass">New Password</label>
-                            <input type="text" name="name" id="name" placeholder="Input New Password ..." className="w-[70%] rounded-xl pl-2 border h-[50px]"/>
+                            <label htmlFor="oldPass" className="w-1/3">New Password</label>
+                            <input type="text" name="name" id="name" placeholder="Input New Password ..." className="w-2/3 rounded-xl pl-2 border h-[50px]"/>
                         </div>
                         <div className="flex w-full justify-between items-center">
-                            <label htmlFor="oldPass">Confirm Password</label>
-                            <input type="text" name="name" id="name" placeholder="Input Confirm Password ..." className="w-[70%] rounded-xl pl-2 border h-[50px]"/>
+                            <label htmlFor="oldPass" className="w-1/3">Confirm Password</label>
+                            <input type="text" name="name" id="name" placeholder="Input Confirm Password ..." className="w-2/3 rounded-xl pl-2 border h-[50px]"/>
                         </div>
                     </div>
-                    <div className="flex">
-                        <button className="w-full bg-[rgba(51,102,255,1)] h-[61px] text-white rounded-2xl font-semibold">Update</button>
+                    <div className="flex justify-center">
+                        <button className="w-4/5 bg-[rgba(51,102,255,1)] h-[61px] text-white rounded-2xl font-semibold">Update</button>
                     </div>
                 </div>
             </div>
