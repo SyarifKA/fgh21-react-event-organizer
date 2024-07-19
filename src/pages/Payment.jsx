@@ -30,7 +30,7 @@ function Payment() {
                         </div>
                         <div className='flex items-center gap-2 justify-end'>
                             <img src={CardATM} alt="" />
-                            <button className='w-[45px] h-[45px] rounded-lg border-2 text-[rgba(51,102,255,1)] border-dashed'>+</button>
+                            <button className='w-[45px] h-[45px] flex-shrink-0 rounded-lg border-2 text-[rgba(51,102,255,1)] border-dashed'>+</button>
                         </div>
                     </div>
                     <div className='flex flex-col w-full'>
