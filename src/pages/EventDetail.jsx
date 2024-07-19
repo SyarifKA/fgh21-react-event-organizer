@@ -54,7 +54,7 @@ function EventDetail() {
                                 <img src={IconMap} alt="" className='h-[25px] w-[25px]'/>
                                 <span>Jakarta, Indonesia</span>
                             </div>
-                            <div className='flex gap-2'>
+                            <div className='flex gap-2 items-center'>
                                 <img src={IconClock} alt="" className='h-[25px] w-[25px]'/>
                                 <span>Wed, 15 Nov, 4:00 PM</span>
                             </div>

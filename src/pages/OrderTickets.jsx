@@ -68,10 +68,10 @@ function OrderTickets() {
         <div className="flex flex-col gap-24">
             <NavbarProfile />
             <div className='bg-white mx-[120px] flex mt-36 gap-4 rounded-3xl'>
-                <div className="flex justify-center items-center w-1/2">
+                <div className="md:flex justify-center hidden items-center w-1/2">
                     <img src={Seat} alt="" />
                 </div>
-                <div className="flex flex-col w-1/2 pb-[70px] pt-[70px] pr-[100px] gap-4">
+                <div className="flex flex-col w-full md:w-1/2 px-4 md:px-0 pb-[70px] pt-[70px] md:pr-[100px] gap-4">
                     <div className="flex justify-between items-center w-full">
                         <div className="font-semibold text-xl">Tickets</div>
                         <div className="flex items-center gap-2">
@@ -160,7 +160,7 @@ function OrderTickets() {
                         </div>
                         <div className='flex justify-center mt-4'>
                         <Link to='/payment'>
-                            <button className='bg-[rgba(51,102,255,1)] min-w-[315px] h-[55px] rounded-xl text-white font-semibold'>Checkout</button>
+                            <button className='bg-[rgba(51,102,255,1)] w-[315px] h-[55px] rounded-xl text-white font-semibold'>Checkout</button>
                         </Link>
                         </div>
                     </div>
