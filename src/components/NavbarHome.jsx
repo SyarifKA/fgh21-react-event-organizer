@@ -8,7 +8,9 @@ function NavbarHome() {
             <LogoWetick />
             <div className='flex flex-col md:flex-row items-center gap-2 md:gap-6 justify-between'>
                 <div>Home</div>
+                <Link to='/createEvent'>
                 <div>Create Event</div>
+                </Link>
                 <div>Location</div>
             </div>
                 <Link to='/login'>

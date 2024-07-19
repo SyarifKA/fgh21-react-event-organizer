@@ -11,7 +11,9 @@ function NavbarProfile() {
                 <Link to='/'>
                     <div>Home</div>
                 </Link>
+                <Link to='/createEvent'>
                 <div>Create Event</div>
+                </Link>
                 <div>Location</div>
             </div>
             <Link to='/profile'>

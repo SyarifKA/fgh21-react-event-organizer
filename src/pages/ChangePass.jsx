@@ -37,24 +37,30 @@ function ChangePass() {
                         <img src={LogoCard} alt="" />
                         <div>Card</div>
                     </div>
+                    <Link to='/profile'>
                     <div className="flex gap-2 items-center ml-8">
                         <img src={LogoEdit} alt="" />
                         <div>Edit Profile</div>
                     </div>
+                    </Link>
+                    <Link to='/changePassword'>
                     <div className="flex gap-2 items-center ml-8">
                         <img src={LogoPassBlue} alt="" />
                         <div className="text-[rgba(51,102,255,1)]">Change Password</div>
                     </div>
+                    </Link>
                     <Link to='/myBooking'>
                     <div className="flex gap-2 items-center">
                         <img src={LogoBooking} alt="" />
                         <div>My Booking</div>
                     </div>
                     </Link>
+                    <Link to='/myWishlist'>
                     <div className="flex gap-2 items-center">
                         <img src={LogoWishlist} alt="" />
                         <div>My Wishlist</div>
                     </div>
+                    </Link>
                     <div className="flex gap-2 items-center">
                         <img src={LogoSetting} alt="" />
                         <div>Settings</div>
