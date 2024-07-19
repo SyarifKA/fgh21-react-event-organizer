@@ -7,8 +7,8 @@ import FootWa from '../assets/images/foot-logo-wa.png'
 
 function FooterMain() {
     return (
-        <div className='flex flex-col px-[218px] gap-16 mb-40'>
-            <div className='flex justify-between'>
+        <div className='flex flex-col px-8 md:px-[218px] gap-16 mb-8 md:mb-40'>
+            <div className='flex flex-col md:flex-row gap-4 md:gap-0 justify-between'>
                 <div className='flex flex-col gap-4'>
                     <LogoWetick />
                     <div>Find events you love with our</div>

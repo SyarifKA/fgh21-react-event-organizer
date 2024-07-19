@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 
 function NavbarProfile() {
     return (
-        <div className='flex justify-between items-center h-[90px] px-12 font-semibold text-sm w-full bg-white z-10 fixed top-0'>
+        <div className='flex flex-col md:flex-row justify-between pb-2 md:pb-0 items-center px-0 md:px-12 font-semibold text-sm w-full bg-white z-10 fixed top-0'>
             <LogoWetick />
-            <div className='flex gap-6 justify-between'>
+            <div className='flex flex-col md:flex-row gap-2 md:gap-6 justify-center items-center md:justify-between'>
                 <Link to='/'>
                     <div>Home</div>
                 </Link>

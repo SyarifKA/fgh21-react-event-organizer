@@ -74,16 +74,16 @@ function HomePage() {
                     <ButtonRight />
                 </div>
             </div>
-            <div className='relative bg-[rgba(51,102,255,1)] mx-[50px] rounded-3xl'>
-                <img src={Bubble} alt="" className='relative w-full scale-y-[-1]' />
+            <div className='relative flex-col flex bg-[rgba(51,102,255,1)] mx-[50px] rounded-3xl'>
+                <img src={Bubble} alt="" className='w-full relative h-full object-fit scale-y-[-1]' />
                 <div className='py-[65px] px-[60px] absolute top-0 left-0'>
                     <div className='flex justify-center items-center bg-[rgba(255,255,255,0.25)] w-[150px] h-[30px] rounded-3xl gap-2'>
                         <img src={LineWhite} alt="" className='w-[30px] h-[2px]' />
                         <span className='text-white'>Location</span>
                     </div>
-                    <div className='grid grid-cols-4 items-center gap-2'>
+                    <div className='grid grid-cols-1 md:grid-cols-4 items-center gap-2'>
                         <div className='text-4xl font-semibold text-white'>Discover Events Near You</div>
-                        <div>
+                        <div className='flex flex-col items-center'>
                             <img src={Jakarta} alt="" className='w-[230px] h-[179px] rounded-xl'/>
                             <div className='text-white flex justify-center font-medium'>Jakarta</div>
                         </div>
@@ -125,7 +125,7 @@ function HomePage() {
                     </div>
                     <div className='font-semibold text-4xl'>Browse Events By Category</div>
                 </div>
-                <div className='flex gap-12'>
+                <div className='grid grid-cols-3 md:grid-cols-7 gap-12'>
                     <span className='font-medium text-[rgba(193,197,208,1)]'>Music</span>
                     <span className='font-medium text-[rgba(193,197,208,1)]'>Arts</span>
                     <span className='font-medium text-[rgba(193,197,208,1)]'>Outdoors</span>
@@ -140,8 +140,8 @@ function HomePage() {
                     <ButtonRight />
                 </div>
             </div>
-            <div className='flex flex-col items-center h-[450px] bg-[rgba(55,58,66,1)] relative'>
-                <img src={Bubble} alt="" className='relative w-full h-full rotate-180' />
+            <div className='flex flex-col items-center h-auto bg-[rgba(55,58,66,1)] relative'>
+                <img src={Bubble} alt="" className='w-full h-full rotate-180' />
                 <div className='flex flex-col items-center pt-[90px] gap-6 absolute'>
                     <div className='flex justify-center items-center bg-[rgba(255,255,255,0.25)] w-[150px] h-[30px] rounded-3xl gap-2'>
                         <img src={LineWhite} alt="" className='w-[30px] h-[2px]' />
@@ -149,7 +149,7 @@ function HomePage() {
                     </div>
                     <div className='font-semibold text-4xl text-white'>Our Trusted Partners</div>
                     <div className='text-[rgba(193,197,208,1)] text-xs'>By companies like :</div>
-                    <div className='flex mt-[30px] gap-8 items-center'>
+                    <div className='grid grid-cols-2 md:grid-cols-6 mt-[30px] gap-8 items-center'>
                         <img src={Banner1} alt="" />
                         <img src={Banner2} alt="" />
                         <img src={Banner3} alt="" />
