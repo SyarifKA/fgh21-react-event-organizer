@@ -12,8 +12,8 @@ function Payment() {
     return (
         <div className='flex flex-col gap-24'>
             <NavbarProfile />
-            <div className='flex bg-white mx-[120px] mt-36 rounded-3xl gap-4 px-[100px] py-[70px]'>
-                <div className='flex flex-col w-1/2 gap-8'>
+            <div className='flex flex-col md:flex-row bg-white mx-[120px] mt-36 rounded-3xl gap-4 md:px-[100px] px-4 py-[70px]'>
+                <div className='flex flex-col w-full md:w-1/2 gap-8'>
                     <div className='font-semibold text-xl'>Payment Method</div>
                     <div className='flex flex-col w-full gap-4'>
                         <div className='flex w-full justify-between items-center'>
@@ -76,9 +76,9 @@ function Payment() {
                         </div>
                     </div>
                 </div>
-                <div className='flex flex-col w-1/2 gap-8'>
+                <div className='flex flex-col w-full md:w-1/2 gap-8'>
                     <div className='text-xl font-semibold'>Ticket Detail</div>
-                    <div className='flex flex-col font-semibold text-sm gap-2'>
+                    <div className='flex flex-col font-semibold text-sm gap-4'>
                         <div className='flex justify-between'>
                             <span>Event</span>
                             <span className='text-[rgba(51,102,255,1)]'>Sights & Sounds Exhibition</span>
