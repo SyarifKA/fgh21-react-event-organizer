@@ -19,7 +19,7 @@ function MyBooking() {
         <div className="flex flex-col gap-24">
             <NavbarProfile />
             <div className="flex mt-36 mx-[70px]">
-                <div className="flex flex-col w-[30%] gap-6 text-sm">
+                <div className="md:flex flex-col hidden md:w-[30%] gap-6 text-sm">
                     <div className="flex gap-2 items-center">
                         <div>
                             <button className='h-[55px] w-[55px] flex justify-center items-center rounded-full overflow-hidden border border-2'>
@@ -76,10 +76,10 @@ function MyBooking() {
                         <div className="text-[rgba(240,56,0,1)]">Logout</div>
                     </div>
                 </div>
-                <div className="flex flex-col gap-6 w-[70%] bg-white p-12 rounded-3xl">
-                    <div className="flex justify-between">
+                <div className="flex flex-col gap-6 w-full md:w-[70%] bg-white p-12 rounded-3xl">
+                    <div className="flex flex-col gap-2 md:gap-0 md:flex-row md:justify-between">
                         <div className="text-xl font-semibold">My Booking</div>
-                        <div className="flex gap-2 bg-[rgba(234,241,255,1)] p-[13px] rounded-xl justify-center">
+                        <div className="flex gap-2 bg-[rgba(234,241,255,1)] p-[13px] max-w-40 rounded-xl justify-center">
                             <img src={IconCalendar} alt="" />
                             <span className="text-[rgba(51,102,255,1)]">March</span>
                         </div>
