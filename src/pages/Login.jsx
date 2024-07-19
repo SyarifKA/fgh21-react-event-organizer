@@ -30,10 +30,10 @@ function LoginPage() {
 
     return (
         <div className='flex h-screen'>
-            <div className='flex justify-center items-center bg-[#045CFE] w-3/5'>
+            <div className='md:flex justify-center hidden items-center bg-[#045CFE] md:w-3/5'>
                 <img src={Character} alt="" />
             </div>
-            <div className='flex flex-col gap-4 w-2/5  pt-8 px-24'>
+            <div className='flex flex-col gap-4 w-full md:w-2/5  pt-8 px-24'>
                 <LogoWetick />
                 <div>
                 <h1 className='text-2xl font-semibold'>Sign In</h1>
