@@ -11,9 +11,14 @@ import LogoCreateBlue from '../assets/images/create-event-blue.png'
 import LogoSetting from '../assets/images/setting-logo.png'
 import LogoLogout from '../assets/images/exit-logo.png'
 import FooterMain from "../components/Footer"
+import CreatePopUp from '../components/CreatePopUp'
 import { Link } from "react-router-dom";
 
 function CreateEvent() {
+    const [show, setShow] = React.useState(false)
+    function showPopUp() {
+        setShow(!show)
+    }
     return (
         <div className="flex flex-col gap-24">
             <NavbarProfile />
@@ -80,9 +85,7 @@ function CreateEvent() {
                 <div className="flex flex-col gap-6 w-full md:w-[70%] bg-white p-12 rounded-3xl">
                     <div className="flex md:flex-row flex-col md:gap-2 gap-0 justify-between">
                         <div className="text-xl font-semibold">Manage Event</div>
-                        <Link to='/createPopUp'>
-                        <button className="flex bg-[rgba(234,241,255,1)] p-[13px] text-[rgba(51,102,255,1)] rounded-xl justify-center">Create</button>
-                        </Link>
+                        <button onClick={showPopUp} className="flex bg-[rgba(234,241,255,1)] p-[13px] text-[rgba(51,102,255,1)] rounded-xl justify-center">Create</button>
                     </div>
                     <div>
                         <div className="flex gap-2 border-b py-[25px]">
@@ -137,6 +140,8 @@ function CreateEvent() {
                 </div>
             </div>
             <FooterMain />
+            {show?<CreatePopUp />:''}
+            
         </div>
     )
 }

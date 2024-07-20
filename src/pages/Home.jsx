@@ -135,7 +135,7 @@ function HomePage() {
                     <span className='font-medium text-[rgba(193,197,208,1)]'>Fashion</span>
                 </div>
             </div>
-                <div className='flex items-center justify-between flex-shrink-0 gap-8'>
+                <div className='flex items-center justify-between px-2 flex-shrink-0 gap-8'>
                     <ButtonLeft />
                     <EventCard2 />
                     <ButtonRight />

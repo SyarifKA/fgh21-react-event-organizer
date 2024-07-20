@@ -9,6 +9,7 @@ function OrderTickets() {
     
     const [numb, setnumb] = React.useState(0)
     function min() {
+        
         if (numb > 0) {
             setnumb(numb-1)
         }
@@ -45,24 +46,18 @@ function OrderTickets() {
 
     let section = []
     if (numb > 0) {
-        section.push('REG '+'('+numb+')')
+        section.push(`REG (${numb})`)
     }
     if (numb2 > 0) {
-        section.push('VIP '+'('+numb2+')')
+        section.push(`VIP (${numb2})`)
     }
     if (numb3 > 0) {
-        section.push('VVIP '+'('+numb3+')')
+        section.push(`VVIP (${numb3})`)
     }
 
     let dataSection = ''
 
-    if (section == '') {
-        dataSection = '-'
-    } else {
-        dataSection = section.join(', ')
-    }
-
-    // section ? dataSection = section.join(', ') : dataSection = '-'
+    section.length > 0? dataSection = section.join(', '):dataSection = '-'
 
     return (
         <div className="flex flex-col gap-24">
@@ -151,11 +146,11 @@ function OrderTickets() {
                             </div>
                             <div className="flex justify-between">
                                 <span>Quantity</span>
-                                <span className="text-[rgba(51,102,255,1)]">{numb+numb2+numb3}</span>
+                                <span className="text-[rgba(51,102,255,1)]">{numb+numb2+numb3?numb+numb2+numb3:'-'}</span>
                             </div>
                             <div className="flex justify-between">
                                 <span>Total Payment</span>
-                                <span className="text-[rgba(51,102,255,1)]">${(numb*15)+(numb2*35)+(numb3*50)}</span>
+                                <span className="text-[rgba(51,102,255,1)]">{(numb*15)+(numb2*35)+(numb3*50)?'$'+((numb*15)+(numb2*35)+(numb3*50)):'-'}</span>
                             </div>
                         </div>
                         <div className='flex justify-center mt-4'>
