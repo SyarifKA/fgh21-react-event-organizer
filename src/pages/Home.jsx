@@ -74,9 +74,9 @@ function HomePage() {
                     <ButtonRight />
                 </div>
             </div>
-            <div className='relative flex-col flex bg-[rgba(51,102,255,1)] mx-[50px] rounded-3xl'>
-                <img src={Bubble} alt="" className='w-full relative h-full object-fit scale-y-[-1]' />
-                <div className='py-[65px] px-[60px] absolute top-0 left-0'>
+            <div className='relative flex-col flex bg-[rgba(51,102,255,1)] relative mx-[50px] rounded-3xl'>
+                <img src={Bubble} alt="" className='w-full absolute h-full object-fit scale-y-[-1]' />
+                <div className='py-[65px] px-[60px] top-0 left-0'>
                     <div className='flex justify-center items-center bg-[rgba(255,255,255,0.25)] w-[150px] h-[30px] rounded-3xl gap-2'>
                         <img src={LineWhite} alt="" className='w-[30px] h-[2px]' />
                         <span className='text-white'>Location</span>
@@ -134,15 +134,15 @@ function HomePage() {
                     <span className='font-medium text-[rgba(193,197,208,1)]'>Festival</span>
                     <span className='font-medium text-[rgba(193,197,208,1)]'>Fashion</span>
                 </div>
-                <div className='flex items-center gap-8'>
+            </div>
+                <div className='flex items-center justify-between flex-shrink-0 gap-8'>
                     <ButtonLeft />
                     <EventCard2 />
                     <ButtonRight />
                 </div>
-            </div>
-            <div className='flex flex-col items-center h-auto bg-[rgba(55,58,66,1)] relative'>
-                <img src={Bubble} alt="" className='w-full h-full rotate-180' />
-                <div className='flex flex-col items-center pt-[90px] gap-6 absolute'>
+            <div className='flex flex-col w-full h-full items-center bg-[rgba(55,58,66,1)] relative pb-4'>
+                <img src={Bubble} alt="" className='w-full h-full object-fit rotate-180 absolute' />
+                <div className='flex flex-col items-center pt-[90px] gap-6'>
                     <div className='flex justify-center items-center bg-[rgba(255,255,255,0.25)] w-[150px] h-[30px] rounded-3xl gap-2'>
                         <img src={LineWhite} alt="" className='w-[30px] h-[2px]' />
                         <span className='text-white text-xs'>PARTNER</span>

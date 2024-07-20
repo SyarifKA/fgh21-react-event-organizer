@@ -6,8 +6,8 @@ import Attendee from './Attendee'
 
 function EventCard2() {
     return (
-        <div className='flex justify-center items-center gap-4'>
-            <div className='w-[300px] h-[350px] bg-contain rounded-2xl overflow-hidden'>
+        <div className='flex overflow-x-scroll gap-4'>
+            <div className='w-[300px] h-[350px] bg-contain flex-shrink-0 rounded-2xl overflow-hidden'>
                 <img src={Event1} alt="" className='object-fill w-full h-1/2' />
                 <div className='flex flex-col gap-6 bg-[rgba(51,102,255,1)] h-1/2 p-6 relative'>
                     <Attendee />
@@ -17,7 +17,7 @@ function EventCard2() {
                     </div>
                 </div>
             </div>
-            <div className='w-[300px] h-[350px] bg-contain rounded-2xl overflow-hidden'>
+            <div className='w-[300px] h-[350px] bg-contain flex-shrink-0 rounded-2xl overflow-hidden'>
                 <img src={Event2} alt="" className='object-fill w-full h-1/2' />
                 <div className='flex flex-col gap-6 bg-[rgba(51,102,255,1)] h-1/2 p-6 relative'>
                     <Attendee />
@@ -27,7 +27,7 @@ function EventCard2() {
                     </div>
                 </div>
             </div>
-            <div className='w-[300px] h-[350px] bg-contain rounded-2xl overflow-hidden'>
+            <div className='w-[300px] h-[350px] bg-contain flex-shrink-0 rounded-2xl overflow-hidden'>
                 <img src={Event3} alt="" className='object-fill w-full h-1/2' />
                 <div className='flex flex-col gap-6 bg-[rgba(51,102,255,1)] h-1/2 p-6 relative'>
                     <Attendee />
