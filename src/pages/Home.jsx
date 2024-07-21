@@ -74,40 +74,40 @@ function HomePage() {
                     <ButtonRight />
                 </div>
             </div>
-            <div className='relative flex-col flex bg-[rgba(51,102,255,1)] relative mx-[50px] rounded-3xl'>
+            <div className='relative flex-col flex bg-[rgba(51,102,255,1)] mx-[50px] rounded-3xl'>
                 <img src={Bubble} alt="" className='w-full absolute h-full object-fit scale-y-[-1]' />
-                <div className='py-[65px] px-[60px] top-0 left-0'>
+                <div className='py-[65px] px-[60px]'>
                     <div className='flex justify-center items-center bg-[rgba(255,255,255,0.25)] w-[150px] h-[30px] rounded-3xl gap-2'>
                         <img src={LineWhite} alt="" className='w-[30px] h-[2px]' />
                         <span className='text-white'>Location</span>
                     </div>
-                    <div className='grid grid-cols-1 md:grid-cols-4 items-center gap-2'>
+                    <div className='grid grid-cols-1 md:grid-cols-4 items-center gap-4 md:gap-2'>
                         <div className='text-4xl font-semibold text-white'>Discover Events Near You</div>
                         <div className='flex flex-col items-center'>
                             <img src={Jakarta} alt="" className='w-[230px] h-[179px] rounded-xl'/>
                             <div className='text-white flex justify-center font-medium'>Jakarta</div>
                         </div>
-                        <div>
+                        <div className='md:flex flex-col hidden items-center'>
                             <img src={Bandung} alt="" className='w-[230px] h-[179px] rounded-xl'/>
                             <div className='text-white flex justify-center font-medium'>Bandung</div>
                         </div>
-                        <div>
+                        <div className='md:flex hidden flex-col items-center'>
                             <img src={Bali} alt="" className='w-[230px] h-[179px] rounded-xl'/>
                             <div className='text-white flex justify-center font-medium'>Bali</div>
                         </div>
-                        <div>
+                        <div className='md:flex hidden flex-col items-center'>
                             <img src={Aceh} alt="" className='w-[230px] h-[179px] rounded-xl'/>
                             <div className='text-white flex justify-center font-medium'>Aceh</div>
                         </div>
-                        <div>
+                        <div className='flex flex-col items-center'>
                             <img src={Solo} alt="" className='w-[230px] h-[179px] rounded-xl'/>
                             <div className='text-white flex justify-center font-medium'>Solo</div>
                         </div>
-                        <div>
+                        <div className='md:flex hidden flex-col items-center'>
                             <img src={Jogja} alt="" className='w-[230px] h-[179px] rounded-xl'/>
                             <div className='text-white flex justify-center font-medium'>Yogyakarta</div>
                         </div>
-                        <div>
+                        <div className='md:flex hidden flex-col items-center'>
                             <img src={Semarang} alt="" className='w-[230px] h-[179px] rounded-xl'/>
                             <div className='text-white flex justify-center font-medium'>Semarang</div>
                         </div>
