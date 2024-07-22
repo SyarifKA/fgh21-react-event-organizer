@@ -2,6 +2,8 @@ import React from "react"
 import NavbarProfile from "../components/NavbarProfile"
 import Seat from '../assets/images/seat.png'
 import TicketPurple from '../assets/images/ticket-purple.png'
+import TicketRed from '../assets/images/ticket-red.png'
+import TicketOrange from '../assets/images/ticket-orange.png'
 import FooterMain from "../components/Footer"
 import { Link } from "react-router-dom"
 
@@ -62,8 +64,8 @@ function OrderTickets() {
     return (
         <div className="flex flex-col gap-24">
             <NavbarProfile />
-            <div className='bg-white mx-[120px] flex mt-36 gap-4 rounded-3xl'>
-                <div className="md:flex justify-center hidden items-center w-1/2">
+            <div className='bg-white mx-[120px] flex flex-col md:flex-row mt-36 gap-2 md:gap-4 rounded-3xl'>
+                <div className="flex justify-center items-center w-full md:w-1/2">
                     <img src={Seat} alt="" />
                 </div>
                 <div className="flex flex-col w-full md:w-1/2 px-4 md:px-0 pb-[70px] pt-[70px] md:pr-[100px] gap-4">
@@ -97,7 +99,7 @@ function OrderTickets() {
                             </div>
                         </div>
                         <div className="flex w-full items-start gap-2">
-                            <img src={TicketPurple} alt="" className="bg-[rgba(241,234,255,1)] p-2 rounded-xl flex w-fit" />
+                            <img src={TicketRed} alt="" className="bg-[rgba(255,234,239,1)] p-2 rounded-xl flex w-fit" />
                             <div className="flex w-full flex-col">
                                 <div className="flex justify-between font-semibold text-sm">
                                     <span>SECTION VIP, ROW 2</span>
@@ -118,7 +120,7 @@ function OrderTickets() {
                             </div>
                         </div>
                         <div className="flex w-full items-start gap-2">
-                            <img src={TicketPurple} alt="" className="bg-[rgba(241,234,255,1)] p-2 rounded-xl flex w-fit" />
+                            <img src={TicketOrange} alt="" className="bg-[rgba(255,244,231,1)] p-2 rounded-xl flex w-fit" />
                             <div className="flex w-full flex-col">
                                 <div className="flex justify-between font-semibold text-sm">
                                     <span>SECTION VVIP, ROW 3</span>

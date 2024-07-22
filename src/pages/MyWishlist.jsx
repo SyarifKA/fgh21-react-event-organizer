@@ -22,7 +22,7 @@ function MyWishlist() {
                 <div className="flex flex-col w-[30%] gap-6 text-sm">
                     <div className="flex gap-2 items-center">
                         <div>
-                            <button className='h-[55px] w-[55px] flex justify-center items-center rounded-full overflow-hidden border border-2'>
+                            <button className='h-[55px] w-[55px] flex justify-center items-center rounded-full overflow-hidden border border-[rgba(51,102,255,1)] border-2'>
                                 <img src={Avatar} alt="" className='h-[44px] w-[44px] rounded-full'/>
                             </button>
                         </div>

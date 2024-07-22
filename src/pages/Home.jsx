@@ -29,9 +29,9 @@ function HomePage() {
     return (
         <div className='flex flex-col gap-20'>
             <NavbarHome />
-            <div className='flex w-full justify-end items-end bg-[rgba(51,102,255,1)] relative'>
-                <img src={Bubble} alt="" className='relative'/>
-                <img src={Character} alt="" className='absolute'/>
+            <div className='flex w-full justify-end min-h-[750px] items-end bg-[rgba(51,102,255,1)] relative'>
+                <img src={Bubble} alt="" className='absolute w-full h-full'/>
+                <img src={Character} alt="" className=''/>
             </div>
             <div  className='flex flex-col items-center gap-12'>
                 <div className='flex flex-col items-center gap-6'>

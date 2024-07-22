@@ -14,6 +14,7 @@ function LoginPage() {
         const email = e.target.email.value
         const password = e.target.password.value
         if (name === 'syarif' && email === 'syarif@gmail.com' && password === '123') {
+            window.alert('Login berhasil')
             navigate('/')
         } else {
             window.alert('Data yang Anda masukkan salah')

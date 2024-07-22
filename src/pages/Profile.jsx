@@ -21,7 +21,7 @@ function Profile() {
                 <div className="md:flex flex-col hidden md:w-[30%] gap-6 text-sm">
                     <div className="flex gap-2 items-center">
                         <div>
-                            <button className='h-[55px] w-[55px] flex justify-center items-center rounded-full overflow-hidden border border-2'>
+                            <button className='h-[55px] w-[55px] flex justify-center items-center rounded-full overflow-hidden border border-[rgba(51,102,255,1)] border-2'>
                                 <img src={Avatar} alt="" className='h-[44px] w-[44px] rounded-full'/>
                             </button>
                         </div>
@@ -71,24 +71,24 @@ function Profile() {
                         <div className="text-[rgba(240,56,0,1)]">Logout</div>
                     </div>
                 </div>
-                <div className="flex flex-col md:w-[70%] bg-white p-12 rounded-3xl">
+                <div className="flex flex-col w-full md:w-[70%] bg-white p-12 rounded-3xl">
                     <div className="text-2xl mb-2 font-semibold">Profile</div>
                     <div className="flex md:flex-row flex-col-reverse gap-6">
-                        <form className="flex flex-col w-full md:w-1/2 gap-6">
+                        <form className="flex flex-col w-full md:w-2/3 gap-6">
                             <div className="flex w-full justify-between items-center">
                                 <label htmlFor="name" className="w-1/2">Name</label>
                                 <input type="text" name="name" id="name" className="rounded-xl pl-2 border w-1/2 h-[50px]"/>
                             </div>
                             <div className="flex w-full justify-between">
                                 <div className="w-1/2">Username</div>
-                                <div className="w-1/2">
+                                <div className="flex gap-2 w-1/2">
                                     <span>@jhont0</span>
                                     <span className="text-[rgba(51,102,255,1)]">Edit</span>
                                 </div>
                             </div>
                             <div className="flex">
                                 <div className="w-1/2">Email</div>
-                                <div className="w-1/2">
+                                <div className="flex gap-2 w-1/2">
                                     <span>jhont0@mail.com</span>
                                     <span className="text-[rgba(51,102,255,1)]">Edit</span>
                                 </div>
@@ -138,13 +138,13 @@ function Profile() {
                                 <button className=' text-white rounded-xl bg-[rgba(51,102,255,1)] w-[80%] h-[55px]'>Save</button>
                             </div>
                         </form>
-                        <div className="md:w-1/2 w-full flex flex-col gap-4">
+                        <div className="md:w-1/3 w-full flex flex-col gap-4">
                             <div className="flex justify-center">
-                                <button className='h-[137px] w-[137px] flex justify-center items-center rounded-full overflow-hidden border border-2'>
+                                <button className='h-[137px] w-[137px] flex justify-center items-center rounded-full overflow-hidden border border-[rgba(51,102,255,1)] border-4'>
                                     <img src={Avatar} alt="" className='h-[110px] w-[110px] rounded-full'/>
                                 </button>
                             </div>
-                            <div className="md:flex hidden justify-center">
+                            <div className="md:flex hidden md:w-full justify-center">
                                 <button className="w-full h-[40px] rounded-xl border border-[rgba(51,102,255,1)] text-[rgba(51,102,255,1)]">Choose Photo</button>
                             </div>
                             <div className="text-sm hidden md:inline text-[rgba(55,58,66,0.75)]">Image size: max, 2 MB</div>

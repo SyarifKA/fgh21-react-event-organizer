@@ -4,7 +4,7 @@ function CreatePopUp() {
     return (
         <div className="bg-[rgba(0,0,0,0.28)] fixed flex justify-center items-center w-full h-full z-10">
             <form className="bg-white flex flex-col gap-4 text-sm px-[54px] py-[20px] rounded-2xl w-[70%]">
-                <h1 className="text-2xl font-semibold">Update Event</h1>
+                <h1 className="text-2xl font-semibold">Create Event</h1>
                 <div className="flex justify-between gap-4">
                     <div className="flex flex-col gap-2 w-1/2">
                         <label htmlFor="name">Name</label>

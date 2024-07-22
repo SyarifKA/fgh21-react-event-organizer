@@ -7,6 +7,7 @@ import NavUp from '../assets/images/chevron-up.png'
 import NavDown from '../assets/images/chevron-down.png'
 import CardATM from '../assets/images/mastercard.png'
 import FooterMain from '../components/Footer'
+import { Link } from 'react-router-dom'
 
 function Payment() {
     return (
@@ -97,7 +98,9 @@ function Payment() {
                         </div>
                     </div>
                     <div className='flex justify-center'>
-                        <button className=' text-white rounded-xl bg-[rgba(51,102,255,1)] w-[80%] h-[55px]'>Payment</button>
+                        <Link to='/myBooking'>
+                        <button className=' text-white rounded-xl bg-[rgba(51,102,255,1)] w-[315px] h-[55px]'>Payment</button>
+                        </Link>
                     </div>
                 </div>
             </div>
