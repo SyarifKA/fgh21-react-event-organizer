@@ -8,14 +8,15 @@ import FooterMain from "../components/Footer"
 import { Link } from "react-router-dom"
 
 function OrderTickets() {
-    
     const [numb, setnumb] = React.useState(0)
+    const setCursor = React.useRef()
+    
     function min() {
-        
         if (numb > 0) {
-            setnumb(numb-1)
+            setnumb(numb - 1)
         }
     }
+
     function plus() {
         if (numb < 10) {
             setnumb(numb+1)
@@ -91,9 +92,9 @@ function OrderTickets() {
                                 <div className="flex items-center mt-2 justify-between text-xs font-semibold">
                                     <div>Quantity</div>
                                     <div className="flex gap-4 items-center">
-                                        <button onClick={min} className="w-[32px] h-[32px] border rounded-lg text-xl text-[rgba(193,197,208,1)]">-</button>
+                                        <button onClick={min} ref={setCursor} className="w-[32px] h-[32px] border rounded-lg text-xl text-[rgba(193,197,208,1)]">-</button>
                                         <span>{numb}</span>
-                                        <button onClick={plus} className="w-[32px] h-[32px] border rounded-lg text-xl text-[rgba(193,197,208,1)]">+</button>
+                                        <button onClick={plus} ref={setCursor} className="w-[32px] h-[32px] border rounded-lg text-xl text-[rgba(193,197,208,1)]">+</button>
                                     </div>
                                 </div>
                             </div>

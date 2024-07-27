@@ -5,21 +5,54 @@ import { FaFacebook } from "react-icons/fa"
 import { FcGoogle } from "react-icons/fc"
 import { useNavigate } from 'react-router-dom'
 import { IoEyeOutline } from "react-icons/io5";
+import { useDispatch, useSelector } from 'react-redux'
+import { authLogin } from '../redux/reducers/auth'
+import { addProfile } from '../redux/reducers/profile'
 
 function LoginPage() {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
-    function processLogin(e) {
+    async function processLogin(e) {
         e.preventDefault()
-        const name = e.target.username.value
+        // const name = e.target.username.value
         const email = e.target.email.value
         const password = e.target.password.value
-        if (name === 'syarif' && email === 'syarif@gmail.com' && password === '123') {
-            window.alert('Login berhasil')
-            navigate('/')
-        } else {
-            window.alert('Data yang Anda masukkan salah')
-        }
+    //     if (name === 'syarif' && email === 'syarif@gmail.com' && password === '123') {
+    //         window.alert('Login berhasil')
+    //         navigate('/')
+    //     } else {
+    //         window.alert('Data yang Anda masukkan salah')
+    //     }
+    
+    const data = new URLSearchParams()
+    data.append('email', email)
+    data.append('password', password)
+    
+    const response = await fetch('https://wsw6zh-8888.csb.app/auth/login', {
+        method: 'POST',
+        body: data
+    })
+    const uploadData = await response.json()
+    const dataToken = uploadData.results.token
+    // const token = useSelector((state) => state.auth.token)
+    // console.log(token)
+        
+    if (uploadData.success) {
+        window.alert(uploadData.message)
+        dispatch(authLogin(dataToken))
+        const profile = await fetch('https://wsw6zh-8888.csb.app/profile', {
+                headers: {
+                Authorization: 'Bearer ' + dataToken
+            }
+            })
+        const dataProfile = await profile.json()
+        dispatch(addProfile(dataProfile))
+        navigate('/')
+   } else {
+       window.alert(uploadData.message)
     }
+    }
+        
     const [reveal, setReveal] = React.useState('password')
     function revealPassword() {
         if (reveal === 'password') {
@@ -27,7 +60,7 @@ function LoginPage() {
         } else {
             setReveal('password')
         }
-        }
+    }
 
     return (
         <div className='flex h-screen'>
@@ -36,13 +69,12 @@ function LoginPage() {
             </div>
             <div className='flex flex-col gap-4 w-full md:w-2/5  pt-8 px-24'>
                 <LogoWetick />
-                <div>
+                <div className='flex flex-col gap-2'>
                 <h1 className='text-2xl font-semibold'>Sign In</h1>
                 <h3 className='text-[rgba(55,58,66,1)] text-sm font-normal'>Hi, Welcome back to Urticket!</h3>
                 </div>
                 <form onSubmit={processLogin}>
                     <div className='flex flex-col gap-4'>
-                    <input type="text" name='username' placeholder='Username' className='border-solid border-2 border-[rgba(193,197,208,1)] rounded-lg pl-3 h-[50px]'/>
                     <input type="email" name='email' placeholder='Email' className='border-solid border-2 border-[rgba(193,197,208,1)] rounded-lg pl-3 h-[50px]' />
                     <div className='flex items-center relative'>        
                             <input type={reveal} name='password' placeholder='Password' className='w-full border-solid border-2 border-[rgba(193,197,208,1)] rounded-lg pl-3 h-[50px]' />

@@ -1,5 +1,5 @@
 import React from "react";
-import NavbarProfile from "../components/NavbarProfile"
+import NavbarHome from "../components/NavbarHome"
 import Avatar from '../assets/images/navbar-avatar.png'
 import LogoProfile from '../assets/images/profile-logo.png'
 import LogoCard from '../assets/images/card-grey.png'
@@ -13,15 +13,21 @@ import LogoLogout from '../assets/images/exit-logo.png'
 import FooterMain from "../components/Footer"
 import CreatePopUp from '../components/CreatePopUp'
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { deleteProfile } from "../redux/reducers/profile";
 
 function CreateEvent() {
     const [show, setShow] = React.useState(false)
     function showPopUp() {
         setShow(!show)
     }
+    const dispatch = useDispatch()
+    function setProfileNull() {
+        dispatch(deleteProfile(null))
+    }
     return (
         <div className="flex flex-col gap-24">
-            <NavbarProfile />
+            <NavbarHome />
             <div className="flex mt-36 mx-[70px]">
                 <div className="md:flex flex-col hidden md:w-[30%] gap-6 text-sm">
                     <div className="flex gap-2 items-center">
@@ -77,10 +83,12 @@ function CreateEvent() {
                         <img src={LogoSetting} alt="" />
                         <div>Settings</div>
                     </div>
-                    <div className="flex gap-2 items-center">
+                    <Link to='/login'>
+                    <button onClick={setProfileNull} className="flex gap-2 items-center">
                         <img src={LogoLogout} alt="" />
                         <div className="text-[rgba(240,56,0,1)]">Logout</div>
-                    </div>
+                    </button>
+                    </Link>
                 </div>
                 <div className="flex flex-col gap-6 w-full md:w-[70%] bg-white p-12 rounded-3xl">
                     <div className="flex md:flex-row flex-col md:gap-2 gap-0 justify-between">

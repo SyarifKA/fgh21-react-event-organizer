@@ -1,5 +1,5 @@
 import React from "react";
-import NavbarProfile from "../components/NavbarProfile"
+import NavbarHome from "../components/NavbarHome"
 import Avatar from '../assets/images/navbar-avatar.png'
 import LogoProfile from '../assets/images/profile-logo.png'
 import LogoCard from '../assets/images/card-grey.png'
@@ -12,21 +12,57 @@ import LogoLogout from '../assets/images/exit-logo.png'
 import NavDown from '../assets/images/chevron-down.png'
 import FooterMain from "../components/Footer"
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import dateFormat from 'dateformat';
 
 function Profile() {
+    const profile = useSelector((state) => state.profile.data)
+    const token = useSelector((state) => state.auth.token)
+    const [job, setJob] = useState([])
+    const [nationality, setNationality] = useState([])
+    const date = new Date(profile.birthdayDate);
+    const futureDate = date.getDate() + 3;
+    date.setDate(futureDate);
+    const defaultValue = date.toLocaleDateString('en-CA');
+
+    useEffect(() => {
+        (async () => {
+            const response = await fetch('https://wsw6zh-8888.csb.app/profile/professions', {
+                headers: {
+                    Authorization: 'Bearer '+token
+                }
+            })
+            const data = await response.json()
+            const dataUser = data.results
+            console.log(dataUser)
+            setJob(dataUser)
+        })(),
+        (async () => {
+             const nationality = await fetch('https://wsw6zh-8888.csb.app/profile/nationalities', {
+                headers: {
+                    Authorization: 'Bearer '+token
+                }
+            })
+            const dataNationality = await nationality.json()
+            const nations = dataNationality.results
+            console.log(nations)
+            setNationality(nations)
+        })()
+    }, [])
     return (
         <div className="flex flex-col gap-24">
-            <NavbarProfile />
+            <NavbarHome />
             <div className="flex mt-36 mx-[70px]">
                 <div className="md:flex flex-col hidden md:w-[30%] gap-6 text-sm">
                     <div className="flex gap-2 items-center">
                         <div>
                             <button className='h-[55px] w-[55px] flex justify-center items-center rounded-full overflow-hidden border border-[rgba(51,102,255,1)] border-2'>
-                                <img src={Avatar} alt="" className='h-[44px] w-[44px] rounded-full'/>
+                                <img src={profile.picture} alt="" className='h-[44px] w-[44px] rounded-full'/>
                             </button>
                         </div>
                         <div>
-                            <div className="font-semibold text-sm">Jhon Tomson</div>
+                            <div className="font-semibold text-sm">{profile.name}</div>
                             <div className="text-[rgba(55,58,66,0.75)] text-xs">Entrepreneur, ID</div>
                         </div>
                     </div>
@@ -77,62 +113,78 @@ function Profile() {
                         <form className="flex flex-col w-full md:w-2/3 gap-6">
                             <div className="flex w-full justify-between items-center">
                                 <label htmlFor="name" className="w-1/2">Name</label>
-                                <input type="text" name="name" id="name" className="rounded-xl pl-2 border w-1/2 h-[50px]"/>
+                                <input type="text" name="name" id="name" value={profile.name} className="rounded-xl pl-2 border w-1/2 h-[50px]"/>
                             </div>
                             <div className="flex w-full justify-between">
-                                <div className="w-1/2">Username</div>
-                                <div className="flex gap-2 w-1/2">
-                                    <span>@jhont0</span>
-                                    <span className="text-[rgba(51,102,255,1)]">Edit</span>
-                                </div>
+                                <label className="w-1/2" htmlFor="username">Username</label>
+                                <input type="text" name="name" id="username" value={profile.username} className="rounded-xl pl-2 border w-1/2 h-[50px]"/>
                             </div>
                             <div className="flex">
-                                <div className="w-1/2">Email</div>
-                                <div className="flex gap-2 w-1/2">
+                                <label className="w-1/2" htmlFor="email">Email</label>
+                                <input type="text" name="name" id="email" value={profile.email} className="rounded-xl pl-2 border w-1/2 h-[50px]"/>
+                                {/* <div className="flex gap-2 w-1/2">
                                     <span>jhont0@mail.com</span>
                                     <span className="text-[rgba(51,102,255,1)]">Edit</span>
-                                </div>
+                                    </div> */}
                             </div>
                             <div className="flex">
-                                <div className="w-1/2">Phone Number</div>
-                                <div className="flex gap-2 w-1/2">
+                                <label className="w-1/2" htmlFor="phone">Phone Number</label>
+                                <input type="text" name="name" id="phone" value={profile.phoneNumber} className="rounded-xl pl-2 border w-1/2 h-[50px]"/>
+                                {/* <div className="flex gap-2 w-1/2">
                                     <span>081234567890</span>
                                     <span className="text-[rgba(51,102,255,1)]">Edit</span>
-                                </div>
+                                </div> */}
                             </div>
                             <div className="flex">
                                 <div className="w-1/2">Gender</div>
                                 <div className="flex w-1/2 gap-4 items-center">
                                     <div className="flex gap-2">
-                                        <input type="radio" name="gender" id="male" />
-                                        <label htmlFor="male">Male</label>
+                                        <input type="radio" name="gender" value='Male' defaultChecked={profile.gender === 'Male'? true:false} id="Male" />
+                                        <label htmlFor="Male">Male</label>
                                     </div>
                                     <div className="flex gap-2">
-                                        <input type="radio" name="gender" id="female" />
-                                        <label htmlFor="female">Female</label>
+                                        <input type="radio" name="gender" value='Female' defaultChecked={profile.gender === 'Female' ? true : false} id="Female" />
+                                        <label htmlFor="Female">Female</label>
                                     </div>
                                 </div>
                             </div>
                             <div className="flex w-full items-center">
-                                <label htmlFor="name" className="w-1/2">Profession</label>
+                                <label htmlFor="profession" className="w-1/2">Profession</label>
                                 <div className="w-1/2 relative items-center flex">
-                                <input type="text" name="name" id="name" placeholder="Entrepreneur" className="rounded-xl pl-2 w-full border h-[50px]"/>
-                                <img src={NavDown} alt="" className="absolute right-[10px]" />
+                                <select name="" id="profession" className="rounded-xl pl-2 w-full border h-[50px]">
+                                        {job.map((item) => {
+                                            return (
+                                                <option value="" selected={profile.profession}>{item.name}</option>
+                                        )
+                                    })}
+                                </select>
+                                {/* <input type="text" name="name" id="name" placeholder="Entrepreneur" value={profile.profession} className="rounded-xl pl-2 w-full border h-[50px]"/>
+                                <img src={NavDown} alt="" className="absolute right-[10px]" /> */}
                                 </div>
                             </div>
                             <div className="flex items-center">
                                 <label htmlFor="name" className="w-1/2">Nationality</label>
                                 <div className="w-1/2 relative items-center flex">
-                                <input type="text" name="name" id="name" placeholder="Indonesia" className="rounded-xl pl-2 w-full border h-[50px]"/>
-                                <img src={NavDown} alt="" className="absolute right-[10px]" />
+                                <select name="" id="nation" className="rounded-xl pl-2 w-full border h-[50px]" defaultValue={profile.nationality}>
+                                        {nationality.map((item) => {
+                                            return (
+                                                <option selected={profile.nationality}>{item.name}</option>
+                                        )
+                                    })}
+                                    
+                                </select>
+                                {console.log(profile.nationality)}
+                                {/* <input type="text" name="name" id="name" placeholder="Indonesia" value={profile.nationality} className="rounded-xl pl-2 w-full border h-[50px]"/>
+                                <img src={NavDown} alt="" className="absolute right-[10px]" /> */}
                                 </div>
                             </div>
                             <div className="flex">
-                                <div className="w-1/2">Birthday Date</div>
-                                <div className="w-1/2 flex gap-2">
+                                <label className="w-1/2" htmlFor="birthday">Birthday Date</label>
+                                <input type="date" name="name" id="birthday" placeholder="Indonesia" value={defaultValue} className="rounded-xl pl-2 w-full border h-[50px]"/>
+                                {/* <div className="w-1/2 flex gap-2">
                                     <span>24 / 10 / 2000</span>
                                     <span className="text-[rgba(51,102,255,1)]">Edit</span>
-                                </div>
+                                </div> */}
                             </div>
                             <div className='flex justify-center'>
                                 <button className=' text-white rounded-xl bg-[rgba(51,102,255,1)] w-[80%] h-[55px]'>Save</button>
@@ -141,7 +193,7 @@ function Profile() {
                         <div className="md:w-1/3 w-full flex flex-col gap-4">
                             <div className="flex justify-center">
                                 <button className='h-[137px] w-[137px] flex justify-center items-center rounded-full overflow-hidden border border-[rgba(51,102,255,1)] border-4'>
-                                    <img src={Avatar} alt="" className='h-[110px] w-[110px] rounded-full'/>
+                                    <img src={profile.picture} alt="" className='h-[110px] w-[110px] rounded-full'/>
                                 </button>
                             </div>
                             <div className="md:flex hidden md:w-full justify-center">

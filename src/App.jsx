@@ -3,6 +3,8 @@ import LoginPage from './pages/Login'
 import HomePage from './pages/Home'
 import EventDetail from './pages/EventDetail'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 import OrderTickets from './pages/OrderTickets'
 import Payment from './pages/Payment'
 import Profile from './pages/Profile'
@@ -10,6 +12,7 @@ import ChangePass from './pages/ChangePass'
 import MyBooking from './pages/MyBooking'
 import MyWishlist from './pages/MyWishlist'
 import CreateEvent from './pages/CreateEvent'
+import SignUpPage from './pages/SignUp'
 import CreatePopUp from './components/CreatePopUp'
 
 const arrayRouter = [
@@ -57,14 +60,24 @@ const arrayRouter = [
         path: '/createPopUp',
         element: <CreatePopUp />
     },
+    {
+        path: '/signUp',
+        element: <SignUpPage />
+    },
 ]
 
 const router = createBrowserRouter(arrayRouter)
 function App() {
-    return <RouterProvider router={router} />
-        // <LoginPage />
-        // <HomePage />
-        // <EventDetail />
+    return (
+        <Provider store={store}>
+
+            <RouterProvider router={router} />
+                 {/* <LoginPage />
+                 <HomePage />
+                 <EventDetail /> */}
+            
+        </Provider>
+    )
 
 }
 

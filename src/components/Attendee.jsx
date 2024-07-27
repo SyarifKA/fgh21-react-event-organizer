@@ -3,8 +3,10 @@ import Attendee1 from '../assets/images/people1.png'
 import Attendee2 from '../assets/images/people2.png'
 import Attendee3 from '../assets/images/people3.png'
 import Attendee4 from '../assets/images/people4.png'
+// import { useSelector } from 'react-redux'
 
 function Attendee() {
+    // const dataEvent = useSelector((state)=>state.event.listEvent)
     return (
         <div className='flex relative'>
             <div className='h-[29px] w-[29px] rounded-full overflow-hidden border border-white relative'>
