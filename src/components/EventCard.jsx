@@ -59,7 +59,6 @@ function EventCard() {
             const response = await fetch(endPoint);
             const data = await response.json()
             const listData = data.results
-            console.log(listData);
             dispatch(createEvent( listData ))
         })()
     },[])

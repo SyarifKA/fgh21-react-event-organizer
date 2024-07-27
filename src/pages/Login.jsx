@@ -8,22 +8,26 @@ import { IoEyeOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from 'react-redux'
 import { authLogin } from '../redux/reducers/auth'
 import { addProfile } from '../redux/reducers/profile'
+import LoadingPopUp from '../components/Loading'
 
 function LoginPage() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const [showLoading, setShowLoading] = React.useState(false)
+    function showLoad() {
+        setShowLoading(true)
+    }
     async function processLogin(e) {
         e.preventDefault()
-        // const name = e.target.username.value
         const email = e.target.email.value
         const password = e.target.password.value
-    //     if (name === 'syarif' && email === 'syarif@gmail.com' && password === '123') {
-    //         window.alert('Login berhasil')
-    //         navigate('/')
-    //     } else {
-    //         window.alert('Data yang Anda masukkan salah')
-    //     }
-    
+        //     if (name === 'syarif' && email === 'syarif@gmail.com' && password === '123') {
+            //         window.alert('Login berhasil')
+            //         navigate('/')
+            //     } else {
+                //         window.alert('Data yang Anda masukkan salah')
+                //     }
+                
     const data = new URLSearchParams()
     data.append('email', email)
     data.append('password', password)
@@ -34,45 +38,47 @@ function LoginPage() {
     })
     const uploadData = await response.json()
     const dataToken = uploadData.results.token
-    // const token = useSelector((state) => state.auth.token)
-    // console.log(token)
-        
+    
     if (uploadData.success) {
-        window.alert(uploadData.message)
         dispatch(authLogin(dataToken))
         const profile = await fetch('https://wsw6zh-8888.csb.app/profile', {
-                headers: {
+            headers: {
                 Authorization: 'Bearer ' + dataToken
             }
-            })
+        })
         const dataProfile = await profile.json()
+        window.alert(uploadData.message)
         dispatch(addProfile(dataProfile))
         navigate('/')
-   } else {
-       window.alert(uploadData.message)
+    } else {
+        window.alert(uploadData.message)
+        setShowLoading(false)
     }
-    }
-        
-    const [reveal, setReveal] = React.useState('password')
-    function revealPassword() {
-        if (reveal === 'password') {
-            setReveal('text')
-        } else {
+}
+
+const [reveal, setReveal] = React.useState('password')
+function revealPassword() {
+    if (reveal === 'password') {
+        setReveal('text')
+    } else {
             setReveal('password')
         }
     }
 
     return (
-        <div className='flex h-screen'>
+        <div className='flex h-screen w-full relative'>
+            {showLoading ? <LoadingPopUp /> : ''}
             <div className='md:flex justify-center hidden items-center bg-[#045CFE] md:w-3/5'>
                 <img src={Character} alt="" />
             </div>
             <div className='flex flex-col gap-4 w-full md:w-2/5  pt-8 px-24'>
                 <LogoWetick />
                 <div className='flex flex-col gap-2'>
-                <h1 className='text-2xl font-semibold'>Sign In</h1>
-                <h3 className='text-[rgba(55,58,66,1)] text-sm font-normal'>Hi, Welcome back to Urticket!</h3>
+                    <h1 className='text-2xl font-semibold'>Sign In</h1>
+                    <h3 className='text-[rgba(55,58,66,1)] text-sm font-normal'>Hi, Welcome back to Urticket!</h3>
                 </div>
+                {/* <div className='border border-2 border-green-500 w-full h-[50px] rounded-lg text-green-500'></div>
+                <div className='border border-2 border-red-500 w-full h-[50px] rounded-lg text-red-500'></div> */}
                 <form onSubmit={processLogin}>
                     <div className='flex flex-col gap-4'>
                     <input type="email" name='email' placeholder='Email' className='border-solid border-2 border-[rgba(193,197,208,1)] rounded-lg pl-3 h-[50px]' />
@@ -83,7 +89,7 @@ function LoginPage() {
                     </div>
                     <div className='font-semibold text-[rgba(51,102,255,1)] text-right'>Forgot Password?</div>
                     <div className='flex mt-4'>
-                        <button className='w-full h-[55px] bg-[rgba(51,102,255,1)] rounded-xl text-white font-semibold text-base shadow-md shadow-[rgba(35,149,255,0.3)]'>Sign In</button>
+                        <button onClick={showLoad} className='w-full h-[55px] bg-[rgba(51,102,255,1)] rounded-xl text-white font-semibold text-base shadow-md shadow-[rgba(35,149,255,0.3)]'>Sign In</button>
                     </div>
                 </form>
                 <div className='flex flex-col items-center gap-3'>
