@@ -25,7 +25,7 @@ const arrayRouter = [
         element: <LoginPage />
     },
     {
-        path: '/detail',
+        path: '/detail/:id',
         element: <EventDetail />
     },
     {

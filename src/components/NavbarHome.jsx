@@ -15,7 +15,7 @@ function NavbarHome() {
     const data = useSelector((state) => state.auth.token)
     const profile = useSelector((state)=>state.profile.data)
     return (
-        <div className='flex flex-col md:flex-row bg-white fixed z-10 md:justify-between items-center px-4 md:px-12 pb-2 w-full font-semibold text-sm'>
+        <div className='flex flex-col md:flex-row bg-[#FFD271] fixed z-40 md:justify-between items-center px-4 md:px-12 pb-2 py-2 w-full font-semibold text-sm'>
             <div className='flex items-center gap-8'>
                 <LogoWetick />
                 <div className='justify-start items-start flex md:hidden'>
@@ -43,7 +43,7 @@ function NavbarHome() {
             </div> */}
             {data !== null ? (<Link to='/profile'>
                 <div ref={item3} className='flex justify-between gap-4'>
-                    <button className='h-[55px] w-[55px] flex justify-center items-center rounded-full overflow-hidden border border-[rgba(51,102,255,1)] border-2'>
+                    <button className='h-[55px] w-[55px] flex justify-center items-center rounded-full overflow-hidden border border-[#0FABBC] border-2'>
                         <img src={profile.picture} alt="" className='h-[44px] w-[44px] rounded-full' />
                     </button>
                     <button className='text-[rgba(55,58,66,1)] font-semibold text-sm'>{profile.name}</button>

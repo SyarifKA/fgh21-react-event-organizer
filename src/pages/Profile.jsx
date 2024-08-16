@@ -12,9 +12,11 @@ import LogoLogout from '../assets/images/exit-logo.png'
 import NavDown from '../assets/images/chevron-down.png'
 import FooterMain from "../components/Footer"
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import dateFormat from 'dateformat';
+import { authLogout } from "../redux/reducers/auth";
+import { deleteProfile } from "../redux/reducers/profile";
 
 function Profile() {
     const profile = useSelector((state) => state.profile.data)
@@ -25,6 +27,11 @@ function Profile() {
     const futureDate = date.getDate() + 3;
     date.setDate(futureDate);
     const defaultValue = date.toLocaleDateString('en-CA');
+    const dispatch = useDispatch()
+    function setProfileNull() {
+        dispatch(deleteProfile(null))
+        dispatch(authLogout(null))
+    }
 
     useEffect(() => {
         (async () => {
@@ -57,13 +64,13 @@ function Profile() {
                 <div className="md:flex flex-col hidden md:w-[30%] gap-6 text-sm">
                     <div className="flex gap-2 items-center">
                         <div>
-                            <button className='h-[55px] w-[55px] flex justify-center items-center rounded-full overflow-hidden border border-[rgba(51,102,255,1)] border-2'>
+                            <button className='h-[55px] w-[55px] flex justify-center items-center rounded-full overflow-hidden border border-[#0FABBC] border-2'>
                                 <img src={profile.picture} alt="" className='h-[44px] w-[44px] rounded-full'/>
                             </button>
                         </div>
                         <div>
                             <div className="font-semibold text-sm">{profile.name}</div>
-                            <div className="text-[rgba(55,58,66,0.75)] text-xs">Entrepreneur, ID</div>
+                            <div className="text-[rgba(55,58,66,0.75)] text-xs">{profile.profession}</div>
                         </div>
                     </div>
                     <div className="flex gap-2 items-center">
@@ -102,10 +109,12 @@ function Profile() {
                         <img src={LogoSetting} alt="" />
                         <div>Settings</div>
                     </div>
-                    <div className="flex gap-2 items-center">
+                    <Link to='/login'>
+                    <button onClick={setProfileNull} className="flex gap-2 items-center">
                         <img src={LogoLogout} alt="" />
                         <div className="text-[rgba(240,56,0,1)]">Logout</div>
-                    </div>
+                    </button>
+                    </Link>
                 </div>
                 <div className="flex flex-col w-full md:w-[70%] bg-white p-12 rounded-3xl">
                     <div className="text-2xl mb-2 font-semibold">Profile</div>
@@ -154,7 +163,7 @@ function Profile() {
                                 <select name="" id="profession" className="rounded-xl pl-2 w-full border h-[50px]">
                                         {job.map((item) => {
                                             return (
-                                                <option value="" selected={profile.profession}>{item.name}</option>
+                                                <option selected={item.name === profile.profession} value={item.name}>{item.name}</option>
                                         )
                                     })}
                                 </select>
@@ -165,10 +174,10 @@ function Profile() {
                             <div className="flex items-center">
                                 <label htmlFor="name" className="w-1/2">Nationality</label>
                                 <div className="w-1/2 relative items-center flex">
-                                <select name="" id="nation" className="rounded-xl pl-2 w-full border h-[50px]" defaultValue={profile.nationality}>
+                                <select name="" id="nation" className="rounded-xl pl-2 w-full border h-[50px]">
                                         {nationality.map((item) => {
                                             return (
-                                                <option selected={profile.nationality}>{item.name}</option>
+                                                <option selected={item.name === profile.nationality} value={item.name}>{item.name}</option>
                                         )
                                     })}
                                     
@@ -187,17 +196,17 @@ function Profile() {
                                 </div> */}
                             </div>
                             <div className='flex justify-center'>
-                                <button className=' text-white rounded-xl bg-[rgba(51,102,255,1)] w-[80%] h-[55px]'>Save</button>
+                                <button className=' text-white rounded-xl shadow-md shadow-[#E4F9FF] bg-[#0FABBC] w-[80%] h-[55px]'>Save</button>
                             </div>
                         </form>
                         <div className="md:w-1/3 w-full flex flex-col gap-4">
                             <div className="flex justify-center">
-                                <button className='h-[137px] w-[137px] flex justify-center items-center rounded-full overflow-hidden border border-[rgba(51,102,255,1)] border-4'>
+                                <button className='h-[137px] w-[137px] flex justify-center items-center rounded-full overflow-hidden border border-[#0FABBC] border-4'>
                                     <img src={profile.picture} alt="" className='h-[110px] w-[110px] rounded-full'/>
                                 </button>
                             </div>
                             <div className="md:flex hidden md:w-full justify-center">
-                                <button className="w-full h-[40px] rounded-xl border border-[rgba(51,102,255,1)] text-[rgba(51,102,255,1)]">Choose Photo</button>
+                                <button className="w-full h-[40px] rounded-xl border border-[#0FABBC] hover:text-white hover:bg-[#0FABBC] text-[#0FABBC]">Choose Photo</button>
                             </div>
                             <div className="text-sm hidden md:inline text-[rgba(55,58,66,0.75)]">Image size: max, 2 MB</div>
                             <div className="text-sm hidden md:inline text-[rgba(55,58,66,0.75)]">Image formats: .JPG, .JPEG, .PNG</div>

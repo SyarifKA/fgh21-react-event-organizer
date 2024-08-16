@@ -1,5 +1,5 @@
 import React from 'react'
-import NavbarProfile from '../components/NavbarProfile'
+import NavbarHome from '../components/NavbarHome'
 import Event1 from '../assets/images/event-1.png'
 import Wish from '../assets/images/heart-icon.png'
 import IconMap from '../assets/images/map-pin.png'
@@ -11,9 +11,10 @@ import { Link } from 'react-router-dom'
 import HeartLogo from '../assets/images/heart-icon.png'
 
 function EventDetail() {
+    // const dataEvent = useSelector((state) => state.event.listEvent);
     return (
         <div className='flex flex-col gap-24'>
-            <NavbarProfile />
+            <NavbarHome />
             <div className='bg-white md:mx-[120px] mx-3 flex flex-col items-center md:items-start md:flex-row mt-36 p-8 md:p-24 gap-4 rounded-3xl'>
                 <div className='flex flex-col gap-4 w-1/2 items-center md:justify-start'>
                     <div className='w-[260px] h-[376px] rounded-3xl overflow-hidden relative'>
@@ -75,7 +76,7 @@ function EventDetail() {
                     </div>
                     <div className='flex justify-center w-full mt-4'>
                         <Link to='/order'>
-                        <button className='bg-[rgba(51,102,255,1)] w-[315px] h-[55px] rounded-xl text-white font-semibold'>Buy Tickets</button>
+                        <button className='w-[315px] h-[55px] rounded-xl text-white font-semibold shadow-md shadow-[#E4F9FF] bg-[#0FABBC]'>Buy Tickets</button>
                         </Link>
                     </div>
                 </div>

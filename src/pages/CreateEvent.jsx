@@ -13,8 +13,9 @@ import LogoLogout from '../assets/images/exit-logo.png'
 import FooterMain from "../components/Footer"
 import CreatePopUp from '../components/CreatePopUp'
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteProfile } from "../redux/reducers/profile";
+import { authLogout } from "../redux/reducers/auth";
 
 function CreateEvent() {
     const [show, setShow] = React.useState(false)
@@ -24,7 +25,10 @@ function CreateEvent() {
     const dispatch = useDispatch()
     function setProfileNull() {
         dispatch(deleteProfile(null))
+        dispatch(authLogout(null))
     }
+
+    const profile = useSelector((state) => state.profile.data)
     return (
         <div className="flex flex-col gap-24">
             <NavbarHome />
@@ -32,13 +36,13 @@ function CreateEvent() {
                 <div className="md:flex flex-col hidden md:w-[30%] gap-6 text-sm">
                     <div className="flex gap-2 items-center">
                         <div>
-                            <button className='h-[55px] w-[55px] flex justify-center items-center rounded-full overflow-hidden border border-[rgba(51,102,255,1)] border-2'>
-                                <img src={Avatar} alt="" className='h-[44px] w-[44px] rounded-full'/>
+                            <button className='h-[55px] w-[55px] flex justify-center items-center rounded-full overflow-hidden border border-[#0FABBC] border-2'>
+                                <img src={profile.picture} alt="" className='h-[44px] w-[44px] rounded-full'/>
                             </button>
                         </div>
                         <div>
-                            <div className="font-semibold text-sm">Jhon Tomson</div>
-                            <div className="text-[rgba(55,58,66,0.75)] text-xs">Entrepreneur, ID</div>
+                            <div className="font-semibold text-sm">{profile.name}</div>
+                            <div className="text-[rgba(55,58,66,0.75)] text-xs">{profile.profession}</div>
                         </div>
                     </div>
                     <div className="flex gap-2 items-center">
@@ -93,7 +97,7 @@ function CreateEvent() {
                 <div className="flex flex-col gap-6 w-full md:w-[70%] bg-white p-12 rounded-3xl">
                     <div className="flex md:flex-row flex-col md:gap-2 gap-0 justify-between">
                         <div className="text-xl font-semibold">Manage Event</div>
-                        <button onClick={showPopUp} className="flex bg-[rgba(234,241,255,1)] p-[13px] text-[rgba(51,102,255,1)] rounded-xl justify-center">Create</button>
+                        <button onClick={showPopUp} className="flex bg-[#E4F9FF] p-[13px] text-[rgba(51,102,255,1)] rounded-xl justify-center">Create</button>
                     </div>
                     <div>
                         <div className="flex gap-2 border-b py-[25px]">

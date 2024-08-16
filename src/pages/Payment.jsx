@@ -1,5 +1,5 @@
 import React from 'react'
-import NavbarProfile from '../components/NavbarProfile'
+import NavbarHome from '../components/NavbarHome'
 import LogoCard from '../assets/images/card.png'
 import LogoBank from '../assets/images/bank.png'
 import LogoRetail from '../assets/images/market.png'
@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom'
 function Payment() {
     return (
         <div className='flex flex-col gap-24'>
-            <NavbarProfile />
+            <NavbarHome />
             <div className='flex flex-col md:flex-row bg-white mx-[120px] mt-36 rounded-3xl gap-4 md:px-[100px] px-4 py-[70px]'>
                 <div className='flex flex-col w-full md:w-1/2 gap-8'>
                     <div className='font-semibold text-xl'>Payment Method</div>
@@ -82,24 +82,24 @@ function Payment() {
                     <div className='flex flex-col font-semibold text-sm gap-4'>
                         <div className='flex justify-between'>
                             <span>Event</span>
-                            <span className='text-[rgba(51,102,255,1)]'>Sights & Sounds Exhibition</span>
+                            <span className='text-[#0FABBC]'>Sights & Sounds Exhibition</span>
                         </div>
                         <div className='flex justify-between'>
                             <span>Ticket Section</span>
-                            <span className='text-[rgba(51,102,255,1)]'>VIP</span>
+                            <span className='text-[#0FABBC]'>VIP</span>
                         </div>
                         <div className='flex justify-between'>
                             <span>Quantity</span>
-                            <span className='text-[rgba(51,102,255,1)]'>2</span>
+                            <span className='text-[#0FABBC]'>2</span>
                         </div>
                         <div className='flex justify-between'>
                             <span>Total Payment</span>
-                            <span className='text-[rgba(51,102,255,1)]'>$70</span>
+                            <span className='text-[#0FABBC]'>$70</span>
                         </div>
                     </div>
                     <div className='flex justify-center'>
                         <Link to='/myBooking'>
-                        <button className=' text-white rounded-xl bg-[rgba(51,102,255,1)] w-[315px] h-[55px]'>Payment</button>
+                        <button className='shadow-md shadow-[#E4F9FF] bg-[#0FABBC] text-white rounded-xl w-[315px] h-[55px]'>Payment</button>
                         </Link>
                     </div>
                 </div>

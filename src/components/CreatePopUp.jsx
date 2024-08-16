@@ -2,7 +2,7 @@ import React from "react";
 
 function CreatePopUp() {
     return (
-        <div className="bg-[rgba(0,0,0,0.28)] fixed flex justify-center items-center w-full h-full z-10">
+        <div className="bg-[rgba(0,0,0,0.28)] fixed flex justify-center items-center w-full h-full z-50">
             <form className="bg-white flex flex-col gap-4 text-sm px-[54px] py-[20px] rounded-2xl w-[70%]">
                 <h1 className="text-2xl font-semibold">Create Event</h1>
                 <div className="flex justify-between gap-4">
@@ -40,7 +40,7 @@ function CreatePopUp() {
                     <input type="text" name="categori" id="categori" placeholder="Input Detail ..." className="border p-2 rounded-xl h-[95px]"/>
                 </div>
                 <div className="flex justify-end">
-                    <button className="bg-[rgba(51,102,255,1)] w-[315px] h-[60px] rounded-xl font-semibold text-white">Save</button>
+                    <button className="shadow-md shadow-[#E4F9FF] bg-[#0FABBC] w-[315px] h-[60px] rounded-xl font-semibold text-white">Save</button>
                 </div>
             </form>
         </div>

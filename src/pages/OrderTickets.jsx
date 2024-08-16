@@ -1,5 +1,6 @@
 import React from "react"
 import NavbarProfile from "../components/NavbarProfile"
+import NavbarHome from "../components/NavbarHome"
 import Seat from '../assets/images/seat.png'
 import TicketPurple from '../assets/images/ticket-purple.png'
 import TicketRed from '../assets/images/ticket-red.png'
@@ -64,7 +65,7 @@ function OrderTickets() {
 
     return (
         <div className="flex flex-col gap-24">
-            <NavbarProfile />
+            <NavbarHome />
             <div className='bg-white mx-[120px] flex flex-col md:flex-row mt-36 gap-2 md:gap-4 rounded-3xl'>
                 <div className="flex justify-center items-center w-full md:w-1/2">
                     <img src={Seat} alt="" />
@@ -145,20 +146,20 @@ function OrderTickets() {
                         <div className="flex flex-col font-semibold text-sm gap-4">
                             <div className="flex justify-between">
                                 <span>Ticket Section</span>
-                                <span className="text-[rgba(51,102,255,1)]">{dataSection}</span>
+                                <span className="text-[#0FABBC]">{dataSection}</span>
                             </div>
                             <div className="flex justify-between">
                                 <span>Quantity</span>
-                                <span className="text-[rgba(51,102,255,1)]">{numb+numb2+numb3?numb+numb2+numb3:'-'}</span>
+                                <span className="text-[#0FABBC]">{numb+numb2+numb3?numb+numb2+numb3:'-'}</span>
                             </div>
                             <div className="flex justify-between">
                                 <span>Total Payment</span>
-                                <span className="text-[rgba(51,102,255,1)]">{(numb*15)+(numb2*35)+(numb3*50)?'$'+((numb*15)+(numb2*35)+(numb3*50)):'-'}</span>
+                                <span className="text-[#0FABBC]">{(numb*15)+(numb2*35)+(numb3*50)?'$'+((numb*15)+(numb2*35)+(numb3*50)):'-'}</span>
                             </div>
                         </div>
                         <div className='flex justify-center mt-4'>
                         <Link to='/payment'>
-                            <button className='bg-[rgba(51,102,255,1)] w-[315px] h-[55px] rounded-xl text-white font-semibold'>Checkout</button>
+                            <button className='shadow-md shadow-[#E4F9FF] bg-[#0FABBC] w-[315px] h-[55px] rounded-xl text-white font-semibold'>Checkout</button>
                         </Link>
                         </div>
                     </div>

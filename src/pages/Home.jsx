@@ -3,6 +3,7 @@ import NavbarHome from '../components/NavbarHome'
 import FooterMain from '../components/Footer'
 import Bubble from '../assets/images/bubble.png'
 import Character from '../assets/images/character.png'
+import CharacterMadura from '../assets/images/madura.png'
 import LinePink from '../assets/images/line-pink.png'
 import LineWhite from '../assets/images/lineWhite.png'
 import EventCard from '../components/EventCard'
@@ -29,9 +30,10 @@ function HomePage() {
     return (
         <div className='flex flex-col gap-20'>
             <NavbarHome />
-            <div className='flex w-full justify-end min-h-[750px] items-end bg-[rgba(51,102,255,1)] relative'>
+            <div className='flex w-full justify-end min-h-[750px] items-end bg-[#12CAD6] relative'>
                 <img src={Bubble} alt="" className='absolute w-full h-full'/>
-                <img src={Character} alt="" className=''/>
+                {/* <img src={Character} alt="" className=''/> */}
+                {/* <img src={CharacterMadura} alt="" className='z-10'/> */}
             </div>
             <div  className='flex flex-col items-center gap-12'>
                 <div className='flex flex-col items-center gap-6'>
@@ -50,7 +52,7 @@ function HomePage() {
                         <div className='text-sm'>14</div>
                         <div className='text-xs'>Tue</div>
                     </div>
-                    <div className='flex justify-end h-[75px] w-[50px] border border-[rgba(255,137,0,1)] rounded-xl flex-col items-center text-[rgba(255,137,0,1)]'>
+                    <div className='flex justify-end h-[75px] w-[50px] border border-[#FA163F] rounded-xl flex-col items-center text-[#FA163F]'>
                         <div className='text-sm'>15</div>
                         <div className='text-xs'>Wed</div>
                         <div className='text-xl'>&#x2022;</div>
@@ -65,7 +67,7 @@ function HomePage() {
                     </div>
                 </div>
             </div>
-            <div className='flex flex-col gap-4'>
+            <div className='flex flex-col ml-14 gap-4'>
                 <Link to="/detail">
                     <EventCard />
                 </Link>
@@ -74,7 +76,7 @@ function HomePage() {
                     <ButtonRight />
                 </div>
             </div>
-            <div className='relative flex-col flex bg-[rgba(51,102,255,1)] mx-[50px] rounded-3xl'>
+            <div className='relative flex-col flex bg-[#12CAD6] mx-[50px] rounded-3xl'>
                 <img src={Bubble} alt="" className='w-full absolute h-full object-fit scale-y-[-1]' />
                 <div className='py-[65px] px-[60px]'>
                     <div className='flex justify-center items-center bg-[rgba(255,255,255,0.25)] w-[150px] h-[30px] rounded-3xl gap-2'>
@@ -113,7 +115,7 @@ function HomePage() {
                         </div>
                     </div>
                     <div className='flex justify-center'>
-                        <button className='bg-white w-[255px] h-[40px] rounded-xl mt-[50px] text-[rgba(51,102,255,1)]'>See All</button>
+                        <button className='bg-white w-[255px] h-[40px] rounded-xl mt-[50px] text-[#0FABBC]'>See All</button>
                     </div>
                 </div>
             </div>
@@ -140,7 +142,7 @@ function HomePage() {
                     <EventCard2 />
                     <ButtonRight />
                 </div>
-            <div className='flex flex-col w-full h-full items-center bg-[rgba(55,58,66,1)] relative pb-4'>
+            <div className='flex flex-col w-full h-full items-center bg-[#018383] relative pb-4'>
                 <img src={Bubble} alt="" className='w-full h-full object-fit rotate-180 absolute' />
                 <div className='flex flex-col items-center pt-[90px] gap-6'>
                     <div className='flex justify-center items-center bg-[rgba(255,255,255,0.25)] w-[150px] h-[30px] rounded-3xl gap-2'>
