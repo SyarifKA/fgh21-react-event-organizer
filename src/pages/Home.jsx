@@ -24,6 +24,7 @@ import { useEffect, useState } from 'react'
 function HomePage() {
     const [partners, setPartners] = useState([])
     const [category, setCategory] = useState([])
+    const[locations, setLocations] = useState([])
     async function dataPartners() {
         const endPoint = 'http://localhost:8888/partners'
         const response = await fetch(endPoint);
@@ -38,7 +39,15 @@ function HomePage() {
         const listData = data.results
         setCategory(listData)
     }
+    async function dataLocations() {
+        const endPoint = 'http://localhost:8888/locations'
+        const response = await fetch(endPoint);
+        const data = await response.json()
+        const listData = data.results
+        setLocations(listData)
+    }
     useEffect(() => {
+        dataLocations()
         dataPartners()
         dataCategory()
     },[])
@@ -100,11 +109,15 @@ function HomePage() {
                     </div>
                     <div className='grid grid-cols-1 md:grid-cols-4 items-center gap-4 md:gap-2 relative z-1'>
                         <div className='text-4xl font-semibold text-white'>Discover Events Near You</div>
-                        <div className='flex flex-col items-center'>
-                            <img src={Jakarta} alt="" className='w-[230px] h-[179px] rounded-xl'/>
-                            <div className='text-white flex justify-center font-medium'>Jakarta</div>
-                        </div>
-                        <div className='md:flex flex-col hidden items-center'>
+                        {locations.map((item) => {
+                            return (
+                                <div className='flex flex-col gap-2 items-center'>
+                                    <img src={item.image} alt="" className='w-[230px] h-[179px] rounded-xl'/>
+                                    <div className='text-white flex justify-center font-medium'>{item.name}</div>
+                                </div>   
+                            )
+                        })}
+                        {/* <div className='md:flex flex-col hidden items-center'>
                             <img src={Bandung} alt="" className='w-[230px] h-[179px] rounded-xl'/>
                             <div className='text-white flex justify-center font-medium'>Bandung</div>
                         </div>
@@ -127,7 +140,7 @@ function HomePage() {
                         <div className='md:flex hidden flex-col items-center'>
                             <img src={Semarang} alt="" className='w-[230px] h-[179px] rounded-xl'/>
                             <div className='text-white flex justify-center font-medium'>Semarang</div>
-                        </div>
+                        </div> */}
                     </div>
                     <div className='flex justify-center'>
                         <button className='bg-white w-[255px] h-[40px] rounded-xl mt-[50px] text-[#0FABBC]'>See All</button>

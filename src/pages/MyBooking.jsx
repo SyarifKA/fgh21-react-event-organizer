@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import NavbarProfile from "../components/NavbarProfile"
 import NavbarHome from "../components/NavbarHome"
 import Avatar from '../assets/images/navbar-avatar.png'
@@ -23,6 +24,9 @@ function MyBooking() {
         dispatch(authLogout(null))
         nav("/login")
     }
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     const profile = useSelector((state) => state.profile.data)
     return (
         <div className="flex flex-col gap-24">

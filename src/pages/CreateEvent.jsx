@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProfile } from "../redux/reducers/profile";
 import { authLogout } from "../redux/reducers/auth";
+import { useEffect } from "react";
 
 function CreateEvent() {
     const [show, setShow] = React.useState(false)
@@ -27,6 +28,10 @@ function CreateEvent() {
         dispatch(deleteProfile(null))
         dispatch(authLogout(null))
     }
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     const profile = useSelector((state) => state.profile.data)
     return (

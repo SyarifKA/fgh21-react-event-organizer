@@ -15,12 +15,16 @@ import HeartButtonBlue from '../assets/images/heart-icon-blue.png'
 import FooterMain from "../components/Footer"
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 function MyWishlist() {
     const dispatch = useDispatch()
     function setProfileNull() {
         dispatch(deleteProfile(null))
     }
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     const profile = useSelector((state) => state.profile.data)
     return (
         <div className="flex flex-col gap-24">

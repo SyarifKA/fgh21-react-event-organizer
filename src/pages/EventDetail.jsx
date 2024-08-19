@@ -32,6 +32,7 @@ function EventDetail() {
     }
     
     useEffect(() => {
+        window.scrollTo(0, 0)
         getData()
     }, [])
     function detailEvent(id) {

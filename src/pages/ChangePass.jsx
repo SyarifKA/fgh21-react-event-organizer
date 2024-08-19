@@ -12,8 +12,12 @@ import LogoLogout from '../assets/images/exit-logo.png'
 import FooterMain from "../components/Footer";
 import { Link } from "react-router-dom"
 import NavbarHome from "../components/NavbarHome";
+import { useEffect } from "react";
 
 function ChangePass() {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <div className="flex flex-col gap-24">
             <NavbarHome />

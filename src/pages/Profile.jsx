@@ -58,7 +58,8 @@ function Profile() {
             const nations = dataNationality.results
             console.log(nations)
             setNationality(nations)
-        })()
+        })(),
+        window.scrollTo(0, 0)
     }, [])
 
     async function updateProfile(e) {

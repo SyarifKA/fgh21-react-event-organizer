@@ -9,10 +9,14 @@ import CardATM from '../assets/images/mastercard.png'
 import FooterMain from '../components/Footer'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
 
 function Payment() {
     const selectedSections = useSelector((state) => state.sectionSelector.selected)
     const ticketSection = selectedSections.name
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     // const quantity = selectedSections.reduce((prev, curr) => prev + curr.quantity, 0)
     // const totalPrice = selectedSections.reduce((prev, curr) => prev + curr.price, 0)
     return (
