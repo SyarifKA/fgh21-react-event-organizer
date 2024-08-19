@@ -16,7 +16,15 @@ function EventDetail() {
     const [image, setImage] = useState("")
     const [description, setDescription] = useState("")
     const [title, setTitle] = useState("")
+    const [readMore, setReadMore] = useState(false)
     
+    function fullDesc() {
+        if (readMore) {
+            setReadMore(false)
+        } else {
+            setReadMore(true)
+        }
+    }
     const nav = useNavigate()
     const id = useParams()
 
@@ -95,9 +103,12 @@ function EventDetail() {
                     </div>
                     <div className='flex flex-col gap-4'>
                         <div className='text-lg font-semibold'>Event Detail</div>
-                        <p>{description}</p>
+                        {readMore ?
+                        <p>{description}</p>:
+                        <p className='truncate'>{description}</p>
+                        }
                         {/* <p>After his controversial art exhibition "Tear and Consume" back in November 2018, in which guests were invited to tear up…</p> */}
-                        <div className='text-[rgba(51,102,255,1)]'>Read More</div>
+                        <button onClick={fullDesc} className='text-[rgba(51,102,255,1)]'>Read More</button>
                     </div>
                     <div className='flex flex-col gap-4'>
                         <div className='text-lg font-semibold'>Location</div>
