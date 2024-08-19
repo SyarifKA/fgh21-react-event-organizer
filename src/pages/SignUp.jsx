@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom'
 
 function SignUpPage() {
     const navigate = useNavigate()
+    const [message, setMessage] = React.useState('')
+    const [popUp, setPopUp] = React.useState('')
     async function processLogin(e) {
     e.preventDefault()
     const fullName = e.target.username.value
@@ -28,11 +30,15 @@ function SignUpPage() {
     })
         
     const dataResponse = await response.json()
-    if (dataResponse.success) {
-        navigate('/')
-        window.alert(dataResponse.message)
+    setPopUp(dataResponse.succes)
+    if (dataResponse.succes) {
+        navigate('/login')
+        // window.alert(dataResponse.message)
+        setMessage(dataResponse.message)
+        e.currentTarget.reset()
     } else {
-        window.alert(dataResponse.message)
+        setMessage(dataResponse.message)
+        // window.alert(dataResponse.message)
     }
     }
     const [reveal, setReveal] = React.useState('password')
@@ -58,6 +64,7 @@ function SignUpPage() {
                         Log In
                         </Link>
                     </span></h3>
+                    {popUp ? <div className='w-full h-fit rounded-lg text-green-500'>{message}</div> : <div className='w-full h-fit rounded-lg text-red-500'>{message}</div>}
                 </div>
                 <form onSubmit={processLogin}>
                     <div className='flex flex-col gap-4'>

@@ -2,66 +2,41 @@ import React from "react"
 import NavbarProfile from "../components/NavbarProfile"
 import NavbarHome from "../components/NavbarHome"
 import Seat from '../assets/images/seat.png'
-import TicketPurple from '../assets/images/ticket-purple.png'
-import TicketRed from '../assets/images/ticket-red.png'
-import TicketOrange from '../assets/images/ticket-orange.png'
+import TicketSection from "../components/TicketSection"
 import FooterMain from "../components/Footer"
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
+import { Link, useParams} from "react-router-dom"
 
 function OrderTickets() {
-    const [numb, setnumb] = React.useState(0)
     const setCursor = React.useRef()
+    const id = useParams()
+    const [ticket, setTicket] = useState([])
     
-    function min() {
-        if (numb > 0) {
-            setnumb(numb - 1)
-        }
-    }
-
-    function plus() {
-        if (numb < 10) {
-            setnumb(numb+1)
-        }
-    }
-    
-    const [numb2, setnumb2] = React.useState(0)
-    function min2() {
-        if (numb2 > 0) {
-            setnumb2(numb2-1)
-        }
-    }
-    function plus2() {
-        if (numb2 < 10) {
-            setnumb2(numb2+1)
-        }
+    async function getData() {
+        const endPoint = 'http://localhost:8888/events/section/' + id.id
+        const response = await fetch(endPoint);
+        const data = await response.json()
+        const listData = data.results
+        console.log(listData)
+        setTicket(listData)
     }
     
-    const [numb3, setnumb3] = React.useState(0)
-    function min3() {
-        if (numb3 > 0) {
-            setnumb3(numb3-1)
+    useEffect(() => {
+        getData()
+    }, [])
+
+    const selectedSections = useSelector((state) => state.sectionSelector.selected)
+    const ticketSection = selectedSections.reduce((prev, curr) => {
+        const arr = prev
+        console.log(curr)
+        if (curr.quantity != 0) {
+            arr.push(curr.name+`(${curr.quantity})`)
         }
-    }
-    function plus3() {
-        if (numb3 < 10) {
-            setnumb3(numb3+1)
-        }
-    }
-
-    let section = []
-    if (numb > 0) {
-        section.push(`REG (${numb})`)
-    }
-    if (numb2 > 0) {
-        section.push(`VIP (${numb2})`)
-    }
-    if (numb3 > 0) {
-        section.push(`VVIP (${numb3})`)
-    }
-
-    let dataSection = ''
-
-    section.length > 0? dataSection = section.join(', '):dataSection = '-'
+        return arr
+    },[])
+    const quantity = selectedSections.reduce((prev, curr) => prev + curr.quantity, 0)
+    const totalPrice = selectedSections.reduce((prev, curr) => prev + curr.price, 0)
 
     return (
         <div className="flex flex-col gap-24">
@@ -79,82 +54,27 @@ function OrderTickets() {
                         </div>
                     </div>
                     <div className="flex flex-col gap-4 w-full">
-                        <div className="flex w-full items-start gap-2">
-                            <img src={TicketPurple} alt="" className="bg-[rgba(241,234,255,1)] p-2 rounded-xl flex w-fit" />
-                            <div className="flex w-full flex-col">
-                                <div className="flex justify-between font-semibold text-sm">
-                                    <span>SECTION REG, ROW 1</span>
-                                    <span>$15</span>
-                                </div>
-                                <div className="flex justify-between text-xs text-[rgba(189,192,196,1)]">
-                                    <span>12 Seats available</span>
-                                    <span>per person</span>
-                                </div>
-                                <div className="flex items-center mt-2 justify-between text-xs font-semibold">
-                                    <div>Quantity</div>
-                                    <div className="flex gap-4 items-center">
-                                        <button onClick={min} ref={setCursor} className="w-[32px] h-[32px] border rounded-lg text-xl text-[rgba(193,197,208,1)]">-</button>
-                                        <span>{numb}</span>
-                                        <button onClick={plus} ref={setCursor} className="w-[32px] h-[32px] border rounded-lg text-xl text-[rgba(193,197,208,1)]">+</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flex w-full items-start gap-2">
-                            <img src={TicketRed} alt="" className="bg-[rgba(255,234,239,1)] p-2 rounded-xl flex w-fit" />
-                            <div className="flex w-full flex-col">
-                                <div className="flex justify-between font-semibold text-sm">
-                                    <span>SECTION VIP, ROW 2</span>
-                                    <span>$35</span>
-                                </div>
-                                <div className="flex justify-between text-xs text-[rgba(189,192,196,1)]">
-                                    <span>12 Seats available</span>
-                                    <span>per person</span>
-                                </div>
-                                <div className="flex items-center mt-2 justify-between text-xs font-semibold">
-                                    <div>Quantity</div>
-                                    <div className="flex gap-4 items-center">
-                                        <button onClick={min2} className="w-[32px] h-[32px] border rounded-lg text-xl text-[rgba(193,197,208,1)]">-</button>
-                                        <span>{numb2}</span>
-                                        <button onClick={plus2} className="w-[32px] h-[32px] border rounded-lg text-xl text-[rgba(193,197,208,1)]">+</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flex w-full items-start gap-2">
-                            <img src={TicketOrange} alt="" className="bg-[rgba(255,244,231,1)] p-2 rounded-xl flex w-fit" />
-                            <div className="flex w-full flex-col">
-                                <div className="flex justify-between font-semibold text-sm">
-                                    <span>SECTION VVIP, ROW 3</span>
-                                    <span>$50</span>
-                                </div>
-                                <div className="flex justify-between text-xs text-[rgba(189,192,196,1)]">
-                                    <span>12 Seats available</span>
-                                    <span>per person</span>
-                                </div>
-                                <div className="flex items-center mt-2 justify-between text-xs font-semibold">
-                                    <div>Quantity</div>
-                                    <div className="flex gap-4 items-center">
-                                        <button onClick={min3} className="w-[32px] h-[32px] border rounded-lg text-xl text-[rgba(193,197,208,1)]">-</button>
-                                        <span>{numb3}</span>
-                                        <button onClick={plus3} className="w-[32px] h-[32px] border rounded-lg text-xl text-[rgba(193,197,208,1)]">+</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {ticket.map((item) => {
+                            return (
+                                <TicketSection data={item} />
+                            )
+                        })}
                         <hr />
                         <div className="flex flex-col font-semibold text-sm gap-4">
                             <div className="flex justify-between">
                                 <span>Ticket Section</span>
-                                <span className="text-[#0FABBC]">{dataSection}</span>
+                                <span className="text-[#0FABBC]"></span>
+                                <span className="text-[#0FABBC]">{ticketSection.length != 0?ticketSection.join(', '):'-'}</span>
                             </div>
                             <div className="flex justify-between">
                                 <span>Quantity</span>
-                                <span className="text-[#0FABBC]">{numb+numb2+numb3?numb+numb2+numb3:'-'}</span>
+                                <span className="text-[#0FABBC]">{quantity === 0?"-":quantity}</span>
+                                {/* <span className="text-[#0FABBC]">{numb+numb2+numb3?numb+numb2+numb3:'-'}</span> */}
                             </div>
                             <div className="flex justify-between">
                                 <span>Total Payment</span>
-                                <span className="text-[#0FABBC]">{(numb*15)+(numb2*35)+(numb3*50)?'$'+((numb*15)+(numb2*35)+(numb3*50)):'-'}</span>
+                                <span className="text-[#0FABBC]">{totalPrice ===0?"-":`Rp`+totalPrice.toLocaleString('id')}</span>
+                                {/* <span className="text-[#0FABBC]">{(numb*15)+(numb2*35)+(numb3*50)?'$'+((numb*15)+(numb2*35)+(numb3*50)):'-'}</span> */}
                             </div>
                         </div>
                         <div className='flex justify-center mt-4'>

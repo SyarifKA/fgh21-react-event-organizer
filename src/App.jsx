@@ -25,11 +25,11 @@ const arrayRouter = [
         element: <LoginPage />
     },
     {
-        path: '/detail/:id',
+        path: '/events/:id',
         element: <EventDetail />
     },
     {
-        path: '/order',
+        path: '/events/section/:id',
         element: <OrderTickets />
     },
     {

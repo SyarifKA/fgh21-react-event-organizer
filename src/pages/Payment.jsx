@@ -8,8 +8,13 @@ import NavDown from '../assets/images/chevron-down.png'
 import CardATM from '../assets/images/mastercard.png'
 import FooterMain from '../components/Footer'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 function Payment() {
+    const selectedSections = useSelector((state) => state.sectionSelector.selected)
+    const ticketSection = selectedSections.name
+    // const quantity = selectedSections.reduce((prev, curr) => prev + curr.quantity, 0)
+    // const totalPrice = selectedSections.reduce((prev, curr) => prev + curr.price, 0)
     return (
         <div className='flex flex-col gap-24'>
             <NavbarHome />
@@ -87,6 +92,7 @@ function Payment() {
                         <div className='flex justify-between'>
                             <span>Ticket Section</span>
                             <span className='text-[#0FABBC]'>VIP</span>
+                            {/* <span className='text-[#0FABBC]'>{ticketSection}</span> */}
                         </div>
                         <div className='flex justify-between'>
                             <span>Quantity</span>

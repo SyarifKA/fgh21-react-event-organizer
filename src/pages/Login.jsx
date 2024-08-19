@@ -3,7 +3,7 @@ import Character from '../assets/images/character.png'
 import LogoWetick from '../components/LogoWetick'
 import { FaFacebook } from "react-icons/fa"
 import { FcGoogle } from "react-icons/fc"
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { IoEyeOutline } from "react-icons/io5";
 import { useDispatch, useSelector} from 'react-redux'
 import { authLogin } from '../redux/reducers/auth'
@@ -11,15 +11,14 @@ import { addProfile } from '../redux/reducers/profile'
 import LoadingPopUp from '../components/Loading'
 import CharacterMadura from '../assets/images/madura.png'
 import AlertLogin from '../components/AlertLogin'
-import { Link } from 'react-router-dom'
 
 function LoginPage() {
     const dispatch = useDispatch()
-    const navigate = useNavigate()
     const [showLoading, setShowLoading] = React.useState(false)
     const [message, setMessage] = React.useState('')
-    // const [showAlert, setShowAlert] = React.useState(false)
     const [popUp, setPopUp] = React.useState('')
+    const nav = useNavigate()
+
     async function processLogin(e) {
     e.preventDefault()
     const email = e.target.email.value
@@ -36,20 +35,22 @@ function LoginPage() {
         body: data
     })
     const uploadData = await response.json()
+    // console.log(uploadData.results.token)
     setPopUp(uploadData.succes)
-    
-    if (uploadData.success) {
+    if (uploadData.succes == true) {
         const dataToken = uploadData.results.token
+        console.log(dataToken)
         dispatch(authLogin(dataToken))
-
+        
         const profile = await fetch('http://localhost:8888/profile', {
             headers: {
                 Authorization: 'Bearer ' + dataToken
             }
         })
         const dataProfile = await profile.json()
+        console.log(dataProfile)
         dispatch(addProfile(dataProfile))
-        navigate('/')
+        nav('/')
         setMessage(uploadData.message)
     } else {
         setShowLoading(false)
@@ -99,7 +100,7 @@ function revealPassword() {
                     </div>
                         <Link to='/signup'>
                     <div className='flex mt-4'>
-                        <button type='button' className='w-full h-[55px] bg-white text-black border-2 border-black rounded-xl text-white font-semibold shadow-md shadow-[#E4F9FF]'>Sign Up</button>
+                        <button type='button' className='w-full h-[55px] bg-white text-black border-2 border-black rounded-xl text-black font-semibold shadow-md shadow-[#E4F9FF]'>Sign Up</button>
                     </div>
                         </Link>
                 </form>

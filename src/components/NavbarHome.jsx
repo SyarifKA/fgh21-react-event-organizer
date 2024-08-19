@@ -15,8 +15,8 @@ function NavbarHome() {
     const data = useSelector((state) => state.auth.token)
     const profile = useSelector((state)=>state.profile.data)
     return (
-        <div className='flex flex-col md:flex-row bg-[#FFD271] fixed z-40 md:justify-between items-center px-4 md:px-12 pb-2 py-2 w-full font-semibold text-sm'>
-            <div className='flex items-center gap-8'>
+        <div className='flex flex-col md:flex-row bg-[#FFD271] fixed z-40 md:justify-between md:gap-4 items-center px-8 pb-2 py-2 md:py-4 w-full font-semibold text-sm'>
+            <div className='flex w-full items-center gap-8'>
                 <LogoWetick />
                 <div className='justify-start items-start flex md:hidden'>
                     <button onClick={hideNav} className='flex items-start justify-center'>
@@ -24,7 +24,7 @@ function NavbarHome() {
                     </button>           
                 </div>
             </div>
-            <div ref={item2} className='flex flex-col md:flex-row items-center gap-2 md:gap-6 md:justify-between'>
+            <div ref={item2} className='flex w-full flex-col md:flex-row items-center gap-2 md:gap-8 md:justify-center'>
                 <Link to='/'>
                 <div>Home</div>
                 </Link>
@@ -41,14 +41,17 @@ function NavbarHome() {
                 <button  className='text-white flex justify-center w-[169px] h-[40px] items-center bg-[rgba(51,102,255,1)] rounded-lg shadow-md shadow-[rgba(51,102,255,0.15)]'>Sign Up</button>
                 </Link>
             </div> */}
-            {data !== null ? (<Link to='/profile'>
-                <div ref={item3} className='flex justify-between gap-4'>
+            {data !== null ? (
+                <div ref={item3} className='flex justify-center items-center w-full gap-8'>
+                <Link to='/profile'>
                     <button className='h-[55px] w-[55px] flex justify-center items-center rounded-full overflow-hidden border border-[#0FABBC] border-2'>
                         <img src={profile.picture} alt="" className='h-[44px] w-[44px] rounded-full' />
                     </button>
-                    <button className='text-[rgba(55,58,66,1)] font-semibold text-sm'>{profile.name}</button>
-                </div>
-            </Link>):(<div ref={item3} className='flex flex-col md:flex-row items-center justify-between gap-2 md:gap-4'>
+                    </Link>
+                    <Link to='/profile'>
+                    <button className='text-[rgba(55,58,66,1)] font-semibold text-sm'>{profile.fullName}</button>
+                    </Link>
+                </div>): (<div ref={item3} className='flex w-full flex-col md:flex-row items-center justify-between gap-2 md:gap-4'>
                 <Link to='/login'>
                 <button className=' flex justify-center items-center w-[169px] h-[40px]'>Log In</button>
                 </Link>

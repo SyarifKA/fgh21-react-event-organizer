@@ -14,11 +14,14 @@ import LogoLogout from '../assets/images/exit-logo.png'
 import IconCalendar from '../assets/images/booking_calender.png'
 import FooterMain from "../components/Footer"
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 function MyBooking() {
+    const nav = useNavigate()
     function setProfileNull() {
         dispatch(deleteProfile(null))
+        dispatch(authLogout(null))
+        nav("/login")
     }
     const profile = useSelector((state) => state.profile.data)
     return (
@@ -37,10 +40,12 @@ function MyBooking() {
                             <div className="text-[rgba(55,58,66,0.75)] text-xs">{profile.profession}</div>
                         </div>
                     </div>
+                    <Link to='/profile'>
                     <div className="flex gap-2 items-center">
                         <img src={LogoProfile} alt="" />
                         <div>Profile</div>
                     </div>
+                    </Link>
                     <div className="flex gap-2 items-center ml-8">
                         <img src={LogoCard} alt="" />
                         <div>Card</div>
@@ -77,10 +82,10 @@ function MyBooking() {
                         <img src={LogoSetting} alt="" />
                         <div>Settings</div>
                     </div>
-                    <div className="flex gap-2 items-center">
+                    <button onClick={setProfileNull} className="flex gap-2 items-center">
                         <img src={LogoLogout} alt="" />
                         <div className="text-[rgba(240,56,0,1)]">Logout</div>
-                    </div>
+                    </button>
                 </div>
                 <div className="flex flex-col gap-6 w-full md:w-[70%] bg-white p-12 rounded-3xl">
                     <div className="flex flex-col gap-2 md:gap-0 md:flex-row md:justify-between">

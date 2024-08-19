@@ -34,7 +34,7 @@ function MyWishlist() {
                             </button>
                         </div>
                         <div>
-                            <div className="font-semibold text-sm">{profile.name}</div>
+                            <div className="font-semibold text-sm">{profile.fullName}</div>
                             <div className="text-[rgba(55,58,66,0.75)] text-xs">{profile.profession}</div>
                         </div>
                     </div>

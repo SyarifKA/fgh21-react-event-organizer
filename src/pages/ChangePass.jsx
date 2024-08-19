@@ -11,11 +11,12 @@ import LogoSetting from '../assets/images/setting-logo.png'
 import LogoLogout from '../assets/images/exit-logo.png'
 import FooterMain from "../components/Footer";
 import { Link } from "react-router-dom"
+import NavbarHome from "../components/NavbarHome";
 
 function ChangePass() {
     return (
         <div className="flex flex-col gap-24">
-            <NavbarProfile />
+            <NavbarHome />
             <div className="flex mt-36 mx-[70px]">
                 <div className="md:flex flex-col hidden md:w-[30%] gap-6 text-sm">
                     <div className="flex gap-2 items-center">
@@ -87,7 +88,7 @@ function ChangePass() {
                         </div>
                     </div>
                     <div className="flex justify-center">
-                        <button className="w-4/5 bg-[rgba(51,102,255,1)] h-[61px] text-white rounded-2xl font-semibold">Update</button>
+                        <button className="w-3/5 bg-[rgba(51,102,255,1)] py-4 text-white rounded-2xl font-semibold">Update</button>
                     </div>
                 </div>
             </div>
