@@ -115,9 +115,7 @@ function EventDetail() {
                         <img src={Gmaps} alt="" />
                     </div>
                     <div className='flex justify-center w-full mt-4'>
-                        {/* <Link to='/section/> */}
                         <button onClick={()=>detailEvent(idEvent)} className='w-[315px] h-[55px] rounded-xl text-white font-semibold shadow-md shadow-[#E4F9FF] bg-[#0FABBC]'>Buy Tickets</button>
-                        {/* </Link> */}
                     </div>
                 </div>
             </div>

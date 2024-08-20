@@ -2,8 +2,7 @@ import React from 'react'
 import NavbarHome from '../components/NavbarHome'
 import FooterMain from '../components/Footer'
 import Bubble from '../assets/images/bubble.png'
-import Character from '../assets/images/character.png'
-import CharacterMadura from '../assets/images/madura.png'
+import Cinema from '../assets/images/cinema.png'
 import LinePink from '../assets/images/line-pink.png'
 import LineWhite from '../assets/images/lineWhite.png'
 import EventCard from '../components/EventCard'
@@ -56,7 +55,7 @@ function HomePage() {
             <NavbarHome />
             <div className='flex w-full justify-end h-fit items-end bg-[#12CAD6] relative'>
                 <img src={Bubble} alt="" className='w-full h-full'/>
-                {/* <img src={Character} alt="" className=''/> */}
+                {/* <img src={Cinema} alt="" className=''/> */}
                 {/* <img src={CharacterMadura} alt="" className='z-10'/> */}
             </div>
             <div  className='flex flex-col items-center gap-12'>

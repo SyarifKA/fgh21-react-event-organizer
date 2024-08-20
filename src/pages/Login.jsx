@@ -1,5 +1,5 @@
 import React from 'react'
-import Character from '../assets/images/character.png'
+import Character from '../assets/images/bike.png'
 import LogoWetick from '../components/LogoWetick'
 import { FaFacebook } from "react-icons/fa"
 import { FcGoogle } from "react-icons/fc"
@@ -9,7 +9,6 @@ import { useDispatch, useSelector} from 'react-redux'
 import { authLogin } from '../redux/reducers/auth'
 import { addProfile } from '../redux/reducers/profile'
 import LoadingPopUp from '../components/Loading'
-import CharacterMadura from '../assets/images/madura.png'
 import AlertLogin from '../components/AlertLogin'
 
 function LoginPage() {
@@ -74,7 +73,7 @@ function revealPassword() {
             {showLoading ? <LoadingPopUp /> : ''}
             {/* {showAlert?<AlertLogin data={message} />:''} */}
             <div className='md:flex justify-center hidden items-center bg-[#12CAD6] md:w-3/5'>
-                {/* <img src={Character} alt="" /> */}
+                <img src={Character} alt="" />
                 {/* <img src={CharacterMadura} alt="" className='h-80 w-80' /> */}
             </div>
             <div className='flex flex-col gap-4 w-full md:w-2/5  pt-8 px-24'>
