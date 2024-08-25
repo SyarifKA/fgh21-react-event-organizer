@@ -42,7 +42,7 @@ function NavbarHome() {
                 </Link>
             </div> */}
             {data !== null ? (
-                <div ref={item3} className='flex justify-center items-center w-full gap-8'>
+                <div ref={item3} className='flex justify-center items-center w-full gap-4'>
                 <Link to='/profile'>
                     <button className='h-[55px] w-[55px] flex justify-center items-center rounded-full overflow-hidden border border-[#0FABBC] border-2'>
                         <img src={profile.picture} alt="" className='h-[44px] w-[44px] rounded-full' />
@@ -51,9 +51,9 @@ function NavbarHome() {
                     <Link to='/profile'>
                     <button className='text-[rgba(55,58,66,1)] font-semibold text-sm'>{profile.fullName}</button>
                     </Link>
-                </div>): (<div ref={item3} className='flex w-full flex-col md:flex-row items-center justify-between gap-2 md:gap-4'>
+                </div>): (<div ref={item3} className='flex w-full flex-col md:flex-row items-center justify-end gap-2 md:gap-4'>
                 <Link to='/login'>
-                <button className=' flex justify-center items-center w-[169px] h-[40px]'>Log In</button>
+                <button className=' flex bg-white rounded-lg justify-center items-center w-[169px] h-[40px]'>Log In</button>
                 </Link>
                 <Link to='/signUp'>
                 <button  className='text-white flex justify-center w-[169px] h-[40px] items-center bg-[rgba(51,102,255,1)] rounded-lg shadow-md shadow-[rgba(51,102,255,0.15)]'>Sign Up</button>

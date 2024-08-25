@@ -7,8 +7,9 @@ import IconClock from '../assets/images/clock.png'
 import Gmaps from '../assets/images/location.png'
 import Attendee from '../components/Attendee'
 import FooterMain from '../components/Footer'
-import { Link, useParams, useNavigate } from 'react-router-dom'
+import { Link, useParams, useNavigate, ScrollRestoration} from 'react-router-dom'
 import HeartLogo from '../assets/images/heart-icon.png'
+import { useSelector } from 'react-redux'
 
 function EventDetail() {
     // const dataEvent = useSelector((state) => state.event.listEvent);
@@ -17,6 +18,7 @@ function EventDetail() {
     const [description, setDescription] = useState("")
     const [title, setTitle] = useState("")
     const [readMore, setReadMore] = useState(false)
+    const token = useSelector((state) => state.auth.token)
     
     function fullDesc() {
         if (readMore) {
@@ -38,10 +40,23 @@ function EventDetail() {
         setDescription(listData.description)
         setIdEvent(listData.id)
     }
-    
+
+    async function createWishlist() {
+        const endPoint = 'http://localhost:8888/wishlist/' + id.id
+        const response = await fetch(endPoint, {
+            method: 'POST',
+            headers: {
+                Authorization: 'Bearer ' + token
+            }
+            // body: data
+        });
+        const data = await response.json()
+        // const listData = data.results
+    }
     useEffect(() => {
-        window.scrollTo(0, 0)
+        // window.scrollTo(0, 0)
         getData()
+        // createWishlist()
     }, [])
     function detailEvent(id) {
         nav("/events/section/"+id)
@@ -77,7 +92,7 @@ function EventDetail() {
                         </div>
                     </div>
                     <div className='flex gap-2 justify-center'>
-                        <button>
+                        <button onClick={createWishlist}>
                             <img src={Wish} alt="" className='h-fit' />
                         </button>
                         <span className='text-xl font-semibold text-[rgba(55,58,66,1)]'>Add to Wishlist</span>
@@ -120,6 +135,7 @@ function EventDetail() {
                 </div>
             </div>
             <FooterMain />
+            <ScrollRestoration/>
         </div>
     )
 }

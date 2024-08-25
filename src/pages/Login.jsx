@@ -74,7 +74,6 @@ function revealPassword() {
             {/* {showAlert?<AlertLogin data={message} />:''} */}
             <div className='md:flex justify-center hidden items-center bg-[#12CAD6] md:w-3/5'>
                 <img src={Character} alt="" />
-                {/* <img src={CharacterMadura} alt="" className='h-80 w-80' /> */}
             </div>
             <div className='flex flex-col gap-4 w-full md:w-2/5  pt-8 px-24'>
                 <Link to="/">

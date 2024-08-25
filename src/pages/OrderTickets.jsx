@@ -6,7 +6,7 @@ import TicketSection from "../components/TicketSection"
 import FooterMain from "../components/Footer"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { Link, useParams} from "react-router-dom"
+import { Link, useParams, ScrollRestoration} from "react-router-dom"
 
 function OrderTickets() {
     const setCursor = React.useRef()
@@ -87,6 +87,7 @@ function OrderTickets() {
                 </div>
             </div>
             <FooterMain />
+            <ScrollRestoration/>
         </div>
     )
 }

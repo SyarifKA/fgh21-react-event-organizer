@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteProfile } from "../redux/reducers/profile";
 import { authLogout } from "../redux/reducers/auth";
 import { useEffect } from "react";
+import Sidebar from "../components/Sidebar";
 
 function CreateEvent() {
     const [show, setShow] = React.useState(false)
@@ -38,68 +39,8 @@ function CreateEvent() {
         <div className="flex flex-col gap-24">
             <NavbarHome />
             <div className="flex mt-36 mx-[70px]">
-                <div className="md:flex flex-col hidden md:w-[30%] gap-6 text-sm">
-                    <div className="flex gap-2 items-center">
-                        <div>
-                            <button className='h-[55px] w-[55px] flex justify-center items-center rounded-full overflow-hidden border border-[#0FABBC] border-2'>
-                                <img src={profile.picture} alt="" className='h-[44px] w-[44px] rounded-full'/>
-                            </button>
-                        </div>
-                        <div>
-                            <div className="font-semibold text-sm">{profile.name}</div>
-                            <div className="text-[rgba(55,58,66,0.75)] text-xs">{profile.profession}</div>
-                        </div>
-                    </div>
-                    <div className="flex gap-2 items-center">
-                        <img src={LogoProfile} alt="" />
-                        <div>Profile</div>
-                    </div>
-                    <div className="flex gap-2 items-center ml-8">
-                        <img src={LogoCard} alt="" />
-                        <div>Card</div>
-                    </div>
-                    <Link to='/profile'>
-                    <div className="flex gap-2 items-center ml-8">
-                        <img src={LogoEdit} alt="" />
-                        <div>Edit Profile</div>
-                    </div>
-                    </Link>
-                    <Link to='/changePassword'>
-                    <div className="flex gap-2 items-center ml-8">
-                        <img src={LogoPass} alt="" />
-                        <div>Change Password</div>
-                    </div>
-                    </Link>
-                    <Link to='/createEvent'>
-                    <div className="flex gap-2 items-center">
-                        <img src={LogoCreateBlue} alt="" />
-                        <div className="text-[rgba(51,102,255,1)]">Create Event</div>
-                    </div>
-                    </Link>
-                    <Link to='/myBooking'>
-                    <div className="flex gap-2 items-center">
-                        <img src={LogoBooking} alt="" />
-                        <div>My Booking</div>
-                    </div>
-                    </Link>
-                    <Link to='/myWishlist'>
-                    <div className="flex gap-2 items-center">
-                        <img src={LogoWishlist} alt="" />
-                        <div>My Wishlist</div>
-                    </div>
-                    </Link>
-                    <div className="flex gap-2 items-center">
-                        <img src={LogoSetting} alt="" />
-                        <div>Settings</div>
-                    </div>
-                    <Link to='/login'>
-                    <button onClick={setProfileNull} className="flex gap-2 items-center">
-                        <img src={LogoLogout} alt="" />
-                        <div className="text-[rgba(240,56,0,1)]">Logout</div>
-                    </button>
-                    </Link>
-                </div>
-                <div className="flex flex-col gap-6 w-full md:w-[70%] bg-white p-12 rounded-3xl">
+                <Sidebar/>
+                <div className="flex flex-col gap-6 w-full md:w-[80%] bg-white p-12 rounded-3xl">
                     <div className="flex md:flex-row flex-col md:gap-2 gap-0 justify-between">
                         <div className="text-xl font-semibold">Manage Event</div>
                         <button onClick={showPopUp} className="flex bg-[#E4F9FF] p-[13px] text-[rgba(51,102,255,1)] rounded-xl justify-center">Create</button>
