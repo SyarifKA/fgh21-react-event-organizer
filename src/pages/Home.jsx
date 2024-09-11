@@ -2,14 +2,14 @@ import React from 'react'
 import NavbarHome from '../components/NavbarHome'
 import FooterMain from '../components/Footer'
 import Bubble from '../assets/images/bubble.png'
-import Cinema from '../assets/images/cinema.png'
+import Cinema from '../assets/images/ticket-people.png'
 import LinePink from '../assets/images/line-pink.png'
 import LineWhite from '../assets/images/lineWhite.png'
 import EventCard from '../components/EventCard'
 import ButtonLeft from '../components/ButtonLeft'
 import ButtonRight from '../components/ButtonRight'
 import EventCard2 from '../components/EventCard2'
-import { Link } from 'react-router-dom'
+import { Link, ScrollRestoration } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 
@@ -48,8 +48,7 @@ function HomePage() {
             <NavbarHome />
             <div className='flex w-full justify-end h-fit items-end bg-[#12CAD6] relative'>
                 <img src={Bubble} alt="" className='w-full h-full'/>
-                {/* <img src={Cinema} alt="" className=''/> */}
-                {/* <img src={CharacterMadura} alt="" className='z-10'/> */}
+                <img src={Cinema} alt="" className='absolute'/>
             </div>
             <div  className='flex flex-col items-center gap-12'>
                 <div className='flex flex-col items-center gap-6'>
@@ -84,9 +83,7 @@ function HomePage() {
                 </div>
             </div>
             <div className='flex flex-col ml-14 gap-4'>
-                {/* <Link to="/detail"> */}
                     <EventCard />
-                {/* </Link> */}
                 <div className='flex justify-center gap-8'>
                     <ButtonLeft />
                     <ButtonRight />
@@ -193,6 +190,7 @@ function HomePage() {
             <div>
                 <FooterMain />
             </div>
+            <ScrollRestoration/>
         </div>
     )
 }

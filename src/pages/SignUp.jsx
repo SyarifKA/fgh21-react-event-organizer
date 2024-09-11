@@ -1,5 +1,5 @@
 import React from 'react'
-import Character from '../assets/images/bike.png'
+import Character from '../assets/images/ticket-event.png'
 import LogoWetick from '../components/LogoWetick'
 import { FaFacebook } from "react-icons/fa"
 import { FcGoogle } from "react-icons/fc"
@@ -22,7 +22,7 @@ function SignUpPage() {
     data.append('fullName', fullName)
     data.append('email', email)
     data.append('password', password)
-    data.append('confirmPassword', confirmPassword)
+    data.append('cPassword', confirmPassword)
     
     const response = await fetch('http://localhost:8888/auth/register', {
         method: 'POST',

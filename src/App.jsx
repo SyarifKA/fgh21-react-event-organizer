@@ -5,6 +5,8 @@ import EventDetail from './pages/EventDetail'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist"
 import OrderTickets from './pages/OrderTickets'
 import Payment from './pages/Payment'
 import Profile from './pages/Profile'
@@ -15,6 +17,7 @@ import CreateEvent from './pages/CreateEvent'
 import SignUpPage from './pages/SignUp'
 import CreatePopUp from './components/CreatePopUp'
 
+let persistor = persistStore(store)
 const arrayRouter = [
     {
         path: '/',
@@ -69,14 +72,14 @@ const arrayRouter = [
 const router = createBrowserRouter(arrayRouter)
 function App() {
     return (
+        // <Provider store={store}>
+        //     <RouterProvider router={router} />
+        // </Provider>
         <Provider store={store}>
-
-            <RouterProvider router={router} />
-                 {/* <LoginPage />
-                 <HomePage />
-                 <EventDetail /> */}
-            
-        </Provider>
+        <PersistGate persistor={persistor}>
+          <RouterProvider router={router} />; 
+        </PersistGate>
+      </Provider>
     )
 
 }

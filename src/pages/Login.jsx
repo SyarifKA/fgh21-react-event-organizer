@@ -1,5 +1,5 @@
 import React from 'react'
-import Character from '../assets/images/bike.png'
+import Character from '../assets/images/ticket-event.png'
 import LogoWetick from '../components/LogoWetick'
 import { FaFacebook } from "react-icons/fa"
 import { FcGoogle } from "react-icons/fc"
@@ -38,7 +38,6 @@ function LoginPage() {
     setPopUp(uploadData.succes)
     if (uploadData.succes == true) {
         const dataToken = uploadData.results.token
-        console.log(dataToken)
         dispatch(authLogin(dataToken))
         
         const profile = await fetch('http://localhost:8888/profile', {

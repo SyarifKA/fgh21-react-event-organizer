@@ -5,39 +5,93 @@ import Seat from '../assets/images/seat.png'
 import TicketSection from "../components/TicketSection"
 import FooterMain from "../components/Footer"
 import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
-import { Link, useParams, ScrollRestoration} from "react-router-dom"
+import axios from "axios";
+// import { addSeat, changeSeat } from "../redux/reducers/sectionSelector"
+import {
+    addQty,
+    addEventId,
+    addEventTitle,
+    addTotalPayment,
+    addTicketSection,
+    addSectionId,
+    addQuantity,
+  } from "../redux/reducers/sectionSelector";
+import { useDispatch, useSelector } from "react-redux"
+import { Link, useParams, ScrollRestoration, useNavigate} from "react-router-dom"
 
 function OrderTickets() {
-    const setCursor = React.useRef()
-    const id = useParams()
-    const [ticket, setTicket] = useState([])
-    
-    async function getData() {
-        const endPoint = 'http://localhost:8888/events/section/' + id.id
-        const response = await fetch(endPoint);
-        const data = await response.json()
-        const listData = data.results
-        console.log(listData)
-        setTicket(listData)
-    }
-    
-    useEffect(() => {
-        window.scrollTo(0, 0)
-        getData()
-    }, [])
+    const dispatch = useDispatch()
+    const nav = useNavigate()
+    const id = useParams().id
 
-    const selectedSections = useSelector((state) => state.sectionSelector.selected)
+    const [selectedSections, setSelectedSections] = useState([]);
+    
+    // async function getData() {
+    //     const endPoint = 'http://localhost:8888/events/section/' + id.id
+    //     const response = await fetch(endPoint);
+    //     const data = await response.json()
+    //     const listData = data.results
+    //     setTicket(listData)
+    // }
+
+    const endpointSection = "http://localhost:8888/events/section/" + id;
+    const endpointEvent = "http://localhost:8888/events/" + id;
+
+    const [book, setBook] = useState([]);
+    const [section, setSection] = useState([]);
+    useEffect(() => {
+      (async () => {
+        const data = await axios.get(endpointEvent);
+        setBook(data.data.results.title);
+        console.log(data)
+        const sections = await axios.get(endpointSection);
+        setSection(sections.data.results);
+      })()
+    }, []);
+    console.log(book)
+    
+    // useEffect(() => {
+    //     getData()
+    // }, [])
+
     const ticketSection = selectedSections.reduce((prev, curr) => {
-        const arr = prev
-        console.log(curr)
-        if (curr.quantity != 0) {
+    const arr = prev
+        if (curr.quantity > 0) {
             arr.push(curr.name+`(${curr.quantity})`)
         }
         return arr
     },[])
+    const sectionId = selectedSections.reduce((prev, curr) => {
+        const arr = prev;
+        if (curr.quantity !== 0) {
+          arr.push(curr.id);
+        }
+        return arr;
+      }, []);
     const quantity = selectedSections.reduce((prev, curr) => prev + curr.quantity, 0)
     const totalPrice = selectedSections.reduce((prev, curr) => prev + curr.price, 0)
+    const quantityArray = selectedSections.reduce((prev, curr) => {
+        const arr = prev;
+        if (curr.quantity !== 0) {
+          arr.push(curr.quantity);
+        }
+        return arr;
+      }, [])
+    // console.log(selectedSections)
+    // function selected(){
+    //     dispatch(changeSeat(selectedSections))
+    //     nav("/payment")
+    // }
+
+    dispatch(addQty(quantity))
+    dispatch(addEventId(id))
+    dispatch(addEventTitle(book))
+    dispatch(addTotalPayment(totalPrice))
+    dispatch(addTicketSection(ticketSection))
+    dispatch(addSectionId(sectionId))
+    dispatch(addQuantity(quantityArray))
+    // const eventTitle = useSelector((state) => state.section.eventTitle);
+    // console.log(eventTitle)
 
     return (
         <div className="flex flex-col gap-24">
@@ -55,9 +109,15 @@ function OrderTickets() {
                         </div>
                     </div>
                     <div className="flex flex-col gap-4 w-full">
-                        {ticket.map((item) => {
+                        {section.map((item, index) => {
                             return (
-                                <TicketSection data={item} />
+                                <TicketSection
+                                key={item.id}
+                                data={item}
+                                index={index}
+                                currentData={selectedSections}
+                                onChange={setSelectedSections}
+                                />
                             )
                         })}
                         <hr />
@@ -69,7 +129,7 @@ function OrderTickets() {
                             </div>
                             <div className="flex justify-between">
                                 <span>Quantity</span>
-                                <span className="text-[#0FABBC]">{quantity === 0?"-":quantity}</span>
+                                <span className="text-[#0FABBC]">{quantity > 0?quantity:"-"}</span>
                                 {/* <span className="text-[#0FABBC]">{numb+numb2+numb3?numb+numb2+numb3:'-'}</span> */}
                             </div>
                             <div className="flex justify-between">

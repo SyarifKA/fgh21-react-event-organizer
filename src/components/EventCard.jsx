@@ -1,11 +1,4 @@
 import React from 'react'
-import Event1 from '../assets/images/event-1.png'
-import Event2 from '../assets/images/event-2.png'
-import Event3 from '../assets/images/event-3.jpg'
-import Event4 from '../assets/images/event-4.jpg'
-import Event5 from '../assets/images/event-5.jpg'
-import Event6 from '../assets/images/event-6.jpg'
-import Event7 from '../assets/images/event-7.jpg'
 import Attendee from './Attendee'
 import { useDispatch, useSelector } from 'react-redux'
 import { createEvent } from '../redux/reducers/event'
@@ -13,58 +6,21 @@ import { useEffect } from 'react'
 import { Link, useNavigate} from "react-router-dom";
 
 function EventCard() {
-    const events = [
-        {
-            title: 'Sights & Sounds Exhibition',
-            date: 'Wed, 15 Nov, 4:00 PM',
-            image: Event1
-        },
-        {
-            title: 'See it in Gold Class',
-            date: 'Thu, 16 Nov, 7:00 PM',
-            image: Event2
-        },
-        {
-            title: 'music concert',
-            date: 'Sat, 16 Jun, 7:00 PM',
-            image: Event3
-        },
-        {
-            title: 'MotoGP at Mandalika',
-            date: 'Sun, 27 Aug, 10:00 AM',
-            image: Event4
-        },
-        {
-            title: 'international chess tournament',
-            date: 'Sun, 7 Feb, 08:00 AM',
-            image: Event5
-        },
-        {
-            title: 'Jakarta International Marathon',
-            date: 'Sun, 23 Jun, 03:00 AM',
-            image: Event6
-        },
-        {
-            title: 'Indonesia VS Argentina',
-            date: 'Wed, 21 Jul, 18:00 PM',
-            image: Event7
-        }
-    ]
-
     const dispatch = useDispatch() 
-    const dataEvent = useSelector((state) => state.event.listEvent);
+
+    async function getAllEvent(){
+        const endPoint = 'http://localhost:8888/events'
+        const response = await fetch(endPoint);
+        const data = await response.json()
+        const listData = data.results
+        dispatch(createEvent( listData ))
+    }
     
     useEffect(() => {
-        (async()=> {
-            const endPoint = 'http://localhost:8888/events'
-            const response = await fetch(endPoint);
-            const data = await response.json()
-            const listData = data.results
-            // console.log(listData)
-            dispatch(createEvent( listData ))
-        })()
+        getAllEvent()
     },[])
-
+    
+    const dataEvent = useSelector((state) => state.event.listEvent);
     // getName()
     // console.log(dataEvent)
     const nav = useNavigate()
@@ -73,7 +29,7 @@ function EventCard() {
     }
     return (<>
         <div  className='flex gap-4 overflow-x-scroll'>
-            {dataEvent.map((item) => {
+            { dataEvent?dataEvent.map((item) => {
             const date = item.date.split('T')
             return (
                 <div onClick={()=>detailEvent(item.id)} key={item.id} className='w-[260px] h-[376px] overflow-hidden rounded-3xl flex-shrink-0 relative'>
@@ -108,7 +64,7 @@ function EventCard() {
                     </div>
                 </div>
             );
-        })}
+        }):''}
         </div>
     </>
         )
