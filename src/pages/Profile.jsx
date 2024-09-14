@@ -154,7 +154,7 @@ function Profile() {
                             </div>
                             <div className="flex">
                                 <label className="w-1/2" htmlFor="email">Email</label>
-                                <input type="text" name="email" id="email" defaultValue={profile.email} className="rounded-xl pl-2 border w-full h-[50px]"/>
+                                <input type="text" name="email" id="email" onChange={formik.handleChange} defaultValue={profile.email} className="rounded-xl pl-2 border w-full h-[50px]"/>
                             </div>
                             <div className="flex">
                                 <label className="w-1/2" htmlFor="phone">Phone Number</label>

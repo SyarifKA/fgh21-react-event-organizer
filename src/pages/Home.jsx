@@ -17,6 +17,8 @@ function HomePage() {
     const [partners, setPartners] = useState([])
     const [category, setCategory] = useState([])
     const[locations, setLocations] = useState([])
+    const [categoryEvent, setCategoryEvent] = useState(1)
+    const [dataEventCategory, setDataEventCategory] = useState([])
     async function dataPartners() {
         const endPoint = 'http://localhost:8888/partners'
         const response = await fetch(endPoint);
@@ -38,7 +40,22 @@ function HomePage() {
         const listData = data.results
         setLocations(listData)
     }
+    async function eventByCategories(e) {
+        e.preventDefault();
+        const form = new URLSearchParams()
+        form.append('categoryId', categoryEvent)
+        const listCategory = await fetch(
+          `http://localhost:8888/categories/event-categories`,
+          {
+            method: 'POST',
+            body: form
+          }
+        );
+        const listEvent = await listCategory.json();
+        setDataEventCategory(listEvent.results);
+      }
     useEffect(() => {
+        eventByCategories()
         dataLocations()
         dataPartners()
         dataCategory()
@@ -144,23 +161,25 @@ function HomePage() {
                     </div>
                     <div className='font-semibold text-4xl'>Browse Events By Category</div>
                 </div>
-                <div className='grid grid-cols-3 md:grid-cols-7 gap-12'>
-                    {category.map((item) => {
+                <form onSubmit={eventByCategories} className='grid grid-cols-3 md:grid-cols-7 gap-12'>
+                    {/* <form action=""> */}
+                    {category.map((item, index) => {
                         return (
-                            <button className='font-medium text-[rgba(193,197,208,1)]'>{item.name}</button>
-                        )
-                    })}
+                                <button onClick={()=>setCategoryEvent(index+1)} className='font-medium text-[rgba(193,197,208,1)]'>{item.name}</button>
+                            )
+                        })}
+                    {/* </form> */}
                     {/* <span className='font-medium text-[rgba(193,197,208,1)]'>Arts</span>
                     <span className='font-medium text-[rgba(193,197,208,1)]'>Outdoors</span>
                     <span className='font-medium text-[rgba(193,197,208,1)]'>Workshop</span>
                     <span className='font-medium text-[rgba(193,197,208,1)]'>Sport</span>
                     <span className='font-medium text-[rgba(193,197,208,1)]'>Festival</span>
                     <span className='font-medium text-[rgba(193,197,208,1)]'>Fashion</span> */}
-                </div>
+                </form>
             </div>
                 <div className='flex items-center justify-between px-2 flex-shrink-0 gap-8'>
                     <ButtonLeft />
-                    <EventCard2 />
+                    <EventCard2 data={dataEventCategory}/>
                     <ButtonRight />
                 </div>
             <div className='flex flex-col w-full h-full items-center bg-[#018383] relative pb-4'>
