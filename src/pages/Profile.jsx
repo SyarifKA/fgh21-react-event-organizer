@@ -6,6 +6,7 @@ import { Link, useNavigate, ScrollRestoration} from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import dateFormat from 'dateformat';
+import LoadingPopUp from '../components/Loading'
 import Sidebar from "../components/Sidebar";
 import { addProfile } from "../redux/reducers/profile";
 import { useFormik } from "formik";
@@ -13,6 +14,7 @@ import * as yup from "yup"
 
 function Profile() {
     const profile = useSelector((state) => state.profile.data)
+    const [showLoading, setShowLoading] = useState(false)
     console.log(profile)
     const [nationalities, setNationalities] = useState(0)
     const [gender, setGender] = useState(profile.gender)
@@ -72,6 +74,7 @@ function Profile() {
         data.append('phoneNumber', phoneNumber)
         data.append('gender', gender)
         data.append('profession', profession)
+        setShowLoading(true)
         
         const updateProfile = await fetch('http://localhost:8888/profile', {
             method: 'PATCH',
@@ -89,6 +92,9 @@ function Profile() {
             })
             const dataProfile = await profile.json()
             dispatch(addProfile(dataProfile))
+            setShowLoading(false)
+        }else{
+            setShowLoading(false)
         }
     }
 
@@ -103,6 +109,7 @@ function Profile() {
         e.preventDefault()
         const form = new FormData()
         form.append("profileImg", file)
+        setShowLoading(true)
         const uploadPhoto = await fetch("http://localhost:8888/profile/img", {
         headers: {
                     Authorization: `Bearer ${token}`,
@@ -111,7 +118,7 @@ function Profile() {
         body: form,
         })
         const response = await uploadPhoto.json()
-        if (response.succes == true) {
+        if (response.succes) {
             const profile = await fetch('http://localhost:8888/profile/login', {
                 headers: {
                     Authorization: 'Bearer ' + token
@@ -120,6 +127,9 @@ function Profile() {
             // console.log(token)
             const dataProfile = await profile.json()
             dispatch(addProfile(dataProfile))
+            setShowLoading(false)
+        }else{
+            setShowLoading(false)
         }
     }
     useEffect(() => {
@@ -130,6 +140,7 @@ function Profile() {
       return (
           <div className="flex flex-col gap-24">
             <NavbarHome />
+            {showLoading ? <LoadingPopUp /> : ''}
             <div className="flex mt-36 mx-[70px]">
                 <Sidebar/>
                 <div className="flex flex-col w-full md:w-[80%] bg-white p-12 rounded-3xl">

@@ -54,12 +54,14 @@ function EventDetail() {
         // const listData = data.results
     }
     useEffect(() => {
-        // window.scrollTo(0, 0)
         getData()
-        // createWishlist()
     }, [])
     function detailEvent(id) {
-        nav("/events/section/"+id)
+        if (token == null){
+            nav("/login")
+        }else{
+            nav("/events/section/"+id)
+        }
     }
     return (
         <div className='flex flex-col gap-24'>
