@@ -46,7 +46,7 @@ function HomePage() {
         form.append('categoryId', categoryEvent)
         const listCategory = await fetch(
           `http://localhost:8888/categories/event-categories`,
-          {
+          {            // body: data
             method: 'POST',
             body: form
           }
@@ -123,30 +123,6 @@ function HomePage() {
                                 </div>   
                             )
                         })}
-                        {/* <div className='md:flex flex-col hidden items-center'>
-                            <img src={Bandung} alt="" className='w-[230px] h-[179px] rounded-xl'/>
-                            <div className='text-white flex justify-center font-medium'>Bandung</div>
-                        </div>
-                        <div className='md:flex hidden flex-col items-center'>
-                            <img src={Bali} alt="" className='w-[230px] h-[179px] rounded-xl'/>
-                            <div className='text-white flex justify-center font-medium'>Bali</div>
-                        </div>
-                        <div className='md:flex hidden flex-col items-center'>
-                            <img src={Aceh} alt="" className='w-[230px] h-[179px] rounded-xl'/>
-                            <div className='text-white flex justify-center font-medium'>Aceh</div>
-                        </div>
-                        <div className='flex flex-col items-center'>
-                            <img src={Solo} alt="" className='w-[230px] h-[179px] rounded-xl'/>
-                            <div className='text-white flex justify-center font-medium'>Solo</div>
-                        </div>
-                        <div className='md:flex hidden flex-col items-center'>
-                            <img src={Jogja} alt="" className='w-[230px] h-[179px] rounded-xl'/>
-                            <div className='text-white flex justify-center font-medium'>Yogyakarta</div>
-                        </div>
-                        <div className='md:flex hidden flex-col items-center'>
-                            <img src={Semarang} alt="" className='w-[230px] h-[179px] rounded-xl'/>
-                            <div className='text-white flex justify-center font-medium'>Semarang</div>
-                        </div> */}
                     </div>
                     <div className='flex justify-center'>
                         <button className='bg-white w-[255px] h-[40px] rounded-xl mt-[50px] text-[#0FABBC]'>See All</button>
@@ -163,18 +139,11 @@ function HomePage() {
                 </div>
                 <form onSubmit={eventByCategories} className='grid grid-cols-3 md:grid-cols-7 gap-12'>
                     {/* <form action=""> */}
-                    {category.map((item, index) => {
+                    {category.length != 0?category.map((item, index) => {
                         return (
                                 <button onClick={()=>setCategoryEvent(index+1)} className='font-medium text-[rgba(193,197,208,1)]'>{item.name}</button>
                             )
-                        })}
-                    {/* </form> */}
-                    {/* <span className='font-medium text-[rgba(193,197,208,1)]'>Arts</span>
-                    <span className='font-medium text-[rgba(193,197,208,1)]'>Outdoors</span>
-                    <span className='font-medium text-[rgba(193,197,208,1)]'>Workshop</span>
-                    <span className='font-medium text-[rgba(193,197,208,1)]'>Sport</span>
-                    <span className='font-medium text-[rgba(193,197,208,1)]'>Festival</span>
-                    <span className='font-medium text-[rgba(193,197,208,1)]'>Fashion</span> */}
+                        }):""}
                 </form>
             </div>
                 <div className='flex items-center justify-between px-2 flex-shrink-0 gap-8'>
@@ -197,12 +166,6 @@ function HomePage() {
                                 <img src={item.logo} alt=""/>
                             )
                         })}
-                        {/* <img src={Banner1} alt="" />
-                        <img src={Banner2} alt="" />
-                        <img src={Banner3} alt="" />
-                        <img src={Banner4} alt="" />
-                        <img src={Banner5} alt="" />
-                        <img src={Banner6} alt="" /> */}
                     </div>
                 </div>
             </div>

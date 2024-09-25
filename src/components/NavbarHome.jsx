@@ -9,6 +9,8 @@ function NavbarHome() {
     const item2 = React.useRef()
     const item3 = React.useRef()
     function hideNav() {
+        item2.current.classList.toggle('md:flex')
+        item3.current.classList.toggle('md:flex')
         item2.current.classList.toggle('hidden')
         item3.current.classList.toggle('hidden')
     }
@@ -33,19 +35,11 @@ function NavbarHome() {
                 </Link>
                 <div>Location</div>
             </div>
-            {/* <div ref={item3} className='flex flex-col md:flex-row items-center justify-between gap-2 md:gap-4'>
-                <Link to='/login'>
-                <button className=' flex justify-center items-center w-[169px] h-[40px]'>Log In</button>
-                </Link>
-                <Link to='/signUp'>
-                <button  className='text-white flex justify-center w-[169px] h-[40px] items-center bg-[rgba(51,102,255,1)] rounded-lg shadow-md shadow-[rgba(51,102,255,0.15)]'>Sign Up</button>
-                </Link>
-            </div> */}
             {data !== null ? (
-                <div ref={item3} className='flex justify-center items-center w-full gap-4'>
+                <div ref={item3} className='flex md:justify-end justify-center items-center w-full gap-4'>
                 <Link to='/profile'>
                     <button className='h-[55px] w-[55px] flex justify-center items-center rounded-full overflow-hidden border border-[#0FABBC] border-2'>
-                        <img src={profile.picture} alt="" className='h-[44px] w-[44px] rounded-full' />
+                        <img src={profile.picture} alt="Profile image" className='h-[44px] w-[44px] rounded-full' />
                     </button>
                     </Link>
                     <Link to='/profile'>

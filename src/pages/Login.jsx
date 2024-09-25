@@ -52,9 +52,7 @@ function LoginPage() {
         setMessage(uploadData.message)
     } else {
         setShowLoading(false)
-        // setShowAlert(true)
         setMessage(uploadData.message)
-        // return uploadData.message
     }
 }
 

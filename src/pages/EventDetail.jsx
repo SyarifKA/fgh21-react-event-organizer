@@ -48,7 +48,6 @@ function EventDetail() {
             headers: {
                 Authorization: 'Bearer ' + token
             }
-            // body: data
         });
         const data = await response.json()
         // const listData = data.results
@@ -124,7 +123,6 @@ function EventDetail() {
                         <p>{description}</p>:
                         <p className='truncate'>{description}</p>
                         }
-                        {/* <p>After his controversial art exhibition "Tear and Consume" back in November 2018, in which guests were invited to tear up…</p> */}
                         <button onClick={fullDesc} className='text-[rgba(51,102,255,1)]'>Read More</button>
                     </div>
                     <div className='flex flex-col gap-4'>
