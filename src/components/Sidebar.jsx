@@ -27,7 +27,7 @@ function Sidebar(){
             <div className="flex gap-2 items-center">
                 <div>
                     <button className='h-[55px] w-[55px] flex justify-center items-center rounded-full overflow-hidden border border-[#0FABBC] border-2'>
-                        <img src={profile.picture} alt="" className='h-[44px] w-[44px] rounded-full'/>
+                        <img src={"http://103.93.58.89:21215"+profile.picture} alt="" className='h-[44px] w-[44px] rounded-full'/>
                     </button>
                 </div>
                 <div>

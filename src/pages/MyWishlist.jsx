@@ -13,7 +13,7 @@ function MyWishlist() {
     const token = useSelector((state) => state.auth.token)
     const id = useParams()
     async function getData() {
-        const endPoint = 'http://localhost:8888/wishlist/events'
+        const endPoint = 'http://103.93.58.89:21215/wishlist/events'
         const response = await fetch(endPoint, {
             headers: {
                 Authorization: 'Bearer ' + token

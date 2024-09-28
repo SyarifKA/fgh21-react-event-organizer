@@ -1,12 +1,23 @@
-FROM node:alpine
+# FROM node:alpine
+
+# WORKDIR /app
+
+# COPY package.json ./
+# COPY package-lock.json ./
+
+# COPY . /app/
+
+# RUN npm install
+
+# CMD [ "npm", "run", "dev" ]
+
+FROM node:lts-alpine
 
 WORKDIR /app
 
-COPY package.json ./
-COPY package-lock.json ./
-
 COPY . /app/
 
-RUN npm install
+RUN npm install -g serve@latest
+RUN npx vite build
 
-CMD [ "npm", "run", "dev" ]
+ENTRYPOINT cd dist && serve -l tcp://0.0.0.0:5000

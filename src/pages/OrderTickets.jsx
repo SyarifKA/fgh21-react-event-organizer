@@ -34,8 +34,8 @@ function OrderTickets() {
     //     setTicket(listData)
     // }
 
-    const endpointSection = "http://localhost:8888/events/section/" + id;
-    const endpointEvent = "http://localhost:8888/events/" + id;
+    const endpointSection = "http://103.93.58.89:21215/events/section/" + id;
+    const endpointEvent = "http://103.93.58.89:21215/events/" + id;
 
     const [book, setBook] = useState([]);
     const [section, setSection] = useState([]);

@@ -44,7 +44,7 @@ function ChangePass() {
       data.append("oldPassword", oldPass)
       data.append("newPassword", currPass)
       data.append("confirmPassword", confirmPass)
-      await fetch("http://localhost:8888/users", {
+      await fetch("http://103.93.58.89:21215/users", {
         headers: {
                     Authorization: 'Bearer '+token
                 },

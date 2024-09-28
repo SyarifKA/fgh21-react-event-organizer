@@ -20,21 +20,21 @@ function HomePage() {
     const [categoryEvent, setCategoryEvent] = useState(1)
     const [dataEventCategory, setDataEventCategory] = useState([])
     async function dataPartners() {
-        const endPoint = 'http://localhost:8888/partners'
+        const endPoint = 'http://103.93.58.89:21215/partners'
         const response = await fetch(endPoint);
         const data = await response.json()
         const listData = data.results
         setPartners(listData)
     }
     async function dataCategory() {
-        const endPoint = 'http://localhost:8888/categories'
+        const endPoint = 'http://103.93.58.89:21215/categories'
         const response = await fetch(endPoint);
         const data = await response.json()
         const listData = data.results
         setCategory(listData)
     }
     async function dataLocations() {
-        const endPoint = 'http://localhost:8888/locations'
+        const endPoint = 'http://103.93.58.89:21215/locations'
         const response = await fetch(endPoint);
         const data = await response.json()
         const listData = data.results
@@ -45,7 +45,7 @@ function HomePage() {
         const form = new URLSearchParams()
         form.append('categoryId', categoryEvent)
         const listCategory = await fetch(
-          `http://localhost:8888/categories/event-categories`,
+          `http://103.93.58.89:21215/categories/event-categories`,
           {            // body: data
             method: 'POST',
             body: form

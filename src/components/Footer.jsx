@@ -20,7 +20,7 @@ function FooterMain() {
                     </div>
                 </div>
                 <div className='flex flex-col gap-4'>
-                    <div className='font-semibold'>Wetick</div>
+                    <div className='font-semibold'>Kuytick</div>
                     <div className='text-[rgba(193,197,208,1)]'>About Us</div>
                     <div className='text-[rgba(193,197,208,1)]'>Features</div>
                     <div className='text-[rgba(193,197,208,1)]'>Blog</div>

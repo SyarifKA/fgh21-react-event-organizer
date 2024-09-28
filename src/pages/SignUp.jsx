@@ -24,7 +24,7 @@ function SignUpPage() {
     data.append('password', password)
     data.append('cPassword', confirmPassword)
     
-    const response = await fetch('http://localhost:8888/auth/register', {
+    const response = await fetch('http://103.93.58.89:21215/auth/register', {
         method: 'POST',
         body: data
     })

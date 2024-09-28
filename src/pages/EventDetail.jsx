@@ -31,7 +31,7 @@ function EventDetail() {
     const id = useParams()
 
     async function getData() {
-        const endPoint = 'http://localhost:8888/events/' + id.id
+        const endPoint = 'http://103.93.58.89:21215/events/' + id.id
         const response = await fetch(endPoint);
         const data = await response.json()
         const listData = data.results
@@ -42,7 +42,7 @@ function EventDetail() {
     }
 
     async function createWishlist() {
-        const endPoint = 'http://localhost:8888/wishlist/' + id.id
+        const endPoint = 'http://103.93.58.89:21215/wishlist/' + id.id
         const response = await fetch(endPoint, {
             method: 'POST',
             headers: {

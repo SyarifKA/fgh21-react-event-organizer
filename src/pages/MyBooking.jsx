@@ -25,7 +25,7 @@ function MyBooking() {
     const token = useSelector((state) => state.auth.token)
 
     async function getTransactions() {
-        const transaction = await fetch('http://localhost:8888/transactions', {
+        const transaction = await fetch('http://103.93.58.89:21215/transactions', {
            headers: {
                Authorization: 'Bearer '+token
            }

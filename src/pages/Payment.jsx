@@ -46,7 +46,7 @@ function Payment() {
     // data.append("sectionId[]", sectionId[2])
     // bagian ini masih tahap penyelesaian, form backend tidak bisa menerima bentuk array
     // sehingga alternatif menggunakan index dari section, bug nya yaitu user harus melakukan transaksi sebanyak 1 section pertransaksi
-    const createTransaction = await fetch("http://localhost:8888/transactions", {
+    const createTransaction = await fetch("http://103.93.58.89:21215/transactions", {
       headers: {
                   Authorization: 'Bearer '+token
               },
