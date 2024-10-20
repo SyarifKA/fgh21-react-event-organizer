@@ -9,7 +9,7 @@ function EventCard() {
     const dispatch = useDispatch() 
 
     async function getAllEvent(){
-        const endPoint = 'http://103.93.58.89:21215/events'
+        const endPoint = `${import.meta.env.VITE_ssh_url}/events`
         const response = await fetch(endPoint);
         const data = await response.json()
         const listData = data.results

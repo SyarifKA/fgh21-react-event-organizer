@@ -72,9 +72,6 @@ const arrayRouter = [
 const router = createBrowserRouter(arrayRouter)
 function App() {
     return (
-        // <Provider store={store}>
-        //     <RouterProvider router={router} />
-        // </Provider>
         <Provider store={store}>
         <PersistGate persistor={persistor}>
           <RouterProvider router={router} />; 

@@ -20,21 +20,21 @@ function HomePage() {
     const [categoryEvent, setCategoryEvent] = useState(1)
     const [dataEventCategory, setDataEventCategory] = useState([])
     async function dataPartners() {
-        const endPoint = 'http://103.93.58.89:21215/partners'
+        const endPoint = `${import.meta.env.VITE_ssh_url}/partners`
         const response = await fetch(endPoint);
         const data = await response.json()
         const listData = data.results
         setPartners(listData)
     }
     async function dataCategory() {
-        const endPoint = 'http://103.93.58.89:21215/categories'
+        const endPoint = `${import.meta.env.VITE_ssh_url}/categories`
         const response = await fetch(endPoint);
         const data = await response.json()
         const listData = data.results
         setCategory(listData)
     }
     async function dataLocations() {
-        const endPoint = 'http://103.93.58.89:21215/locations'
+        const endPoint = `${import.meta.env.VITE_ssh_url}/locations`
         const response = await fetch(endPoint);
         const data = await response.json()
         const listData = data.results
@@ -45,7 +45,7 @@ function HomePage() {
         const form = new URLSearchParams()
         form.append('categoryId', categoryEvent)
         const listCategory = await fetch(
-          `http://103.93.58.89:21215/categories/event-categories`,
+          `${import.meta.env.VITE_ssh_url}/categories/event-categories`,
           {            // body: data
             method: 'POST',
             body: form

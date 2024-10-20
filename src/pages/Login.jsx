@@ -29,7 +29,7 @@ function LoginPage() {
     data.append('email', email)
     data.append('password', password)
     
-    const response = await fetch('http://103.93.58.89:21215/auth/login', {
+    const response = await fetch(`${import.meta.env.VITE_ssh_url}/auth/login`, {
         method: 'POST',
         body: data
     })
@@ -40,7 +40,7 @@ function LoginPage() {
         const dataToken = uploadData.results.token
         dispatch(authLogin(dataToken))
         
-        const profile = await fetch('http://103.93.58.89:21215/profile', {
+        const profile = await fetch(`${import.meta.env.VITE_ssh_url}/profile`, {
             headers: {
                 Authorization: 'Bearer ' + dataToken
             }

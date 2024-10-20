@@ -44,7 +44,7 @@ function ChangePass() {
       data.append("oldPassword", oldPass)
       data.append("newPassword", currPass)
       data.append("confirmPassword", confirmPass)
-      await fetch("http://103.93.58.89:21215/users", {
+      await fetch(`${import.meta.env.VITE_ssh_url}/users`, {
         headers: {
                     Authorization: 'Bearer '+token
                 },

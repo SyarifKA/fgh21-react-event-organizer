@@ -34,8 +34,8 @@ function OrderTickets() {
     //     setTicket(listData)
     // }
 
-    const endpointSection = "http://103.93.58.89:21215/events/section/" + id;
-    const endpointEvent = "http://103.93.58.89:21215/events/" + id;
+    const endpointSection = `${import.meta.env.VITE_ssh_url}/events/section/` + id;
+    const endpointEvent = `${import.meta.env.VITE_ssh_url}/events/` + id;
 
     const [book, setBook] = useState([]);
     const [section, setSection] = useState([]);

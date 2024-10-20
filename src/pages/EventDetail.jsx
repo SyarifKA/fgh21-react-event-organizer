@@ -42,7 +42,7 @@ function EventDetail() {
     }
 
     async function createWishlist() {
-        const endPoint = 'http://103.93.58.89:21215/wishlist/' + id.id
+        const endPoint = `${import.meta.env.VITE_ssh_url}/wishlist/` + id.id
         const response = await fetch(endPoint, {
             method: 'POST',
             headers: {

@@ -1,17 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import NavbarProfile from "../components/NavbarProfile"
 import NavbarHome from "../components/NavbarHome"
-import Avatar from '../assets/images/navbar-avatar.png'
-import LogoProfile from '../assets/images/profile-logo.png'
-import LogoCard from '../assets/images/card-grey.png'
-import LogoEdit from '../assets/images/profile-edit.png'
-import LogoPass from '../assets/images/profile-change.png'
-import LogoBookingBlue from '../assets/images/booking-logo-blue.png'
-import LogoWishlist from '../assets/images/wishlist-logo.png'
-import LogoCreate from '../assets/images/create-event.png'
-import LogoSetting from '../assets/images/setting-logo.png'
-import LogoLogout from '../assets/images/exit-logo.png'
 import IconCalendar from '../assets/images/booking_calender.png'
 import FooterMain from "../components/Footer"
 import { useSelector } from "react-redux";
@@ -25,7 +14,7 @@ function MyBooking() {
     const token = useSelector((state) => state.auth.token)
 
     async function getTransactions() {
-        const transaction = await fetch('http://103.93.58.89:21215/transactions', {
+        const transaction = await fetch(`${import.meta.env.VITE_ssh_url}/transactions`, {
            headers: {
                Authorization: 'Bearer '+token
            }

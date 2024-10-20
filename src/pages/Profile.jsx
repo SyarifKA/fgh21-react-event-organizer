@@ -30,7 +30,7 @@ function Profile() {
     const defaultValue = date.toLocaleDateString('en-CA');
 
     async function getNationalities() {
-         const nationality = await fetch('http://103.93.58.89:21215/nationalities', {
+         const nationality = await fetch(`${import.meta.env.VITE_ssh_url}/nationalities`, {
             headers: {
                 Authorization: 'Bearer '+token
             }
@@ -77,7 +77,7 @@ function Profile() {
         data.append('profession', profession)
         setShowLoading(true)
         
-        const updateProfile = await fetch('http://103.93.58.89:21215/profile', {
+        const updateProfile = await fetch(`${import.meta.env.VITE_ssh_url}/profile`, {
             method: 'PATCH',
             headers: {
                 Authorization: 'Bearer '+token
@@ -86,7 +86,7 @@ function Profile() {
         })    
         const responseProfile = await updateProfile.json()
         if (responseProfile.succes){
-            const profile = await fetch('http://103.93.58.89:21215/profile/login', {
+            const profile = await fetch(`${import.meta.env.VITE_ssh_url}/profile/login`, {
                 headers: {
                     Authorization: 'Bearer ' + token
                 }
@@ -111,7 +111,7 @@ function Profile() {
         const form = new FormData()
         form.append("profileImg", file)
         setShowLoading(true)
-        const uploadPhoto = await fetch("http://103.93.58.89:21215/profile/img", {
+        const uploadPhoto = await fetch(`${import.meta.env.VITE_ssh_url}/profile/img`, {
         headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -120,7 +120,7 @@ function Profile() {
         })
         const response = await uploadPhoto.json()
         if (response.succes) {
-            const profile = await fetch('http://103.93.58.89:21215/profile/login', {
+            const profile = await fetch(`${import.meta.env.VITE_ssh_url}/profile/login`, {
                 headers: {
                     Authorization: 'Bearer ' + token
                 }
@@ -222,7 +222,7 @@ function Profile() {
                         <form onSubmit={uploadImage} className="md:w-1/3 w-full flex flex-col gap-4">
                             <div className="flex justify-center">
                                 <label htmlFor="img" className='h-[137px] w-[137px] flex justify-center items-center rounded-full overflow-hidden border border-[#0FABBC] border-4'>
-                                    <img src={imagePreview?imagePreview:"http://103.93.58.89:21215"+profile.picture} alt="" className='h-[110px] w-[110px] rounded-full'/>
+                                    <img src={imagePreview?imagePreview:`${import.meta.env.VITE_ssh_url}`+profile.picture} alt="" className='h-[110px] w-[110px] rounded-full'/>
                                 </label>
                             </div>
                             <div className="md:flex hidden md:w-full justify-center">
