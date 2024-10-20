@@ -10,7 +10,6 @@ import dateFormat from 'dateformat'
 function EventCard2(props) {
     const event = props.data
     const dataEvent = useSelector((state) => state.event.listEvent);
-    console.log(dataEvent)
     useEffect(() => {
         event
     },[])

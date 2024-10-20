@@ -2,14 +2,16 @@ import React from 'react'
 import Attendee from './Attendee'
 import { useDispatch, useSelector } from 'react-redux'
 import { createEvent } from '../redux/reducers/event'
-import { useEffect } from 'react'
+import { useEffect, useState} from 'react'
 import { Link, useNavigate} from "react-router-dom";
 
 function EventCard() {
-    const dispatch = useDispatch() 
+    const dispatch = useDispatch()
+    const [inputSearch, setInputSearch] = useState("");
+    const [page, setPage] = useState(1);
 
     async function getAllEvent(){
-        const endPoint = `${import.meta.env.VITE_ssh_url}/events`
+        const endPoint = `${import.meta.env.VITE_ssh_url}/events?page=${page}&search=${inputSearch}`
         const response = await fetch(endPoint);
         const data = await response.json()
         const listData = data.results
@@ -21,8 +23,6 @@ function EventCard() {
     },[])
     
     const dataEvent = useSelector((state) => state.event.listEvent);
-    // getName()
-    // console.log(dataEvent)
     const nav = useNavigate()
     function detailEvent(id) {
         nav("/events/"+id)
