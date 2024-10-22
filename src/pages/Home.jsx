@@ -12,12 +12,16 @@ import EventCard2 from '../components/EventCard2'
 import { Link, ScrollRestoration } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { CiSearch } from "react-icons/ci";
+import { createEvent } from '../redux/reducers/event'
+import { useDispatch } from 'react-redux'
 
 
 function HomePage() {
     const [partners, setPartners] = useState([])
     const [category, setCategory] = useState([])
     const[locations, setLocations] = useState([])
+    const [search, setSearch] = useState('')
+    const dispatch = useDispatch()
     const [categoryEvent, setCategoryEvent] = useState(1)
     const [dataEventCategory, setDataEventCategory] = useState([])
     async function dataPartners() {
@@ -55,6 +59,16 @@ function HomePage() {
         const listEvent = await listCategory.json();
         setDataEventCategory(listEvent.results);
       }
+
+    async function getAllEvent(e){
+        e.preventDefault()
+        const endPoint = `${import.meta.env.VITE_ssh_url}/events?search=${search}`
+        const response = await fetch(endPoint)
+        const data = await response.json()
+        const listData = data.results
+        dispatch(createEvent( listData ))
+    }
+    console.log(search)
     useEffect(() => {
         eventByCategories()
         dataLocations()
@@ -69,10 +83,10 @@ function HomePage() {
                 <div className='absolute flex justify-between w-full px-20'>
                     <div className='flex flex-col gap-4 justify-center items-center w-80'>
                         <span className='text-3xl text-white font-semibold'>Find events you love with our</span>
-                        <form className='w-full py-2 bg-white flex items-center gap-4 rounded-md px-4 justify-around'>
+                        <form onSubmit={getAllEvent} className='w-full py-2 bg-white flex items-center gap-4 rounded-md px-4 justify-around'>
                             <CiSearch className='text-xl'/>
-                            <input type="text" placeholder='Search' className='text-sm px-4 w-1/2 border border-bg[#C1C5D0BF] rounded-md'/>
-                            <button className='h-8 w-8 bg-[#FF3D71] flex justify-center items-center text-white text-xl rounded-md'>&rarr;</button>
+                            <input onChange={(e) => setSearch(e.target.value)} name='event' type="text" placeholder='Search' className='text-sm px-4 w-1/2 border border-bg[#C1C5D0BF] rounded-md'/>
+                            <button type='submit' className='h-8 w-8 bg-[#FF3D71] flex justify-center items-center text-white text-xl rounded-md'>&rarr;</button>
                         </form>
                     </div>
                     <img src={Cinema} alt="" className='h-fit'/>
