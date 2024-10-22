@@ -3,6 +3,7 @@ import LogoWetick from './LogoWetick'
 import NavBtn from '../assets/images/menu.png'
 import Avatar from '../assets/images/navbar-avatar.png'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useSelector, Provider } from 'react-redux'
 
 function NavbarHome() {
@@ -16,6 +17,16 @@ function NavbarHome() {
     }
     const data = useSelector((state) => state.auth.token)
     const profile = useSelector((state)=>state.profile.data)
+    const token = useSelector((state) => state.auth.token)
+    const nav = useNavigate()
+
+    function createEvent(){
+        if (token){
+            nav('/createEvent')
+        }else{
+            nav('/login')
+        }
+    }
     return (
         <div className='flex flex-col md:flex-row bg-[#FFD271] fixed z-40 md:justify-between md:gap-4 items-center px-8 pb-2 py-2 md:py-4 w-full font-semibold text-sm'>
             <div className='flex w-full items-center gap-8'>
@@ -30,9 +41,7 @@ function NavbarHome() {
                 <Link to='/'>
                 <div>Home</div>
                 </Link>
-                <Link to='/createEvent'>
-                <div>Create Event</div>
-                </Link>
+                <button onClick={createEvent}>Create Event</button>
                 <div>Location</div>
             </div>
             {data !== null ? (

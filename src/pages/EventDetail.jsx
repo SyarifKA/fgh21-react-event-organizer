@@ -31,7 +31,7 @@ function EventDetail() {
     const id = useParams()
 
     async function getData() {
-        const endPoint = 'http://103.93.58.89:21215/events/' + id.id
+        const endPoint = `${import.meta.env.VITE_ssh_url}/events/` + id.id
         const response = await fetch(endPoint);
         const data = await response.json()
         const listData = data.results
