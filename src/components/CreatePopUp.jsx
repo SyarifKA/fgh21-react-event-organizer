@@ -1,6 +1,13 @@
 import React from "react";
 
-function CreatePopUp() {
+function CreatePopUp(props) {
+
+    const popUp = props.data
+    console.log(popUp)
+
+    function hidePopUp(){
+        popUp = false
+    }
     return (
         <div className="bg-[rgba(0,0,0,0.28)] fixed flex justify-center items-center w-full h-full z-50">
             <form className="bg-white flex flex-col gap-4 text-sm px-[54px] py-[20px] rounded-2xl w-[70%]">
@@ -39,7 +46,8 @@ function CreatePopUp() {
                     <label htmlFor="categori">Detail</label>
                     <input type="text" name="categori" id="categori" placeholder="Input Detail ..." className="border p-2 rounded-xl h-[95px]"/>
                 </div>
-                <div className="flex justify-end">
+                <div className="flex gap-8 justify-end">
+                    <button onClick={hidePopUp} className="shadow-md shadow-[#E4F9FF] bg-[#FF2400] w-36 h-[60px] rounded-xl font-semibold text-white">Cancel</button>
                     <button className="shadow-md shadow-[#E4F9FF] bg-[#0FABBC] w-[315px] h-[60px] rounded-xl font-semibold text-white">Save</button>
                 </div>
             </form>

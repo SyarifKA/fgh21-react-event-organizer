@@ -222,7 +222,7 @@ function Profile() {
                         <form onSubmit={uploadImage} className="md:w-1/3 w-full flex flex-col gap-4">
                             <div className="flex justify-center">
                                 <label htmlFor="img" className='h-[137px] w-[137px] flex justify-center items-center rounded-full overflow-hidden border border-[#0FABBC] border-4'>
-                                    <img src={imagePreview?imagePreview:`${import.meta.env.VITE_ssh_url}`+profile.picture} alt="" className='h-[110px] w-[110px] rounded-full'/>
+                                    <img src={imagePreview?imagePreview:`${import.meta.env.VITE_ssh_url}`+profile.picture} alt="" className='h-[110px] w-[110px] cursor-pointer rounded-full'/>
                                 </label>
                             </div>
                             <div className="md:flex hidden md:w-full justify-center">

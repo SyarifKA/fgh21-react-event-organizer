@@ -6,12 +6,12 @@ import { Link, ScrollRestoration } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProfile } from "../redux/reducers/profile";
 import { authLogout } from "../redux/reducers/auth";
-import { useEffect } from "react";
+import { useEffect, useState} from "react";
 import Sidebar from "../components/Sidebar";
 import dateFormat from "dateformat";
 
 function CreateEvent() {
-    const [show, setShow] = React.useState(false)
+    const [show, setShow] = useState(false)
     function showPopUp() {
         setShow(!show)
     }
@@ -49,47 +49,11 @@ function CreateEvent() {
                                 </tr>
                             )
                         })}
-                        {/* <div className="flex gap-2 border-b py-[25px]">
-                            <button className="bg-white shadow-md w-[50px] h-[75px] rounded-xl flex flex-col justify-center items-center shadow-[rgba(35,41,54,0.04)]">
-                                <span className="text-[rgba(255,137,0,1)] font-semibold text-sm">15</span>
-                                <span className="text-[rgba(193,197,208,1)] text-xs">Wed</span>
-                            </button>
-                            <div className="flex flex-col gap-2">
-                                <div className="text-[rgba(55,58,66,1)] text-2xl font-semibold">Sights & Sounds Exhibition</div>
-                                <div className="text-[rgba(55,58,66,0.75)] text-xs">Jakarta, Indonesia</div>
-                                <div className="text-[rgba(55,58,66,0.75)] text-xs">Wed, 15 Nov, 4:00 PM</div>
-                                <div className="text-xs text-[rgba(51,102,255,1)]">Detail</div>
-                            </div>
-                        </div>
-                        <div className="flex gap-2 border-b py-[25px]">
-                            <button className="bg-white shadow-md w-[50px] h-[75px] rounded-xl flex flex-col justify-center items-center shadow-[rgba(35,41,54,0.04)]">
-                                <span className="text-[rgba(255,137,0,1)] font-semibold text-sm">15</span>
-                                <span className="text-[rgba(193,197,208,1)] text-xs">Wed</span>
-                            </button>
-                            <div className="flex flex-col gap-2">
-                                <div className="text-[rgba(55,58,66,1)] text-2xl font-semibold">Sights & Sounds Exhibition</div>
-                                <div className="text-[rgba(55,58,66,0.75)] text-xs">Jakarta, Indonesia</div>
-                                <div className="text-[rgba(55,58,66,0.75)] text-xs">Wed, 15 Nov, 4:00 PM</div>
-                                <div className="text-xs text-[rgba(51,102,255,1)]">Detail</div>
-                            </div>
-                        </div>
-                        <div className="flex gap-2 py-[25px]">
-                            <button className="bg-white shadow-md w-[50px] h-[75px] rounded-xl flex flex-col justify-center items-center shadow-[rgba(35,41,54,0.04)]">
-                                <span className="text-[rgba(255,137,0,1)] font-semibold text-sm">15</span>
-                                <span className="text-[rgba(193,197,208,1)] text-xs">Wed</span>
-                            </button>
-                            <div className="flex flex-col gap-2">
-                                <div className="text-[rgba(55,58,66,1)] text-2xl font-semibold">Sights & Sounds Exhibition</div>
-                                <div className="text-[rgba(55,58,66,0.75)] text-xs">Jakarta, Indonesia</div>
-                                <div className="text-[rgba(55,58,66,0.75)] text-xs">Wed, 15 Nov, 4:00 PM</div>
-                                <div className="text-xs text-[rgba(51,102,255,1)]">Detail</div>
-                            </div>
-                        </div> */}
                     </table>
                 </div>
             </div>
             <FooterMain />
-            {show?<CreatePopUp />:''}
+            {show?<CreatePopUp data={show}/>:''}
             <ScrollRestoration/>
         </div>
     )
