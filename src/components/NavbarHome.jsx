@@ -48,7 +48,7 @@ function NavbarHome() {
                 <div ref={item3} className='flex md:justify-end justify-center items-center w-full gap-4'>
                 <Link to='/profile'>
                     <button className='h-[55px] w-[55px] flex justify-center items-center rounded-full overflow-hidden border border-[#0FABBC] border-2'>
-                        <img src={`${import.meta.env.VITE_ssh_url}`+profile.picture} alt="Profile image" className='h-[44px] w-[44px] rounded-full' />
+                        <img src={`${import.meta.env.VITE_local_url}`+profile.picture} alt="Profile image" className='h-[44px] w-[44px] rounded-full' />
                     </button>
                     </Link>
                     <Link to='/profile'>

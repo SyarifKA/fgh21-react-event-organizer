@@ -11,6 +11,14 @@ import LogoBooking from '../assets/images/booking-logo.png'
 import LogoWishlist from '../assets/images/wishlist-logo.png'
 import LogoSetting from '../assets/images/setting-logo.png'
 import LogoLogout from '../assets/images/exit-logo.png'
+import { CgProfile } from "react-icons/cg";
+import { FaCreditCard } from "react-icons/fa";
+import { AiFillEdit } from "react-icons/ai";
+import { RiLockPasswordFill } from "react-icons/ri";
+import { IoMdHeart } from "react-icons/io";
+import { FaClipboardList } from "react-icons/fa";
+import { IoSettingsSharp } from "react-icons/io5";
+import { IoIosLogOut } from "react-icons/io";
 
 function Sidebar(){
     const profile = useSelector((state) => state.profile.data)
@@ -27,7 +35,7 @@ function Sidebar(){
             <div className="flex gap-2 items-center">
                 <div>
                     <button className='h-[55px] w-[55px] flex justify-center items-center rounded-full overflow-hidden border border-[#0FABBC] border-2'>
-                        <img src={`${import.meta.env.VITE_ssh_url}`+profile.picture} alt="" className='h-[44px] w-[44px] rounded-full'/>
+                        <img src={`${import.meta.env.VITE_local_url}`+profile.picture} alt="" className='h-[44px] w-[44px] rounded-full'/>
                     </button>
                 </div>
                 <div>
@@ -36,46 +44,46 @@ function Sidebar(){
                 </div>
             </div>
             <Link to='/profile'>
-            <div className="flex gap-2 items-center">
-                <img src={LogoProfile} alt="" />
+            <div className="flex gap-2 items-center hover:text-[rgba(51,102,255,1)]">
+                <CgProfile className="text-2xl text-[#C1C5D0]"/>
                 <div>Profile</div>
             </div>
             </Link>
-            <div className="flex gap-2 items-center ml-8">
-                <img src={LogoCard} alt="" />
-                <div>Card</div>
+            <div className="flex gap-2 items-center ml-8 hover:text-[rgba(51,102,255,1)] cursor-not-allowed">
+                <FaCreditCard className="text-2xl text-[#C1C5D0]"/>
+                <s><div>Card</div></s>
             </div>
             <Link to='/profile'>
-            <div className="flex gap-2 items-center ml-8">
-                <img src={LogoEditBlue} alt="" />
-                <div className="text-[rgba(51,102,255,1)]">Edit Profile</div>
+            <div className="flex gap-2 items-center ml-8 hover:text-[rgba(51,102,255,1)]">
+                <AiFillEdit className="text-2xl text-[#C1C5D0]"/>
+                <div>Edit Profile</div>
             </div>
             </Link>
             <Link to='/changePassword'>
-            <div className="flex gap-2 items-center ml-8">
-                <img src={LogoPass} alt="" />
+            <div className="flex gap-2 items-center ml-8 hover:text-[rgba(51,102,255,1)]">
+                <RiLockPasswordFill className="text-2xl text-[#C1C5D0]"/>
                 <div>Change Password</div>
             </div>
             </Link>
             <Link to='/myBooking'>
-            <div className="flex gap-2 items-center">
-                <img src={LogoBooking} alt="" />
+            <div className="flex gap-2 items-center hover:text-[rgba(51,102,255,1)]">
+                <FaClipboardList className="text-2xl text-[#C1C5D0]"/>
                 <div>My Booking</div>
             </div>
             </Link>
             <Link to='/myWishlist'>
-            <div className="flex gap-2 items-center">
-                <img src={LogoWishlist} alt="" />
+            <div className="flex gap-2 items-center hover:text-[rgba(51,102,255,1)]">
+                <IoMdHeart className="text-2xl text-[#C1C5D0]"/>
                 <div>My Wishlist</div>
             </div>
             </Link>
-            <div className="flex gap-2 items-center">
-                <img src={LogoSetting} alt="" />
+            <div className="flex gap-2 items-center hover:text-[rgba(51,102,255,1)] cursor-pointer">
+                <IoSettingsSharp className="text-2xl text-[#C1C5D0]"/>
                 <div>Settings</div>
             </div>
-            <button onClick={setProfileNull} className="flex gap-2 items-center">
-                <img src={LogoLogout} alt="" />
-                <div className="text-[rgba(240,56,0,1)]">Logout</div>
+            <button onClick={setProfileNull} className="flex gap-2 items-center text-[rgba(240,56,0,1)]">
+                <IoIosLogOut className="text-2xl"/>
+                <div>Logout</div>
             </button>
     </div>
     )
