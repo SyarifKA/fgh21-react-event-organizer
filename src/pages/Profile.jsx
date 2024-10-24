@@ -202,7 +202,7 @@ function Profile() {
                             <div className="flex items-center">
                                 <label htmlFor="name" className="w-1/2">Nationality</label>
                                 <div className="w-1/2 relative w-full items-center flex">
-                                <select name="" id="nation" className="rounded-xl pl-2 w-full border h-[50px]">
+                                <select name="nationality" id="nation" className="rounded-xl pl-2 w-full border h-[50px]">
                                         {nationality.map((item, index) => {
                                             return (
                                             <option key={index+1} selected={item.name === profile.nationality} onChange={()=>setNationalities(index+1)} value={index+1} defaultValue={item.name}>{item.name}</option>
