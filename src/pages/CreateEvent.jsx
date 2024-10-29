@@ -16,7 +16,7 @@ function CreateEvent() {
         setShow(!show)
     }
     const dataEvent = useSelector((state) => state.event.listEvent);
-    console.log(dataEvent)
+    // console.log(dataEvent)
     return (
         <div className="flex flex-col gap-24">
             <NavbarHome />
@@ -53,7 +53,7 @@ function CreateEvent() {
                 </div>
             </div>
             <FooterMain />
-            {show?<CreatePopUp data={show}/>:''}
+            {show?<CreatePopUp data={showPopUp}/>:''}
             <ScrollRestoration/>
         </div>
     )

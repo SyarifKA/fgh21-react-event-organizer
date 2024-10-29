@@ -15,13 +15,11 @@ import * as yup from "yup"
 function Profile() {
     const profile = useSelector((state) => state.profile.data)
     const [showLoading, setShowLoading] = useState(false)
-    console.log(profile)
     const [nationalities, setNationalities] = useState(0)
     const [gender, setGender] = useState(profile.gender)
     const [imagePreview, setImagePreview] = useState(null);
     const token = useSelector((state) => state.auth.token)
     // const [job, setJob] = useState([])
-    console.log(token)
     const [nationality, setNationality] = useState([])
     const date = new Date(profile.birthdayDate)
     const futureDate = date.getDate() + 3;
@@ -37,7 +35,7 @@ function Profile() {
         })
         const dataNationality = await nationality.json()
         const nations = dataNationality.results
-        console.log(nations)
+        // console.log(nations)
         setNationality(nations)
     }
 
