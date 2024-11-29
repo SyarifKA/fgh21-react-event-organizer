@@ -2,7 +2,7 @@
   <img src="/src/assets/portfolio/login.png" alt="login" width="300">
   <img src="/src/assets/portfolio/booking.png" alt="Booking" width="300">
   <img src="/src/assets/portfolio/event-detail.png" alt="Event" width="300">
-  <img src="/src/assets/portfolio/booking.png" alt="MyBooking" width="300">
+  <img src="/src/assets/portfolio/wishlist.png" alt="Wishlist" width="300">
   <img src="/src/assets/portfolio/payment-method.png" alt="Payment" width="300">
   <img src="/src/assets/portfolio/profile.png" alt="Profile" width="300">
 </div>
