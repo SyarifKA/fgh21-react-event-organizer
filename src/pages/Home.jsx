@@ -68,7 +68,6 @@ function HomePage() {
         const listData = data.results
         dispatch(createEvent( listData ))
     }
-    console.log(search)
     useEffect(() => {
         eventByCategories()
         dataLocations()

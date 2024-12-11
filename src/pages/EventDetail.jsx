@@ -35,6 +35,7 @@ function EventDetail() {
         const response = await fetch(endPoint);
         const data = await response.json()
         const listData = data.results
+        console.log(listData)
         setTitle(listData.title)
         setImage(listData.image)
         setDescription(listData.description)
