@@ -29,7 +29,7 @@ function NavbarHome() {
     }
     return (
         <div className='flex flex-col md:flex-row bg-[#FFD271] fixed z-40 md:justify-between md:gap-4 items-center px-8 pb-2 py-2 md:py-4 w-full font-semibold text-sm'>
-            <div className='flex w-full items-center gap-8'>
+            <div className='flex w-full items-center justify-between gap-8'>
                 <LogoWetick />
                 <div className='justify-start items-start flex md:hidden'>
                     <button onClick={hideNav} className='flex items-start justify-center'>

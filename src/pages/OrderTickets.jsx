@@ -34,8 +34,8 @@ function OrderTickets() {
     //     setTicket(listData)
     // }
 
-    const endpointSection = `${import.meta.env.VITE_ssh_url}/events/section/` + id;
-    const endpointEvent = `${import.meta.env.VITE_ssh_url}/events/` + id;
+    const endpointSection = `${import.meta.env.VITE_local_url}/events/section/` + id;
+    const endpointEvent = `${import.meta.env.VITE_local_url}/events/` + id;
 
     const [book, setBook] = useState([]);
     const [section, setSection] = useState([]);

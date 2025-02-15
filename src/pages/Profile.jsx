@@ -15,12 +15,12 @@ import * as yup from "yup"
 function Profile() {
     const profile = useSelector((state) => state.profile.data)
     const [showLoading, setShowLoading] = useState(false)
-    const [nationalities, setNationalities] = useState(0)
+    const [nationalities, setNationalities] = useState(profile.nationalityId == null?0:profile.nationalityId)
     const [gender, setGender] = useState(profile.gender)
     const [imagePreview, setImagePreview] = useState(null);
     const token = useSelector((state) => state.auth.token)
     // const [job, setJob] = useState([])
-    const [nationality, setNationality] = useState([])
+    const [dataNation, setDataNation] = useState([])
     const date = new Date(profile.birthdayDate)
     const futureDate = date.getDate() + 3;
     date.setDate(futureDate);
@@ -28,7 +28,7 @@ function Profile() {
     const defaultValue = date.toLocaleDateString('en-CA');
 
     async function getNationalities() {
-         const nationality = await fetch(`${import.meta.env.VITE_ssh_url}/nationalities`, {
+         const nationality = await fetch(`${import.meta.env.VITE_local_url}/nationalities`, {
             headers: {
                 Authorization: 'Bearer '+token
             }
@@ -36,7 +36,7 @@ function Profile() {
         const dataNationality = await nationality.json()
         const nations = dataNationality.results
         // console.log(nations)
-        setNationality(nations)
+        setDataNation(nations)
     }
 
     const formik = useFormik({
@@ -47,7 +47,8 @@ function Profile() {
             email: profile.email,
             phoneNumber: profile.phoneNumber,
             gender: profile.gender,
-            profession: profile.profession,  
+            profession: profile.profession,
+            nationality: nationalities 
           },    
           validationSchema: yup.object().shape({
             fullName: yup.string().required('Please Enter name').min(3),
@@ -56,6 +57,7 @@ function Profile() {
             gender: yup.string().required('Please Choose your gender'),
             phoneNumber: yup.string().required('Please Enter your Phone Number'),
             profession: yup.string().required('Please Enter your profession'),
+            nationality: yup.string().required('Please Choose your nationality'),
           })  
       })
     
@@ -73,9 +75,10 @@ function Profile() {
         data.append('phoneNumber', phoneNumber)
         data.append('gender', gender)
         data.append('profession', profession)
+        data.append('nationalityId', nationalities)
         setShowLoading(true)
         
-        const updateProfile = await fetch(`${import.meta.env.VITE_ssh_url}/profile`, {
+        const updateProfile = await fetch(`${import.meta.env.VITE_local_url}/profile`, {
             method: 'PATCH',
             headers: {
                 Authorization: 'Bearer '+token
@@ -84,7 +87,7 @@ function Profile() {
         })    
         const responseProfile = await updateProfile.json()
         if (responseProfile.succes){
-            const profile = await fetch(`${import.meta.env.VITE_ssh_url}/profile/login`, {
+            const profile = await fetch(`${import.meta.env.VITE_local_url}/profile/login`, {
                 headers: {
                     Authorization: 'Bearer ' + token
                 }
@@ -134,8 +137,8 @@ function Profile() {
     useEffect(() => {
         getNationalities()
     }, [])
-    console.log(nationalities)
-    console.log(gender)
+    // console.log(nationalities)
+    console.log(profile)
       return (
           <div className="flex flex-col gap-24">
             <NavbarHome />
@@ -186,6 +189,7 @@ function Profile() {
                                         <input type="radio" name="gender" defaultValue={profile.gender} onChange={()=>setGender(2)} defaultChecked={profile.gender === 2 ? true : false} id="Female" />
                                         <label htmlFor="Female">Female</label>
                                     </div>
+                                    {console.log(gender)}
                                 </div>
                             </div>
                             <div className="flex w-full items-center">
@@ -200,10 +204,10 @@ function Profile() {
                             <div className="flex items-center">
                                 <label htmlFor="name" className="w-1/2">Nationality</label>
                                 <div className="w-1/2 relative w-full items-center flex">
-                                <select name="nationality" id="nation" className="rounded-xl pl-2 w-full border h-[50px]">
-                                        {nationality.map((item, index) => {
+                                <select name="nationality" onChange={(e) => setNationalities(e.target.value)} value={nationalities?nationalities:0} id="nation" className="rounded-xl pl-2 w-full border h-[50px]">
+                                        {dataNation.map((item, index) => {
                                             return (
-                                            <option key={index+1} selected={item.name === profile.nationality} onChange={()=>setNationalities(index+1)} value={index+1} defaultValue={item.name}>{item.name}</option>
+                                            <option key={index+1} value={item.id}>{item.name}</option>
                                         )
                                     })}
                                 </select>
@@ -214,7 +218,7 @@ function Profile() {
                                 <input type="date" name="name" id="birthday" className="rounded-xl pl-2 w-full border h-[50px]"/>
                             </div>
                             <div className='flex justify-center'>
-                                <button className=' text-white rounded-xl shadow-md shadow-[#E4F9FF] bg-[#0FABBC] w-[80%] h-[55px]'>Save</button>
+                                <button type="submit" className=' text-white rounded-xl shadow-md shadow-[#E4F9FF] bg-[#0FABBC] w-[80%] h-[55px]'>Save</button>
                             </div>
                         </form>
                         <form onSubmit={uploadImage} className="md:w-1/3 w-full flex flex-col gap-4">

@@ -46,7 +46,7 @@ function Payment() {
     // data.append("sectionId[]", sectionId[2])
     // bagian ini masih tahap penyelesaian, form backend tidak bisa menerima bentuk array
     // sehingga alternatif menggunakan index dari section, bug nya yaitu user harus melakukan transaksi sebanyak 1 section pertransaksi
-    const createTransaction = await fetch(`${import.meta.env.VITE_ssh_url}/transactions`, {
+    const createTransaction = await fetch(`${import.meta.env.VITE_local_url}/transactions`, {
       headers: {
                   Authorization: 'Bearer '+token
               },

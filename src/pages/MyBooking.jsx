@@ -14,7 +14,7 @@ function MyBooking() {
     const token = useSelector((state) => state.auth.token)
 
     async function getTransactions() {
-        const transaction = await fetch(`${import.meta.env.VITE_ssh_url}/transactions`, {
+        const transaction = await fetch(`${import.meta.env.VITE_local_url}/transactions`, {
            headers: {
                Authorization: 'Bearer '+token
            }
