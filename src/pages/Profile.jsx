@@ -20,6 +20,7 @@ function Profile() {
     const [imagePreview, setImagePreview] = useState(null);
     const token = useSelector((state) => state.auth.token)
     // const [job, setJob] = useState([])
+    const [birthDate, setBirthDate]=useState("")
     const [dataNation, setDataNation] = useState([])
     const date = new Date(profile.birthdayDate)
     const futureDate = date.getDate() + 3;
@@ -76,6 +77,7 @@ function Profile() {
         data.append('gender', gender)
         data.append('profession', profession)
         data.append('nationalityId', nationalities)
+        data.append('birthDate', birthDate)
         setShowLoading(true)
         
         const updateProfile = await fetch(`${import.meta.env.VITE_local_url}/profile`, {
@@ -215,8 +217,9 @@ function Profile() {
                             </div>
                             <div className="flex">
                                 <label className="w-1/2" htmlFor="birthday">Birthday Date</label>
-                                <input type="date" name="name" id="birthday" className="rounded-xl pl-2 w-full border h-[50px]"/>
+                                <input type="date" name="name" onChange={(e)=>setBirthDate(e.target.value)} id="birthday" className="rounded-xl pl-2 w-full border h-[50px]"/>
                             </div>
+                            {console.log(birthDate)}
                             <div className='flex justify-center'>
                                 <button type="submit" className=' text-white rounded-xl shadow-md shadow-[#E4F9FF] bg-[#0FABBC] w-[80%] h-[55px]'>Save</button>
                             </div>
