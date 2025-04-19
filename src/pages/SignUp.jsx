@@ -6,12 +6,26 @@ import { FcGoogle } from "react-icons/fc"
 import { useNavigate } from 'react-router-dom'
 import { IoEyeOutline } from "react-icons/io5"
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 function SignUpPage() {
     const navigate = useNavigate()
-    const [message, setMessage] = React.useState('')
-    const [popUp, setPopUp] = React.useState('')
-    async function processLogin(e) {
+    const [message, setMessage] = useState('')
+    const [popUp, setPopUp] = useState('')
+    const [reveal, setReveal] = useState('password')
+    const [isAccept, setIsAccept] = useState(false);
+    
+    const handleChange = (e) => {
+      setIsAccept(e.target.checked);
+    };
+
+    function alertAccept() {
+        if (isAccept === false) {
+            window.alert("Anda harus menyetujui syarat dan ketentuan aplikasi")
+        }
+    }
+
+    async function processSignUp(e) {
     e.preventDefault()
     const fullName = e.target.username.value
     const email = e.target.email.value
@@ -33,15 +47,12 @@ function SignUpPage() {
     setPopUp(dataResponse.succes)
     if (dataResponse.succes) {
         navigate('/login')
-        // window.alert(dataResponse.message)
         setMessage(dataResponse.message)
         e.currentTarget.reset()
     } else {
         setMessage(dataResponse.message)
-        // window.alert(dataResponse.message)
     }
     }
-    const [reveal, setReveal] = React.useState('password')
     function revealPassword() {
         if (reveal === 'password') {
             setReveal('text')
@@ -49,6 +60,8 @@ function SignUpPage() {
             setReveal('password')
         }
     }
+
+    console.log(isAccept)
 
     return (
         <div className='flex h-screen'>
@@ -66,7 +79,7 @@ function SignUpPage() {
                     </span></h3>
                     {popUp ? <div className='w-full h-fit rounded-lg text-green-500'>{message}</div> : <div className='w-full h-fit rounded-lg text-red-500'>{message}</div>}
                 </div>
-                <form onSubmit={processLogin}>
+                <form onSubmit={isAccept?processSignUp:alertAccept}>
                     <div className='flex flex-col gap-4'>
                         <input type="text" name='username' placeholder='Fullname' className='border-solid border-2 border-[rgba(193,197,208,1)] rounded-lg pl-3 h-[50px]'/>
                         <input type="email" name='email' placeholder='Email' className='border-solid border-2 border-[rgba(193,197,208,1)] rounded-lg pl-3 h-[50px]' />
@@ -79,7 +92,13 @@ function SignUpPage() {
                                 <button type='button' className='absolute right-6 text-2xl' onClick={revealPassword}> <IoEyeOutline /></button>
                         </div>
                         <div className='flex gap-2'>
-                            <input type="checkbox" id='accept' />
+                        <input
+                            type="checkbox"
+                            id="accept"
+                            checked={isAccept}
+                            onChange={handleChange}
+                        />
+                            {/* <input type="checkbox" id='accept' /> */}
                             <label htmlFor="accept">Accept terms and condition</label>
                         </div>
                     </div>

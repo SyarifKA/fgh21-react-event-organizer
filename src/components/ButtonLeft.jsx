@@ -9,7 +9,7 @@ function ButtonLeft() {
 
     async function getAllEvent(e){
         e.preventDefault()
-        const endPoint = `${import.meta.env.VITE_ssh_url}/events?page=${page}`
+        const endPoint = `${import.meta.env.VITE_local_url}/events?page=${page}`
         const response = await fetch(endPoint);
         const data = await response.json()
         const listData = data.results

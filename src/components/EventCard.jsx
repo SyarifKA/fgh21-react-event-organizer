@@ -11,7 +11,7 @@ function EventCard() {
     const [page, setPage] = useState(1);
 
     async function getAllEvent(){
-        const endPoint = `${import.meta.env.VITE_ssh_url}/events?page=${page}&search=${inputSearch}`
+        const endPoint = `${import.meta.env.VITE_local_url}/events?page=${page}&search=${inputSearch}`
         const response = await fetch(endPoint);
         const data = await response.json()
         const listData = data.results
