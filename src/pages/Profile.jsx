@@ -88,6 +88,7 @@ function Profile() {
             body: data
         })    
         const responseProfile = await updateProfile.json()
+        // console.log(responseProfile)
         if (responseProfile.succes){
             const profile = await fetch(`${import.meta.env.VITE_local_url}/profile/login`, {
                 headers: {
@@ -95,6 +96,7 @@ function Profile() {
                 }
             })
             const dataProfile = await profile.json()
+            console.log(dataProfile)
             dispatch(addProfile(dataProfile))
             setShowLoading(false)
         }else{
@@ -114,7 +116,7 @@ function Profile() {
         const form = new FormData()
         form.append("profileImg", file)
         setShowLoading(true)
-        const uploadPhoto = await fetch(`${import.meta.env.VITE_ssh_url}/profile/img`, {
+        const uploadPhoto = await fetch(`${import.meta.env.VITE_local_url}/profile/img`, {
         headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -123,7 +125,7 @@ function Profile() {
         })
         const response = await uploadPhoto.json()
         if (response.succes) {
-            const profile = await fetch(`${import.meta.env.VITE_ssh_url}/profile/login`, {
+            const profile = await fetch(`${import.meta.env.VITE_local_url}/profile/login`, {
                 headers: {
                     Authorization: 'Bearer ' + token
                 }
@@ -140,7 +142,7 @@ function Profile() {
         getNationalities()
     }, [])
     // console.log(nationalities)
-    console.log(profile)
+    // console.log(profile)
       return (
           <div className="flex flex-col gap-24">
             <NavbarHome />
@@ -217,7 +219,7 @@ function Profile() {
                             </div>
                             <div className="flex">
                                 <label className="w-1/2" htmlFor="birthday">Birthday Date</label>
-                                <input type="date" name="name" onChange={(e)=>setBirthDate(e.target.value)} id="birthday" className="rounded-xl pl-2 w-full border h-[50px]"/>
+                                <input type="date" defaultValue={profile.birthDate} name="name" onChange={(e)=>setBirthDate(e.target.value)} id="birthday" className="rounded-xl pl-2 w-full border h-[50px]"/>
                             </div>
                             {console.log(birthDate)}
                             <div className='flex justify-center'>

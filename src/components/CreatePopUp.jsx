@@ -5,12 +5,13 @@ import { useSelector } from "react-redux";
 function CreatePopUp(props) {
     const [locations, setLocations] = useState([])
     const [category, setCategory] = useState([])
+    const [dateEvent, setDateEvent] = useState("")
     const token = useSelector((state) => state.auth.token)
     const [file, setFile] = useState();
     
     const popUp = props.data
     async function dataCategory() {
-        const endPoint = `${import.meta.env.VITE_ssh_url}/categories`
+        const endPoint = `${import.meta.env.VITE_local_url}/categories`
         const response = await fetch(endPoint);
         const data = await response.json()
         const listData = data.results
@@ -18,7 +19,7 @@ function CreatePopUp(props) {
     }
     
     async function dataLocations() {
-        const endPoint = `${import.meta.env.VITE_ssh_url}/locations`
+        const endPoint = `${import.meta.env.VITE_local_url}/locations`
         const response = await fetch(endPoint);
         const data = await response.json()
         const listData = data.results
@@ -32,28 +33,28 @@ function CreatePopUp(props) {
     
     async function createEvent(e) {
         e.preventDefault()
-        console.log("masuk")
         const name = e.target.name.value
         const category = e.target.category.value
         const location = e.target.location.value
-        const date = e.target.date.value
+        // const date = e.target.date.value
         const price = e.target.price.value
         const section = e.target.section.value
         const quantity = e.target.quantity.value
         const detail = e.target.detail.value
+        console.log(category)
                     
         const data = new FormData()
         data.append('title', name)
         data.append('categoryId', category)
         data.append('locationId', location)
-        data.append('date', date)
+        data.append('date', dateEvent)
         data.append('price', price)
         data.append('section', section)
         data.append('quantity', quantity)
         data.append('eventImg', file)
         data.append('description', detail)
         
-        const addEvent = await fetch(`${import.meta.env.VITE_ssh_url}/events`, {
+        const addEvent = await fetch(`${import.meta.env.VITE_local_url}/events`, {
             method: 'POST',
             headers: {
                 Authorization: 'Bearer '+token
@@ -73,7 +74,7 @@ function CreatePopUp(props) {
     }
     return (
         <div className="bg-[rgba(0,0,0,0.28)] fixed flex justify-center items-center w-full h-full z-50">
-            <form onSubmit={createEvent} className="bg-white flex flex-col gap-4 text-sm px-[54px] py-[20px] rounded-2xl w-[70%]">
+            <form onSubmit={createEvent} className="bg-white flex flex-col gap-2 text-sm px-[54px] py-[10px] rounded-2xl w-[70%]">
                 <h1 className="text-2xl font-semibold">Create Event</h1>
                 <div className="flex justify-between gap-4">
                     <div className="flex flex-col gap-2 w-1/2">
@@ -104,7 +105,7 @@ function CreatePopUp(props) {
                     </div>
                     <div className="flex flex-col gap-2 w-1/2">
                         <label htmlFor="date">Date Time Show</label>
-                        <input type="date" name="date" id="date" placeholder="01/01/2022" className="border p-2 rounded-xl h-[50px]"/>
+                        <input type="date" name="date" id="date" placeholder="01/01/2022" onChange={(e)=>setDateEvent(e.target.value)} className="border p-2 rounded-xl h-[50px]"/>
                     </div>
                 </div>
                 <div className="flex justify-between gap-4">
@@ -136,8 +137,8 @@ function CreatePopUp(props) {
                     <input type="text" name="detail" id="detail" placeholder="Input Detail ..." className="border p-2 rounded-xl h-[95px]"/>
                 </div>
                 <div className="flex gap-8 justify-end">
-                    <button onClick={popUp} type="button" className="shadow-md shadow-[#E4F9FF] bg-[#FF2400] w-36 h-[60px] rounded-xl font-semibold text-white">Cancel</button>
-                    <button type="submit" className="shadow-md shadow-[#E4F9FF] bg-[#0FABBC] w-[315px] h-[60px] rounded-xl font-semibold text-white">Save</button>
+                    <button onClick={popUp} type="button" className="shadow-md shadow-[#E4F9FF] bg-[#FF2400] w-36 h-[40px] rounded-xl font-semibold text-white">Cancel</button>
+                    <button type="submit" className="shadow-md shadow-[#E4F9FF] bg-[#0FABBC] w-[250px] h-[40px] rounded-xl font-semibold text-white">Save</button>
                 </div>
             </form>
         </div>

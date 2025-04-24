@@ -51,7 +51,7 @@ function HomePage() {
         form.append('categoryId', categoryEvent)
         const listCategory = await fetch(
           `${import.meta.env.VITE_local_url}/categories/event-categories`,
-          {            // body: data
+          {
             method: 'POST',
             body: form
           }

@@ -17,9 +17,11 @@ function EventCard2(props) {
         <div className='flex overflow-x-scroll gap-4'>
             {event.length != 0?event.map((item)=>{
                 const date = item.date.split('T')
+                const imageUrl = item.image.startsWith('http')? item.image 
+                    : `${import.meta.env.VITE_local_url}${item.image}`
                 return(
                     <div className='w-[300px] h-[350px] bg-contain flex-shrink-0 rounded-2xl overflow-hidden'>
-                        <img src={item.image} alt="" className='object-cover w-full h-1/2' />
+                        <img src={imageUrl} alt="" className='object-cover w-full h-1/2' />
                         <div className='flex flex-col gap-6 bg-[#12CAD6] h-1/2 px-6 relative'>
                             <div className='flex gap-4 flex-col absolute -top-4 text-white'>
                                     <Attendee />
@@ -31,9 +33,15 @@ function EventCard2(props) {
                 )
             }):dataEvent.map((item)=>{
                 const date = item.date.split('T')
+                const imageUrl = item.image.startsWith('http')? item.image 
+                    : `${import.meta.env.VITE_local_url}${item.image}`
                 return(
                     <div className='w-[300px] h-[350px] bg-contain flex-shrink-0 rounded-2xl overflow-hidden'>
-                        <img src={item.image} alt="" className='object-cover w-full h-1/2' />
+                        <img src={imageUrl} alt={item.title}
+                        onError={(e) => {
+                            e.target.onerror = null
+                            e.target.src = "/img/default.png"
+                        }} className='object-cover w-full h-1/2' />
                         <div className='flex flex-col gap-6 bg-[#12CAD6] h-1/2 px-6 relative'>
                             <div className='flex gap-4 flex-col absolute -top-4 text-white'>
                                     <Attendee />
